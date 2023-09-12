@@ -31,19 +31,24 @@
                 position: relative;
             }
             .fullscreen .page-1 .page-1-text{
-                /* font-size: text-size; */
                 font-size: 20px;
                 color: blue;
+                position: absolute;
+                right: -90px;
+                top: 50%;
             }
             .fullscreen .page-1-bg{
                 background: green;
                 transition: all 0.5s ease; /* Hiệu ứng scroll */
+                flex: none;
+                position: relative;
             }
         </style>
         <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
         <script>
             let height = 0;
             let wheelnum = 0;
+            let fullscreen;
             window.load = function () {
                 const fullscreen = document.querySelector('.fullscreen');
                 // const scrollY = fullscreen.scrollY;
@@ -59,18 +64,21 @@
                     wheelnum += 100;
                 }
                 console.log(height, wheelnum);
-                if(wheelnum <= 500){
+                if(wheelnum <= 1000){
                     effectPage1();
                 }
-                if(wheelnum <= 500){
+
+                if(wheelnum === 1100){
+                    const element = document.querySelector('.page-2');
+                    element.scrollIntoView();
                     
                 }
             });
 
             function effectPage1() {
                 const bg1 = document.querySelector('.page-1-bg');
-                bg1.style.width = `${wheelnum}px`; 
-                bg1.style.height = `${wheelnum}px`; 
+                bg1.style.width = `${wheelnum/10}%`; 
+                bg1.style.height = `${wheelnum/10}%`; 
             }
         </script>
     </head>
@@ -78,22 +86,23 @@
         <div class="header"></div>
         <div class="fullscreen">
             <div class="page page-1">
-                <div class="page-1-bg" style="width: 10px;height: 10px;"></div>
-                <p style="font-size: 20px;" class="page-1-text">Mong đợi</p>
+                <div class="page-1-bg" style="width: 10px;height: 10px;">
+                    <p style="font-size: 20px;" class="page-1-text">Mong đợi</p>
+                </div>
             </div>
             <div class="page page-2">
-                <p style="font-size: 20px;" class="page-2-text">Hi</p>
+                <p style="font-size: 20px;" class="page-2-text">Page 2</p>
             </div>
             <div class="page page-3">
-                <p style="font-size: 20px;" class="page-3-text">Hi</p>
+                <p style="font-size: 20px;" class="page-3-text">Page 3</p>
                 
             </div>
             <div class="page page-4">
-                <p style="font-size: 20px;" class="page-4-text">Hi</p>
+                <p style="font-size: 20px;" class="page-4-text">Page 4</p>
                 
             </div>
             <div class="page page-5">
-                <p style="font-size: 20px;" class="page-5-text">Hi</p>
+                <p style="font-size: 20px;" class="page-5-text">Page 5</p>
             </div>
         </div>
     </body>
