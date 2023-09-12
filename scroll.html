@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+    <head>
+        <style>
+            body, html {
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                overflow: hidden;
+            }
+            .fullscreen{
+                height: 100vh; /* Chiều cao 100% của viewport */
+                width: 100%;
+                overflow: hidden;
+                
+            }
+            .fullscreen .page {
+                height: 100vh; /* Chiều cao 100% của viewport */
+                width: 100%;
+                flex: none;
+            }
+
+            .fullscreen .page-1{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+            .fullscreen .page-1 .page-1-text{
+                /* font-size: text-size; */
+                font-size: 20px;
+                color: blue;
+            }
+            .fullscreen .page-1-bg{
+                background: green;
+                transition: all 0.5s ease; /* Hiệu ứng scroll */
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+        <script>
+            let height = 0;
+            let wheelnum = 0;
+            window.load = function () {
+                const fullscreen = document.querySelector('.fullscreen');
+                // const scrollY = fullscreen.scrollY;
+                height = fullscreen.scrollHeight;
+            }
+            window.addEventListener('wheel', (e) => {
+                if(e.wheelDeltaY > 0) {
+                    // wheel up
+                    wheelnum -= 100;
+                }
+                else if(e.wheelDeltaY < 0) {
+                    // wheel down
+                    wheelnum += 100;
+                }
+                console.log(height, wheelnum);
+                if(wheelnum <= 500){
+                    effectPage1();
+                }
+                if(wheelnum <= 500){
+                    
+                }
+            });
+
+            function effectPage1() {
+                const bg1 = document.querySelector('.page-1-bg');
+                bg1.style.width = `${wheelnum}px`; 
+                bg1.style.height = `${wheelnum}px`; 
+            }
+        </script>
+    </head>
+    <body>
+        <div class="header"></div>
+        <div class="fullscreen">
+            <div class="page page-1">
+                <div class="page-1-bg" style="width: 10px;height: 10px;"></div>
+                <p style="font-size: 20px;" class="page-1-text">Mong đợi</p>
+            </div>
+            <div class="page page-2">
+                <p style="font-size: 20px;" class="page-2-text">Hi</p>
+            </div>
+            <div class="page page-3">
+                <p style="font-size: 20px;" class="page-3-text">Hi</p>
+                
+            </div>
+            <div class="page page-4">
+                <p style="font-size: 20px;" class="page-4-text">Hi</p>
+                
+            </div>
+            <div class="page page-5">
+                <p style="font-size: 20px;" class="page-5-text">Hi</p>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+.serverless
+.idea
+sw.*
+.DS_Store
+*.swp
+.history/*
+.vscode/*
+.vscode/sftp.json
+node_modules/
+output/
