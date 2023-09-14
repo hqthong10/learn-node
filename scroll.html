@@ -1,109 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta charset="utf-8">
-    <title>Swiper demo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Swiper demo</title>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12/dist/gsap.min.js"></script> -->
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js" integrity="sha512-B1lby8cGcAUU3GR+Fd809/ZxgHbfwJMp0jLTVfHiArTuUt++VqSlJpaJvhNtRf3NERaxDNmmxkdx2o+aHd4bvw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js" integrity="sha512-AY2+JxnBETJ0wcXnLPCcZJIJx0eimyhz3OJ55k2Jx4RtYC+XdIi2VtJQ+tP3BaTst4otlGG1TtPJ9fKrAUnRdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/TextPlugin.min.js" integrity="sha512-FD2NEqo487xeScKLGTMRAKy/gy/nVOAlX1fMM0XOcwEh0YKpvTWa1fXPpfD0Wu6/ciAryuOWhF9FTKzNdd4X1Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js" integrity="sha512-lDVk8UZs8AV/6iIP7MVRsV02TxZdH5YHFT+U/5Um75xS3NVI0iy3wPtYwS7x5GCLTh2L50O28WxYyoTLRoXsSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/PixiPlugin.min.js" integrity="sha512-w2KIwlbzenHAHnOkG2fUQhfgCIRcWQEcFMd31dygGrQhAbT0XGaNqf8lNoUdIGAtp3f1SG5rQmoRw6maInuuBQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Observer.min.js" integrity="sha512-vFTURC6QksHB8d3L9Vkkg8iRDdQm0c5QTVZUcTgLliFMIHYT2MG86Oj/Pz++NimU+cVwfCyZm3JwE0rvVSACiQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/MotionPathPlugin.min.js" integrity="sha512-B51Rt/N9j6IEqj2zPlooYAAgBujP/Z9fvk1WWWeEhsnJkoNq7L8Pjj6TM0qslf0NjDvkVIqipHxE+Ox03rrp8w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Flip.min.js" integrity="sha512-G8u+c1Cby6L+PLeKCJ9N1y6kaVsyKfmSFnf/FJJk2DwaVNUa+ymRG+pdhlq5bFHRzV9MsOohw2LUcQ0Ln9vQOw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/EaselPlugin.min.js" integrity="sha512-0zDUaXgL+bLX78hcEuwh8uapIII6CcSgXjWn2+hvzADYWhSrZT9YkgEcBb64KVB4zXxWwUkoEkV3nGTga/bCxQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/EasePack.min.js" integrity="sha512-W7Q1Oupn/vzcfvDAjf6HwdXX+kwxjV9wNpW9a14PLmWcPYsI4O6h65MGJCYcVNGu4VXhUC/b0d8Opy2hcDX29Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Draggable.min.js" integrity="sha512-itrnM8NPOSqpk9XW9VqWokPC8U53QIfoMRmeJOA6Dti1u1er0zbR/h/VTUqTmtrrzK6SYHvGbhEyvDYyGVppdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/CustomEase.min.js" integrity="sha512-BhzNx6Ihhng5nUah1NHWD3I49+bmYgvPW+Yf1kGOKADUepVDV3x5uXm/cOABLnbmLt5+tgi2ykYlsj5K9dT2xQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/CSSRulePlugin.min.js" integrity="sha512-eN2lQEScGGXkJlcv8oFW5XPwN/jK6rJTDL32G+/GmWEt1QcqqHs8IfNW88ZMxuZE8SG4raaahgJdL9yTOXfZVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
         <style>
             body, html {
                 margin: 0;
                 padding: 0;
-                height: 100vh;
-                overflow: hidden;
+                min-height: 100vh;
+                /* overflow: hidden; */
             }
-            .fullscreen{
-                height: 100vh; /* Chiều cao 100% của viewport */
-                width: 100%;
-                overflow: hidden;
-                
-            }
-            .fullscreen .page {
+            
+            .section {
                 height: 100vh; /* Chiều cao 100% của viewport */
                 width: 100%;
                 flex: none;
             }
 
-            .fullscreen .page-1{
+            .section-1{
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: relative;
             }
-            .fullscreen .page-1 .page-1-text{
+
+            .section-1 .page-1-text{
                 font-size: 20px;
                 color: blue;
                 position: absolute;
                 right: -90px;
                 top: 50%;
             }
-            .fullscreen .page-1-bg{
+            
+            .section-1-bg{
                 background: green;
                 transition: all 0.5s ease; /* Hiệu ứng scroll */
                 flex: none;
                 position: relative;
             }
+            
+            .box {
+                display: inline-block;
+                background-color: red;
+                width: 100px;
+                height: 100px;
+            }
         </style>
-        <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
-        <script>
-            let height = 0;
-            let wheelnum = 0;
-            let fullscreen;
-            window.load = function () {
-                const fullscreen = document.querySelector('.fullscreen');
-                // const scrollY = fullscreen.scrollY;
-                height = fullscreen.scrollHeight;
-            }
-            window.addEventListener('wheel', (e) => {
-                if(e.wheelDeltaY > 0) {
-                    // wheel up
-                    wheelnum -= 100;
-                }
-                else if(e.wheelDeltaY < 0) {
-                    // wheel down
-                    wheelnum += 100;
-                }
-                console.log(height, wheelnum);
-                if(wheelnum <= 1000){
-                    effectPage1();
-                }
-
-                if(wheelnum === 1100){
-                    const element = document.querySelector('.page-2');
-                    element.scrollIntoView();
-                    
-                }
-            });
-
-            function effectPage1() {
-                const bg1 = document.querySelector('.page-1-bg');
-                bg1.style.width = `${wheelnum/10}%`; 
-                bg1.style.height = `${wheelnum/10}%`; 
-            }
-        </script>
     </head>
     <body>
-        <div class="header"></div>
-        <div class="fullscreen">
-            <div class="page page-1">
-                <div class="page-1-bg" style="width: 10px;height: 10px;">
-                    <p style="font-size: 20px;" class="page-1-text">Mong đợi</p>
-                </div>
-            </div>
-            <div class="page page-2">
-                <p style="font-size: 20px;" class="page-2-text">Page 2</p>
-            </div>
-            <div class="page page-3">
-                <p style="font-size: 20px;" class="page-3-text">Page 3</p>
+        <div id="smooth-wrapper">
+            <div id="smooth-content" class="container">
+            <div class="header"></div>
                 
-            </div>
-            <div class="page page-4">
-                <p style="font-size: 20px;" class="page-4-text">Page 4</p>
-                
-            </div>
-            <div class="page page-5">
-                <p style="font-size: 20px;" class="page-5-text">Page 5</p>
+                <section class="section section-1">
+                    <div class="page-1-bg" style="width: 10px;height: 10px;">
+                        <p style="font-size: 20px;" class="page-1-text">Mong đợi</p>
+                    </div>
+                    <div class="box box-1"></div>
+                </section>
+                <section class="section section-2">
+                    <p style="font-size: 20px;" class="page-2-text">Page 2</p>
+                    <div class="box box-2"></div>
+                </section>
+                <section class="section section-3">
+                    <p style="font-size: 20px;" class="page-3-text">Page 3</p>
+                    <div class="box box-3"></div>
+                    
+                </section>
+                <section class="section section-4">
+                    <p style="font-size: 20px;" class="page-4-text">Page 4</p>
+                    <div class="box box-4"></div>
+                    
+                </section>
+                <section class="section section-5">
+                    <p style="font-size: 20px;" class="page-5-text">Page 5</p>
+                    <div class="box box-5"></div>
+                </section>
             </div>
         </div>
+        <script>
+            // window.onload = (event) => {
+            //     initGSap();
+            // };
+
+            // Chờ cho toàn bộ tài liệu được tải xong
+            document.addEventListener('DOMContentLoaded', function () {
+                initGSap();
+            });
+
+            function initGSap() {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.defaults({ ease: "none", duration: 2});
+                const tl = gsap.timeline();
+
+                gsap.to('.box-1', {x: 200});
+                gsap.to('.box-2', {x: 200});
+                gsap.to('.box-3', { x: 200});
+                gsap.to(".box-4", {
+                    scrollTrigger: {
+                        trigger: ".box-4",
+                        // start: "top 80px",
+                        // end: "bottom 80%",
+                        // scrub: true,
+                        markers: true,
+                        // toggleActions: "restart pause resume none"
+                    },
+                    x: 500,
+                    rotation: 360,
+                    ease: "none",
+                    duration: 3
+                });
+                // gsap.to('.box-4', {x: 200});
+                // gsap.to('.box-5', {x: 200});
+                // Tạo animation
+                // const animation = gsap.to(".container", {
+                //     y: -400, // Điều chỉnh giá trị này để thay đổi hiệu ứng scroll
+                //     ease: "none",
+                //     scrollTrigger: {
+                //         trigger: ".container",
+                //         start: "top top", // Khi container xuất hiện ở đầu trang
+                //         end: "bottom top", // Khi container ra khỏi trang
+                //         scrub: 1, // Kéo nhẹ hiệu ứng scroll
+                //     },
+                // });
+
+                // gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+                // //Comment me out to see issue
+                // const smoother = ScrollSmoother.create({
+                //     wrapper: "#smooth-wrapper",
+                //     content: "#smooth-content",
+                //     smooth: 2,
+                //     normalizeScroll: true, 
+                //     ignoreMobileResize: true, 
+                //     effects: true,
+                //     preventDefault: true
+                // });
+
+            }
+        </script>
     </body>
 </html>
