@@ -1,13 +1,4 @@
 import amqplib, { Channel, Connection } from "amqplib";
-import express, { Request, Response } from "express";
-
-const app = express();
-
-// parse the request body
-app.use(express.json());
-
-// port where the service will run
-const PORT = 9005;
 
 // rabbitmq to be global variables
 let channel: Channel, connection: Connection;
@@ -29,11 +20,3 @@ async function connect() {
     console.log(error);
   }
 }
-
-app.get("*", (req: Request, res: Response) => {
-  res.status(404).send("Not found");
-});
-
-app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
-});
