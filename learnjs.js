@@ -20,3 +20,9 @@
 // [b, a] = [a, b];
 // console.log(a); // 5
 // console.log(b); // 3
+
+// const a = null;
+// const a = undefined;
+// const a = '';
+// const b = a || 'hihi';
+// console.log(b);

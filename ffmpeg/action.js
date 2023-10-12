@@ -33,36 +33,43 @@ const { spawn } = require("child_process");
 // ].concat();
 
 // step 1
-let ffmpeg_args = [
-  "-y",
-  "-i",
-  "https://storage.googleapis.com/as-piepme/19802/livestream/19802.bb782e98994e9205179c3bce0c6ca18e/index.m3u8",
-  "-vn",
-  "-acodec",
-  "copy",
-  "output.aac",
-].concat();
-
-// step 2
 // let ffmpeg_args = [
 //   "-y",
-//   "-loop",
-//   "1",
 //   "-i",
-//   "https://cdn.piepme.com/19540/images/piep-LREskoY316922670555831692267055583.jpeg",
+//   "https://storage.googleapis.com/as-piepme/19802/livestream/19802.e9cf347c58fb9a0606d54cd52ec62bd0/index.m3u8",
+//   "-vn",
+//   "-acodec",
+//   "copy",
+//   "output.aac",
+// ].concat();
+
+// step 2
+let ffmpeg_args = [
+  "-y",
+  "-loop", "1",
+  "-framerate","1",
+  "-i", "https://cdn.piepme.com/2553/images/piep-8CldRiib16968201874871696820187487.jpeg",
+  "-i", "output.aac",
+  "-tune","stillimage",
+  // "-s", "1280x720",
+  "-vf","scale=1280:720",
+  "-c:v", "libx264",
+  "-c:a", "aac",
+  // "-r", "30",
+  "-t","5359",
+  "neu-ca-doi-khong-ket-hon.mp4",
+].concat();
+
+// let ffmpeg_args = [
+//   "-y",
 //   "-i",
 //   "output.aac",
-//   "-c:v",
-//   "libx264",
-//   "-c:a",
-//   "aac",
-//   // "-strict",
-//   // "experimental",
-//   // "-b:a",
-//   // "192k",
-//   // "-shortest",
-//   "output2.mp4",
+  
+//   "-acodec",
+//   "libmp3lame",
+//   "neu-ca-doi-khong-ket-hon.mp3",
 // ].concat();
+
 
 let child = spawn("ffmpeg", ffmpeg_args);
 child.stderr.setEncoding("utf8");
