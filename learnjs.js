@@ -26,3 +26,19 @@
 // const a = '';
 // const b = a || 'hihi';
 // console.log(b);
+
+// const params = {
+//   event: undefined,
+// };
+// let { event = "1", app = "2", name = "3", login = "4" } = params ?? {};
+// console.log("event", event);
+// console.log("app", app);
+// console.log("name", name);
+// console.log("login", login);
+
+// const arr1 = [1, 2, [3, [4, 5]], [6, 7], 8];
+// const arr2 = arr1.flat();
+
+const a = 1_0_0;
+const b = 100;
+console.log(a === b);

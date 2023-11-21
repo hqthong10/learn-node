@@ -46,17 +46,26 @@ const { spawn } = require("child_process");
 // step 2
 let ffmpeg_args = [
   "-y",
-  "-loop", "1",
-  "-framerate","1",
-  "-i", "https://cdn.piepme.com/2553/images/piep-8CldRiib16968201874871696820187487.jpeg",
-  "-i", "output.aac",
-  "-tune","stillimage",
+  "-loop",
+  "1",
+  "-framerate",
+  "1",
+  "-i",
+  "https://cdn.piepme.com/2553/images/piep-8CldRiib16968201874871696820187487.jpeg",
+  "-i",
+  "output.aac",
+  "-tune",
+  "stillimage",
   // "-s", "1280x720",
-  "-vf","scale=1280:720",
-  "-c:v", "libx264",
-  "-c:a", "aac",
+  "-vf",
+  "scale=1280:720",
+  "-c:v",
+  "libx264",
+  "-c:a",
+  "aac",
   // "-r", "30",
-  "-t","5359",
+  "-t",
+  "5359",
   "neu-ca-doi-khong-ket-hon.mp4",
 ].concat();
 
@@ -64,18 +73,15 @@ let ffmpeg_args = [
 //   "-y",
 //   "-i",
 //   "output.aac",
-  
 //   "-acodec",
 //   "libmp3lame",
 //   "neu-ca-doi-khong-ket-hon.mp3",
 // ].concat();
 
-
 let child = spawn("ffmpeg", ffmpeg_args);
 child.stderr.setEncoding("utf8");
 
 child.stderr.on("data", function (data) {
-  // Example data: frame= 8026 fps= 20 q=28.0 size=   61296kB time=00:06:38.46 bitrate=1260.2kbits/s speed=1.01x
   console.log("data >>>> ", data);
 });
 

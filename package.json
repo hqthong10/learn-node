@@ -19,6 +19,9 @@
     "mongoose": "^7.6.1",
     "nodemon": "^3.0.1",
     "redis": "^4.6.10",
-    "redis-om": "^0.4.2"
+    "redis-om": "^0.4.2",
+    "@google-cloud/storage": "^1.7.0",
+    "fast-crc32c": "^2.0.0",
+    "fs-extra": "^7.0.0"
   }
 }
