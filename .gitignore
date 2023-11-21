@@ -8,3 +8,4 @@ sw.*
 .vscode/sftp.json
 node_modules/
 output/
+temp/
