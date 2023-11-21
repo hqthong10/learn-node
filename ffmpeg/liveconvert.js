@@ -18,7 +18,7 @@ let ffmpeg_args = [
   "-y",
 
   "-i",
-  "14071-LIVE-00004963/index.full.m3u8",
+  "../temp/14071-LIVE-00004963/index.full.m3u8",
 
   "-i",
   "https://2bewebinaris-fra.s3.amazonaws.com/20062/1676604802908.mp4",
@@ -77,7 +77,7 @@ let ffmpeg_args = [
   "-b:a",
   "128k",
 
-  "output.mp4",
+  "../temp/output.mp4",
 ].concat();
 
 let child = spawn("ffmpeg", ffmpeg_args);
