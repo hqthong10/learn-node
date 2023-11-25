@@ -1,4 +1,14 @@
 const { spawn } = require("child_process");
+
+// let ffmpeg_args = [
+//     '-f', 'concat',
+//     '-y',
+//     '-i', `media/hlssave/${name}/allts.pri.txt`,
+//     '-c', "copy",
+//     '-threads', '2',
+//     `media/hlssave/${name}/index.mp4`,
+// ].concat();
+
 // LVE || VLE
 // "[0:v]scale=1792:-2[v1];[1:v]scale=1792:-2[v2];[v1][0:a][v2][1:a]concat=n=2:v=1:a=1[outv][outa]",
 
@@ -17,8 +27,11 @@ const { spawn } = require("child_process");
 let ffmpeg_args = [
   "-y",
 
+  "-vsync",
+  "vfr",
+
   "-i",
-  "../temp/14071-LIVE-00004963/index.full.m3u8",
+  "../temp/14071-LIVE-00004957/index.full.m3u8",
 
   "-i",
   "https://2bewebinaris-fra.s3.amazonaws.com/20062/1676604802908.mp4",
@@ -38,50 +51,55 @@ let ffmpeg_args = [
   // [v][0:a] [pv2][1:a] concat=n=2:v=1:a=1[outv][outa]
   // ,setpts=PTS-STARTPTS
   //
-  `
-  [0:v]scale=1792:1008[v];
-  [1:v]scale=1792:1008[pv2];
-  [v][pv2]concat=n=2:v=1:a=0[outv];
-  `,
+  // [0:v]scale=1792:1008,setsar=1[v0];
 
-  // [1:a]copy[pa2];
-  // [v]split=1[tv1];
-  // [tv1]trim=end=120[pv1];
-  // [pv1][pv2]concat=n=2:v=1:a=0:unsafe=1[outv];
-  // [tv2]trim=start=120[pv3];
-  // [0:a]asplit=2[ta1][ta2];
-  // [ta1]atrim=end=120,asetpts=PTS-STARTPTS[pa1];
-  // [ta2]atrim=start=120,asetpts=PTS-STARTPTS[pa3];
-  // [pa1][1:a][pa3]concat=n=3:v=0:a=1:unsafe=1[outa];
+  // [0:v]trim=end=100,setpts=PTS-STARTPTS[v0];
+  // [0:a]atrim=end=100,asetpts=PTS-STARTPTS[a0];
+  // [0:v]trim=start=100,setpts=PTS-STARTPTS[v1];
+  // [0:a]atrim=start=100,asetpts=PTS-STARTPTS[a1];
+  // [v0][a0][1:v][1:a][v1][a1]concat=n=3:v=1:a=1[v][a];
+
+  // [0:v]trim=0:100,setpts=PTS-STARTPTS,scale=1792:1008[v0];
+  // [0:a]atrim=0:100,asetpts=PTS-STARTPTS[a0];
+  // [0:v]trim=100,setpts=PTS-STARTPTS,scale=1792:1008[v1];
+  // [0:a]atrim=100,asetpts=PTS-STARTPTS[a1];
+  // [1:v]scale=1792:1008[v2];
+  // [v0][a0][v2][1:a][v1][a1]concat=n=3:v=1:a=1[v][a]
+  `
+  [0:v]scale=1792:-2[v1];[1:v]scale=1792:-2[v2];[v1][0:a][v2][1:a]concat=n=2:v=1:a=1[v][a]
+  `,
+  // [1:a]aformat=sample_fmts=fltp:channel_layouts=stereo:sample_rates=44100[a2];
 
   "-map",
-  "[outv]",
+  "[v]",
 
-  // "-map",
-  // "[pa2]",
-
-  "-c:v",
-  "libx264",
+  "-map",
+  "[a]",
 
   "-crf",
   "23",
 
-  "-preset",
-  "veryfast",
-
   "-b:v",
-  "4000k",
+  "3000k",
 
   "-c:a",
   "aac",
+
   "-b:a",
   "128k",
+
+  "-strict",
+  "experimental",
 
   "../temp/output.mp4",
 ].concat();
 
 let child = spawn("ffmpeg", ffmpeg_args);
 child.stderr.setEncoding("utf8");
+
+child.stdout.on("data", (data) => {
+  console.log(`Đầu ra từ FFmpeg: ${data}`);
+});
 
 child.stderr.on("data", function (data) {
   console.log("data >>>> ", data);

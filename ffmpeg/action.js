@@ -36,7 +36,7 @@ const { spawn } = require("child_process");
 // let ffmpeg_args = [
 //   "-y",
 //   "-i",
-//   "https://storage.googleapis.com/as-piepme/19802/livestream/19802.e9cf347c58fb9a0606d54cd52ec62bd0/index.m3u8",
+//   "https://storage.googleapis.com/as-piepme/19802/livestream/19802.675cefecf6c8afd0792e197fc18b4801/index.m3u8",
 //   "-vn",
 //   "-acodec",
 //   "copy",
@@ -51,12 +51,11 @@ let ffmpeg_args = [
   "-framerate",
   "1",
   "-i",
-  "https://cdn.piepme.com/2553/images/piep-8CldRiib16968201874871696820187487.jpeg",
+  "https://cdn.piepme.com/2553/images/piep-skoU9IGP17003632887051700363288705.jpeg",
   "-i",
   "output.aac",
   "-tune",
   "stillimage",
-  // "-s", "1280x720",
   "-vf",
   "scale=1280:720",
   "-c:v",
@@ -66,7 +65,7 @@ let ffmpeg_args = [
   // "-r", "30",
   "-t",
   "5359",
-  "neu-ca-doi-khong-ket-hon.mp4",
+  "co-bau-truoc-khi-cuoi-piepaudio.mp4",
 ].concat();
 
 // let ffmpeg_args = [

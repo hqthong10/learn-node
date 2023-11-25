@@ -38,7 +38,20 @@
 
 // const arr1 = [1, 2, [3, [4, 5]], [6, 7], 8];
 // const arr2 = arr1.flat();
+async function init() {
+  return null;
+}
+async function start() {
+  let _infoLive = (await init()) ?? {};
 
-const a = 1_0_0;
-const b = 100;
-console.log(a === b);
+  console.log("first", _infoLive);
+
+  _infoLive.start = _infoLive.start ? new Date(_infoLive.start) : "no";
+
+  _infoLive.hyb_type = "LVLE";
+  _infoLive.hyb_video = "video";
+
+  console.log("end", _infoLive);
+}
+
+start();
