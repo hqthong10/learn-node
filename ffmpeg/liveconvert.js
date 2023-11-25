@@ -55,8 +55,8 @@ let ffmpeg_args = [
   "-c:v",
   "libx264",
 
-  "-strict",
-  "2",
+  // "-strict",
+  // "2",
 
   "output.mp4",
 ].concat();
@@ -80,9 +80,3 @@ child.on("error", function (err) {
 child.on("close", function (code) {
   console.log("close >>>> ", code);
 });
-
-// `
-// -i input.mp4 -c:v libx264 -c:a aac -f hls -hls_time 10 -hls_list_size 0 -hls_segment_filename temp/output_%03d.ts temp/output.m3u8 \
-//        -i input2.mp4 -c:v libx264 -c:a aac -f hls -hls_time 10 -hls_list_size 0 -hls_segment_filename temp/output2_%03d.ts temp/output2.m3u8 \
-//        -filter_complex "[0:v:0][1:v:0]concat=n=2:v=1:a=0[outv]" -map "[outv]" -c copy -bsf:a aac_adtstoasc output_combined.m3u8
-// `;
