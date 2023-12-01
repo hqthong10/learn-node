@@ -67,6 +67,24 @@ const lvl_args_4 = [
   "output-pipe.mp4",
 ];
 
+const lvl_args_5 = [
+  "-y",
+  "-i",
+  "../temp/14071-LIVE-00005157/output-pipe.mp4",
+  "-c:a",
+  "aac",
+  "-c:v",
+  "libx264",
+
+  "-hls_time",
+  "2",
+  "-hls_list_size",
+  "0",
+  "-hls_segment_filename",
+  "../temp/out/v_%01d.ts",
+  "../temp/14071-LIVE-00005157/output-temp.m3u8",
+];
+
 const lv_args_1 = [
   "-y",
   "-i",

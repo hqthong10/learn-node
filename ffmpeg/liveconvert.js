@@ -24,21 +24,21 @@ let ffmpeg_args = [
   "-filter_complex",
 
   // LV
-  `[0:v]scale=1792:-2[v1];[1:v]scale=1792:-2[v2];[v1][0:a][v2][1:a]concat=n=2:v=1:a=1[v][a]`,
+  // `[0:v]scale=1792:-2[v1];[1:v]scale=1792:-2[v2];[v1][0:a][v2][1:a]concat=n=2:v=1:a=1[v][a]`,
 
   // VL
   // `[0:v]scale=1792:-2[v1];[1:v]scale=1792:-2[v2];[v2][1:a][v1][0:a]concat=n=2:v=1:a=1[v][a]`,
 
   // LVL
-  // `
-  // [0:v]trim=0:100,setpts=PTS-STARTPTS,scale=1792:-2[v0];
-  // [0:a]atrim=0:100,asetpts=PTS-STARTPTS[a0];
-  // [0:v]trim=100,setpts=PTS-STARTPTS,scale=1792:-2[v1];
-  // [0:a]atrim=100,asetpts=PTS-STARTPTS[a1];
-  // [1:v]scale=1792:-2[v2];
-  // [1:a]aformat=sample_fmts=fltp:channel_layouts=stereo:sample_rates=44100[a2];
-  // [v0][a0][v2][a2][v1][a1]concat=n=3:v=1:a=1[v][a]
-  // `,
+  `
+  [0:v]trim=0:100,setpts=PTS-STARTPTS,scale=1792:-2[v0];
+  [0:a]atrim=0:100,asetpts=PTS-STARTPTS[a0];
+  [0:v]trim=100,setpts=PTS-STARTPTS,scale=1792:-2[v1];
+  [0:a]atrim=100,asetpts=PTS-STARTPTS[a1];
+  [1:v]scale=1792:-2[v2];
+  [1:a]aformat=sample_fmts=fltp:channel_layouts=stereo:sample_rates=44100[a2];
+  [v0][a0][v2][a2][v1][a1]concat=n=3:v=1:a=1[v][a]
+  `,
 
   "-map",
   "[v]",
@@ -52,11 +52,8 @@ let ffmpeg_args = [
   "-c:a",
   "aac",
 
-  "-c:v",
-  "libx264",
-
-  // "-strict",
-  // "2",
+  // "-c:v",
+  // "libx264",
 
   "output.mp4",
 ].concat();
