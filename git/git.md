@@ -1,6 +1,6 @@
 - Kiểm tra phiên bản của Git:
   git --version
-  git --v
+  git -v
 
 - Git config:
   git config --g user.name "Dev name"
