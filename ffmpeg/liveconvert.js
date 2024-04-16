@@ -77,3 +77,5 @@ child.on("error", function (err) {
 child.on("close", function (code) {
   console.log("close >>>> ", code);
 });
+
+// https://livestreamcdn.webinaris.co/hlssave/20805-LIVE-00006236/index.full.m3u8

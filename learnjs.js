@@ -38,20 +38,35 @@
 
 // const arr1 = [1, 2, [3, [4, 5]], [6, 7], 8];
 // const arr2 = arr1.flat();
-async function init() {
-  return null;
-}
-async function start() {
-  let _infoLive = (await init()) ?? {};
+// async function init() {
+//   return null;
+// }
+// async function start() {
+//   let _infoLive = (await init()) ?? {};
 
-  console.log("first", _infoLive);
+//   console.log("first", _infoLive);
 
-  _infoLive.start = _infoLive.start ? new Date(_infoLive.start) : "no";
+//   _infoLive.start = _infoLive.start ? new Date(_infoLive.start) : "no";
 
-  _infoLive.hyb_type = "LVLE";
-  _infoLive.hyb_video = "video";
+//   _infoLive.hyb_type = "LVLE";
+//   _infoLive.hyb_video = "video";
 
-  console.log("end", _infoLive);
-}
+//   console.log("end", _infoLive);
+// }
 
-start();
+// const arr = ["a", "b", "c"];
+// let i = arr.splice(1, 1, "d");
+// console.log(arr, i);
+
+// const numbers = [2, 4, 9, 16, 10];
+// let sum = numbers.reduceRight((total, value, index, array) => {
+//   console.log(value);
+//   return total > value ? total : value;
+// }, 20);
+// console.log(sum);
+
+// const nameFolder = "14977.0d72ae61e97402a020768ba60dfa9e00";
+// const [fo100, token] = nameFolder.split(".");
+// console.log(fo100, token);
+
+console.log(Math.floor(Math.random() * 3));
