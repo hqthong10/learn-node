@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "ESNext",
+    // "strict": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "exclude": ["node_modules"],
+
+  "include": ["./**/*"]
+}

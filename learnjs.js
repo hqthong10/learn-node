@@ -68,5 +68,3 @@
 // const nameFolder = "14977.0d72ae61e97402a020768ba60dfa9e00";
 // const [fo100, token] = nameFolder.split(".");
 // console.log(fo100, token);
-
-console.log(Math.floor(Math.random() * 3));

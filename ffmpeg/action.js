@@ -41,95 +41,65 @@ let args_m3u8_mp4 = [
   "../temp/20805-LIVE-00006236.mp4",
 ].concat();
 
-// let ffmpeg_args = [
-//   "-y",
+// m3u8 to aac audio
+let args_m3u8_aac = [
+  "-y",
+  "-i",
+  "https://storage.googleapis.com/as-piepme/19802/livestream/19802.675cefecf6c8afd0792e197fc18b4801/index.m3u8",
+  "-vn",
+  "-acodec",
+  "copy",
+  "output.aac",
+].concat();
 
-//   "-i",
-//   "https://storage.googleapis.com/as-piepme/19802/livestream/19802.bb782e98994e9205179c3bce0c6ca18e/index.m3u8",
-//   // "-vn",
+// acc + image => mp4
+let args_aac_img_mp4 = [
+  "-y",
+  "-loop",
+  "1",
+  "-framerate",
+  "1",
+  "-i",
+  "https://cdn.piepme.com/2553/images/piep-skoU9IGP17003632887051700363288705.jpeg",
+  "-i",
+  "output.aac",
+  "-tune",
+  "stillimage",
+  "-vf",
+  "scale=1280:720",
+  "-c:v",
+  "libx264",
+  "-c:a",
+  "aac",
+  // "-r", "30",
+  "-t",
+  "5359",
+  "co-bau-truoc-khi-cuoi-piepaudio.mp4",
+].concat();
 
-//   "-loop",
-//   "1",
-//   "-i",
-//   "https://cdn.piepme.com/19540/images/s720-piep-LREskoY316922670555831692267055583.jpeg",
+// aac to mp3
+let args_aac_mp3 = [
+  "-y",
+  "-i",
+  "output.aac",
+  "-acodec",
+  "libmp3lame",
+  "neu-ca-doi-khong-ket-hon.mp3",
+].concat();
 
-//   "-c",
-//   "copy",
-//   "-c:a",
-//   "aac",
-//   "-bsf:a",
-//   "aac_adtstoasc",
-//   "-c:v",
-//   "libx264",
-//   "-aspect",
-//   "16:9",
-//   "-s",
-//   "1280x720",
-//   "-b:a",
-//   "128k",
-//   "-strict",
-//   "experimental",
-//   "-crf",
-//   "24",
-//   "final.mp4",
-// ].concat();
+// m4a to mp3
+let args_m4a_mp3 = [
+  "-y",
+  "-i",
+  "https://cdn.piepme.com/21118/sounds/piep-29N0bjGh16997596827871699759682787.m4a",
+  "-vn",
+  "-acodec",
+  "libmp3lame",
+  "han-gan-vet-thuong-sau-chia-ly.mp3",
+].concat();
 
-// step 1
-// let ffmpeg_args = [
-//   "-y",
-//   "-i",
-//   "https://storage.googleapis.com/as-piepme/19802/livestream/19802.675cefecf6c8afd0792e197fc18b4801/index.m3u8",
-//   "-vn",
-//   "-acodec",
-//   "copy",
-//   "output.aac",
-// ].concat();
-
-// step 2
-// let ffmpeg_args = [
-//   "-y",
-//   "-loop",
-//   "1",
-//   "-framerate",
-//   "1",
-//   "-i",
-//   "https://cdn.piepme.com/2553/images/piep-skoU9IGP17003632887051700363288705.jpeg",
-//   "-i",
-//   "output.aac",
-//   "-tune",
-//   "stillimage",
-//   "-vf",
-//   "scale=1280:720",
-//   "-c:v",
-//   "libx264",
-//   "-c:a",
-//   "aac",
-//   // "-r", "30",
-//   "-t",
-//   "5359",
-//   "co-bau-truoc-khi-cuoi-piepaudio.mp4",
-// ].concat();
-
-// let ffmpeg_args = [
-//   "-y",
-//   "-i",
-//   "output.aac",
-//   "-acodec",
-//   "libmp3lame",
-//   "neu-ca-doi-khong-ket-hon.mp3",
-// ].concat();
-
-// let ffmpeg_args = [
-//   "-y",
-//   "-i",
-//   "https://cdn.piepme.com/21118/sounds/piep-29N0bjGh16997596827871699759682787.m4a",
-//   "-vn",
-//   "-acodec",
-//   "libmp3lame",
-//   "han-gan-vet-thuong-sau-chia-ly.mp3",
-// ].concat();
-
-let args_1 = [
+// m3u8 to mp4 with duration
+let args_m3u8_duration_mp4 = [
   "-y",
   "-i",
   "https://storage.googleapis.com/as-piepme/19968/livestream/19968.45e067b9e79baf58cf11b8c5193a6ac9/720p/index.m3u8",
@@ -142,22 +112,11 @@ let args_1 = [
   "video3.mp4",
 ].concat();
 
-let args_2 = [
+// m3u8 to mp4 vertical
+let args_m3u8_vertical_mp4 = [
   "-y",
   "-i",
-  // "https://cdn.piepme.com/26183/videos/piep-TWJ9txUO17108260792431710826079243/hls/720p.m3u8",
-  // "https://cdn.piepme.com/28917/videos/piep-Oqoqz8Jq17129186432671712918643267/hls/720p.m3u8",
-  "https://cdn.piepme.com/21118/videos/piep-0cPDgero17130215609101713021560910/hls/720p.m3u8",
-  // "video2.mp4",
-  // "-c",
-  // "copy",
-
-  // "-c:v",
-  // "libx264",
-  // "-c:a",
-  // "aac",
-  // "-af",
-  // "volume=2",
+  "https://cdn.piepme.com/28917/videos/piep-HiBwQAcg17146945651261714694565126/hls/720p.m3u8",
 
   "-vf",
   "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
@@ -165,10 +124,11 @@ let args_2 = [
   "-c:a",
   "copy",
 
-  "video3.mp4",
+  "video-vertical.mp4",
 ].concat();
 
-let args_aa = [
+// add mp3 to mp3 make to mp4
+let args_mp4_mp3_mp4 = [
   "-y",
 
   "-i",
@@ -176,30 +136,6 @@ let args_aa = [
 
   "-i",
   "https://cdn.piepme.com/1414/sound/piep-yFnhFiO617060691316541706069131654.mp3",
-
-  // "-c:v",
-  // "copy",
-
-  // "-c:a",
-  // "aac",
-
-  // "-af",
-  // "volume=0.9",
-
-  // "-map",
-  // "0:v:0",
-
-  // "-map",
-  // "1:a:0",
-
-  // "-ss",
-  // "0",
-
-  // "-t",
-  // "60",
-
-  // "-strict",
-  // "experimental",
 
   "-ss",
   "0",
@@ -215,13 +151,12 @@ let args_aa = [
   "output.mp4",
 ].concat();
 
-let args_copy_a = [
+let args_download_mp3 = [
   "-y",
-
   "-i",
-  "https://cdn.piepme.com/28045/sounds/piep-LA6e7QJN17130021479421713002147942.mp3",
-  // "https://cdn.piepme.com/29062/sounds/piep-BqT1Vrrq17129973145461712997314546.mp3",
-  // "toi-nghi-chung-ta-chi-la-ban.mp3",
+  // "https://cdn.piepme.com/29062/sounds/piep-oOCJemFK17136607520501713660752050.mp3",
+  // "https://cdn.piepme.com/26987/sounds/piep-iMClITkY17147996350371714799635037.mp3",
+  "https://cdn.piepme.com/26589/sounds/piep-jEww2SZx17149069492631714906949263.mp3",
 
   "-af",
   "volume=1.5",
@@ -236,7 +171,7 @@ let args_copy_a = [
   "-ac",
   "2",
 
-  "cau-chuyen-ty-tuoi-hoc-tro-cua-minh-2.mp3",
+  "muahexanh-cuanhungnamdo.mp3",
 ].concat();
 
 function runCommand(step, args, callback) {
@@ -253,7 +188,7 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_copy_a, () => {
+runCommand("step1", args_download_mp3, () => {
   // runCommand("step2", args_2, () => {
   //   runCommand("step3", args_3, () => {});
   // });

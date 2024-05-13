@@ -9,3 +9,5 @@ sw.*
 node_modules/
 output/
 temp/
+*.mp3
+*.mp4

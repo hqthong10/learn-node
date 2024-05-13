@@ -10,7 +10,8 @@ app.use(express.json());
 const PORT = 9005;
 
 // rabbitmq to be global variables
-let channel: Channel, connection: Connection;
+let channel: Channel;
+let connection: Connection;
 
 connect();
 
