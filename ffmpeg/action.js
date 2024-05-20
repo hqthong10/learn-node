@@ -156,22 +156,25 @@ let args_download_mp3 = [
   "-i",
   // "https://cdn.piepme.com/29062/sounds/piep-oOCJemFK17136607520501713660752050.mp3",
   // "https://cdn.piepme.com/26987/sounds/piep-iMClITkY17147996350371714799635037.mp3",
-  "https://cdn.piepme.com/26589/sounds/piep-jEww2SZx17149069492631714906949263.mp3",
+  // "https://cdn.piepme.com/26589/sounds/piep-jEww2SZx17149069492631714906949263.mp3",
+  // "https://cdn.piepme.com/29062/sounds/piep-PItuTEu217155105281531715510528153.mp3",
+  // "https://cdn.piepme.com/25729/sounds/piep-1Pgna7g717155397957171715539795717.mp3",
+  "https://cdn.piepme.com/22788/sounds/piep-AP2bxOS617157894837491715789483749.m4a",
 
-  "-af",
-  "volume=1.5",
+  // "-af",
+  // "volume=1.5",
 
-  "-b:a",
-  "160k",
+  // "-b:a",
+  // "160k",
 
-  "-ar",
-  "48000",
+  // "-ar",
+  // "48000",
   // "44100",
 
-  "-ac",
-  "2",
+  // "-ac",
+  // "2",
 
-  "muahexanh-cuanhungnamdo.mp3",
+  "test.mp3",
 ].concat();
 
 function runCommand(step, args, callback) {
