@@ -27,6 +27,25 @@
 // const b = a || 'hihi';
 // console.log(b);
 
+// const q = {
+//   offset: '30',
+//   limit: 15
+// }
+// const cond = {
+//   search: 'thong'
+// }
+// q.offset > 0 && (cond.offset = +q.offset);
+// q.max && (cond.offset = q.max);
+// console.log(cond);
+
+// const q = {
+//   offset: 'as',
+//   limit: 15
+// }
+
+// const OFFSET = +q.offset ?? 0;
+// console.log(OFFSET);
+
 // const params = {
 //   event: undefined,
 // };
@@ -68,3 +87,126 @@
 // const nameFolder = "14977.0d72ae61e97402a020768ba60dfa9e00";
 // const [fo100, token] = nameFolder.split(".");
 // console.log(fo100, token);
+
+// const data = {
+//     // code: 200,
+//     // status: 'success',
+//     // elements: []
+// }
+// const data = []
+
+// if('code' in data || 'status' in data || 'elements' in data ) {
+//     console.log('ok');
+// } else {
+//     console.log('no');
+// }
+
+// function isEmail(txt) {
+//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     return emailRegex.test(txt);
+// }
+
+// console.log('isemail', isEmail('hq.thong10gmail.com'));
+
+// const url = `mongodb://vhomenew:${encodeURIComponent(
+//     '@@@vhomesolutionteamwork1717'
+// )}@localhost:27017/vhomenew`;
+// console.log(url)
+// const n = [1,2,3, 4, 5, 6, 7, 8, 9];
+// n.forEach((v,i) => {
+//     if(i == 4) {
+//         i = 8;
+//         return;
+//     };
+//     console.log(v);
+// })
+
+// let a = {}
+// a = {
+//   name: 'thong',
+//   age: 18
+// }
+// console.log(a);
+
+// let b = 'other';
+// b = 'other 2'
+// console.log(b);
+
+// const a = JSON.stringify(1)
+// const b = JSON.parse(a);
+// console.log(a, 'hi',b);
+
+// const q = {
+//     FB050:  1,
+//     // FB100: '',
+//     FB200: 2,
+//     OBJ: {
+//         num: 'a'
+//     }
+// }
+// +q.FB050 ===0 || +q.FB100 === 0 || +q.FB200 === 0
+// console.log((+q.OBJ?.num || 0) <= 0);
+
+//  let filename = '2QBRANDOMNAME53d2';
+//  let arr = filename.split('QBRANDOMNAME');
+//  console.log(arr)
+//  console.log(parseInt(arr[arr.length - 1]) || 0)
+// fs = require('fs')
+// fsex = require('fs-extra')
+// const stat2 =  fsex.statSync('./ffmpeg/liveconvert.js')
+// console.log(stat2)
+
+// const filename = 'var/www/static/hlstemp/name_720p/index.tss';
+// let flag = true;
+// let flagm3u8 = false;
+
+// if(flag && (filename.endsWith('.ts') || (flagm3u8 = filename.endsWith('.m3u8')))) {
+//     console.log('ok', flag, flagm3u8);
+// }
+
+const fs = require('fs-extra');
+const readline = require('readline');
+const filename = './temp/hlstemp_index.m3u8'
+const rl = readline.createInterface({
+    input: fs.createReadStream(filename),
+    crlfDelay: Infinity
+});
+let maxDuraOfTs = 0;
+let tmpTime = 0;
+const objs = {
+    keys: [],
+    vals: []
+};
+let lineDis = null;
+
+rl.on('line', (line) => {
+    if(line.includes('EXTINF:')) {
+        tmpTime = +line.replace(/#EXTINF:|,/g, '');
+        maxDuraOfTs < tmpTime && (maxDuraOfTs = tmpTime);
+        console.log('EXTINF', tmpTime);
+    }
+    if(line.includes('.ts')) {
+        if (lineDis) {
+            objs.keys.push('DIS');
+            objs.vals.push(lineDis);
+            lineDis = null;
+        }
+        tmpKey = line.replace('.ts', '');
+        objs.keys.push(tmpKey);
+        objs.vals.push(tmpTime);
+    }
+    if(line.lastIndexOf('DISCONTINUITY') > 0) {
+        lineDis = line;
+    }
+})
+
+rl.on('close', () => {
+    console.log('maxDuraOfTs', maxDuraOfTs)
+    console.log('objs', objs)
+    console.log('objs.keys', objs.keys)
+    console.log('objs.vals', objs.vals)
+})
+
+rl.on('error', (e) => {
+    console.log('error =>', e);
+})

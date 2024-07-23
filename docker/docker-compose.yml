@@ -1,19 +1,59 @@
+# version 
 version: '3'
+
+# Định nghĩa các container dịch vụ của ứng dụng
 services:
+  # app name (nestjs)
   nestjs:
+
+    # Xác định thông tin để xây dựng hình ảnh Docker.
+    # Có thể chỉ ra một đường dẫn tới thư mục chứa Dockerfile hoặc định nghĩa các build options.
+    # build:
+    #   context: .
+    #     target: development
     build: .
+
+    # Ghi đè lệnh mặc định của container.
+    command: npm run start:dev
+
+    # Định nghĩa container name sẽ được sử dụng.
     container_name: nestjs
+
+    # Định nghĩa hình ảnh Docker sẽ được sử dụng.
+    image: taplt-nest-app:latest
+
+    # Thiết lập các biến môi trường cho container.
     environment:
       - NODE_ENV=production
+    
+    # Chỉ định một tệp để đọc các biến môi trường.
+    # env_file: .env
+
+    # Chuyển tiếp các cổng từ host tới container
     ports:
       - "3000:3000"
+    
+    # Định nghĩa chính sách khởi động lại cho container.
+    # restart: no | unless-stopped | always | on-failure
+    # no: Container sẽ không tự khởi động lại. Đây là giá trị mặc định nếu bạn không chỉ định một chính sách khởi động lại.
+    # always: Container sẽ luôn tự khởi động lại bất kể lý do dừng là gì.
+    # on-failure: Container sẽ tự khởi động lại chỉ khi nó gặp lỗi (mã thoát không phải là 0).
+    # unless-stopped: Container sẽ tự khởi động lại trừ khi nó bị dừng thủ công. Đây là tùy chọn linh hoạt nhất và thường được sử dụng cho các ứng dụng cần chạy liên tục.
     restart: unless-stopped
+
+    # Gắn container vào một mạng cụ thể.
     networks:
       - app-network
+
+    # Gắn volumes tới container
     volumes:
       - .:/app
+
+    # Định nghĩa các phụ thuộc dịch vụ, tức là dịch vụ phải khởi động trước dịch vụ hiện tại.
     depends_on:
       - mongodb
+
+  # app mongodb
   mongodb:
     image: mongo
     container_name: mongodb
@@ -28,7 +68,18 @@ services:
     volumes:
       - .:/app
       - ./mongo-data:/data/db
+
+# Định nghĩa các mạng mà các dịch vụ có thể tham gia.
 networks:
   app-network:
     driver: bridge
 
+# Định nghĩa các volumes có thể được chia sẻ giữa các dịch vụ.
+# volumes:
+#   mydata:
+#     driver: local
+
+# Định nghĩa các bí mật mà các dịch vụ có thể truy cập (thường được sử dụng trong môi trường Swarm).
+# secrets:
+#   my_secret:
+#     file: ./my_secret.txt

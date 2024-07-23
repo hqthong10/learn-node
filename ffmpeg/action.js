@@ -26,6 +26,7 @@ let args_m3u8_mp4 = [
   "-i",
   "../temp/20805-LIVE-00006236/index.full.m3u8",
   // "https://livestreamcdn.webinaris.co/hlssave/7584-LIVE-00006376/index.full.m3u8",
+
   "-map",
   "0:v",
   "-c:v",
@@ -45,7 +46,8 @@ let args_m3u8_mp4 = [
 let args_m3u8_aac = [
   "-y",
   "-i",
-  "https://storage.googleapis.com/as-piepme/19802/livestream/19802.675cefecf6c8afd0792e197fc18b4801/index.m3u8",
+  // "https://storage.googleapis.com/as-piepme/19802/livestream/19802.675cefecf6c8afd0792e197fc18b4801/index.m3u8",
+  "https://cdn.piepme.com/19802/livestream/19802.4a7a566bf2aab82c9259a26bdee39447/index.m3u8",
   "-vn",
   "-acodec",
   "copy",
@@ -84,8 +86,93 @@ let args_aac_mp3 = [
   "output.aac",
   "-acodec",
   "libmp3lame",
-  "neu-ca-doi-khong-ket-hon.mp3",
+  "lam-the-nao-de-quyen-gop-dung-cach.mp3",
 ].concat();
+
+let args_m3u8_mp3 = [
+  "-y",
+  "-i",
+  // "https://cdn.piepme.com/19802/livestream/19802.4a7a566bf2aab82c9259a26bdee39447/index.m3u8",
+  // "https://cdn.piepme.com/26207/livestream/26207.019b1d411d9bd4f5f974778d37c27994/index.m3u8",
+  // "https://cdn.piepme.com/26787/livestream/26787.b4e1d4d996f5cc634a04768205b60f0b/index.m3u8",
+  "https://cdn.piepme.com/26792/livestream/26792.8dea3edb213e94f3a016738aa243544e/index.m3u8",
+
+  "-vn",
+  // "-acodec",
+  // "copy",
+  // "-acodec",
+  // "libmp3lame",
+  // "-ss",
+  // "00:09:55",
+  "-ss",
+  "851",
+
+  // "-t",
+  // "64",
+  "-t",
+  "37",
+
+  // "labannho-tinh-ao.mp3",
+  "maybeo-docsach-tamtruyen.mp3",
+].concat();
+
+let args_mp3_img_mp4 = [
+  "-y",
+  "-loop",
+  "1",
+  "-framerate",
+  "1",
+  "-i",
+  "piepaudio.png",
+  "-i",
+  "maybeo-docsach-tamtruyen.mp3",
+  
+  "-vf",
+  "scale=150:150",
+  
+  // "scale=150:150,pad=150:150:-1:-1:color=black",
+
+  "-c:v",
+  "libx264",
+  "-c:a",
+  "aac",
+  "-b:a", '128k', 
+  "-shortest", 
+  "-pix_fmt", "yuv420p",
+  "-t",
+  "37",
+
+  "maybeo-docsach-tamtruyen.mp4",
+].concat();
+
+// tao audio cho marketing
+const args_audio_img__mp4 =  [
+  "-y",
+  // giây bắt đầu
+  "-ss", '09:36', // 576
+  "-vn",
+  "-i", 
+  // "https://cdn.piepme.com/26792/livestream/26792.8dea3edb213e94f3a016738aa243544e/index.m3u8",
+  "https://cdn.piepme.com/26874/livestream/26874.f66e4913b9377f68719b6ed4417ee3d7/index.m3u8",
+
+  "-stream_loop", "100",
+  // "-i", "piepaudio.jpg",
+  "-i", "livevoice.mp4",
+
+  "-vf",
+  "scale=150:150",
+  
+  "-c:v", "libx264",
+  "-c:a", "aac",
+  "-b:a", "192k",
+
+  "-shortest",
+  "-pix_fmt",
+  "yuv420p",
+  // tổng thời giây của video
+  "-t", "44",
+  "livevoice-december-radio.mp4"
+];
 
 // m4a to mp3
 let args_m4a_mp3 = [
@@ -116,7 +203,8 @@ let args_m3u8_duration_mp4 = [
 let args_m3u8_vertical_mp4 = [
   "-y",
   "-i",
-  "https://cdn.piepme.com/28917/videos/piep-HiBwQAcg17146945651261714694565126/hls/720p.m3u8",
+  // "https://cdn.piepme.com/28917/videos/piep-HiBwQAcg17146945651261714694565126/hls/720p.m3u8",
+  "https://cdn.piepme.com/29266/videos/piep-Jz4PV1Uo17215324565681721532456568/hls/720p.m3u8",
 
   "-vf",
   "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
@@ -124,7 +212,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "video-vertical.mp4",
+  "VietHungLoius-di-do-di-day.mp4",
 ].concat();
 
 // add mp3 to mp3 make to mp4
@@ -155,26 +243,31 @@ let args_download_mp3 = [
   "-y",
   "-i",
   // "https://cdn.piepme.com/29062/sounds/piep-oOCJemFK17136607520501713660752050.mp3",
-  // "https://cdn.piepme.com/26987/sounds/piep-iMClITkY17147996350371714799635037.mp3",
-  // "https://cdn.piepme.com/26589/sounds/piep-jEww2SZx17149069492631714906949263.mp3",
-  // "https://cdn.piepme.com/29062/sounds/piep-PItuTEu217155105281531715510528153.mp3",
-  // "https://cdn.piepme.com/25729/sounds/piep-1Pgna7g717155397957171715539795717.mp3",
-  "https://cdn.piepme.com/22788/sounds/piep-AP2bxOS617157894837491715789483749.m4a",
+  // 'https://cdn.piepme.com/26833/sounds/piep-e6MYGppU17189392178761718939217876.mp3',
+  "https://cdn.piepme.com/26792/livestream/26792.8dea3edb213e94f3a016738aa243544e/index.m3u8",
+  
 
-  // "-af",
-  // "volume=1.5",
+  "-af",
+  "volume=1.5",
+  // `
+  // volume=1.5, 
+  // equalizer=f=100:t=q:w=1:g=-10, 
+  // afftdn, 
+  // acompressor=threshold=-21dB:ratio=9:attack=200:release=1000, 
+  // aecho=0.8:0.9:1000:0.3
+  // `,
 
-  // "-b:a",
-  // "160k",
+  "-b:a",
+  "160k",
 
-  // "-ar",
-  // "48000",
-  // "44100",
+  "-ar",
+  "48000",
+  
+  "-ac",
+  "2",
 
-  // "-ac",
-  // "2",
-
-  "test.mp3",
+  // "tramvy-dongluc-doikhi-chila-suyeuthuong-fixed.mp3",
+  'maybeo-docsach-tamtruyen.mp3'
 ].concat();
 
 function runCommand(step, args, callback) {
@@ -191,7 +284,7 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_download_mp3, () => {
+runCommand("step1", args_m3u8_vertical_mp4, () => {
   // runCommand("step2", args_2, () => {
   //   runCommand("step3", args_3, () => {});
   // });

@@ -4,25 +4,26 @@ let downm3u8 = [
   "-y",
 
   "-i",
-  "../temp/20805-LIVE-00006236/index.full.m3u8",
+  // "../temp/20805-LIVE-00006236/index.full.m3u8",
   // "https://livestreamcdn.webinaris.co/hlssave/7584-LIVE-00006376/index.full.m3u8",
+  "https://livestreamcdn.webinaris.co/hlssave/21043-LIVE-00006698/index.full.m3u8",
 
-  "-map",
-  "0:v",
+  // "-map",
+  // "0:v",
 
-  "-c:v",
-  "copy",
+  // "-c:v",
+  // "copy",
 
-  "-map",
-  "0:a",
+  // "-map",
+  // "0:a",
 
-  "-bsf:a",
-  "aac_adtstoasc",
+  // "-bsf:a",
+  // "aac_adtstoasc",
 
-  "-threads",
-  "2",
+  // "-threads",
+  // "2",
 
-  "../temp/20805-LIVE-00006236.mp4",
+  // "../temp/20805-LIVE-00006236.mp4",
 ].concat();
 
 let child = spawn("ffmpeg", downm3u8);
