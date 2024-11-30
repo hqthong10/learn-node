@@ -83,4 +83,6 @@ Babel là một công cụ biên dịch (transpiler) JavaScript mã nguồn mở
 - Một kỹ thuật trong đó các phụ thuộc (dependencies) của một class hoặc module được cung cấp từ bên ngoài thay vì tự tạo bên trong.
 - Dùng để tăng khả năng kiểm tra và tái sử dụng mã.
 
-# 
+# Middleware Pipeline
+- Luồng xử lý của middleware khi một yêu cầu HTTP đi qua ứng dụng backend.
+- 
