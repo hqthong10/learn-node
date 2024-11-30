@@ -1,0 +1,36 @@
+Table users {
+    user_id int [pk, increment]
+    username varchar
+    email varchar
+    password varchar
+    full_name varchar
+    phone_number varchar
+    created_at timestamp
+}
+
+Table conversations {
+    conversation_id int [pk, increment]
+    name varchar
+    is_group boolean
+    created_at timestamp
+}
+
+Table conversation_members {
+    conversation_id int [pk, ref: > conversations.conversation_id]
+    user_id int [pk, ref: > users.user_id]
+    joined_at timestamp
+}
+
+Table messages{
+    message_id int [pk, increment]
+    conversation_id int [pk, ref: > conversations.conversation_id]
+    sender_id int [pk, ref: > users.user_id]
+    content text
+    created_at timestamp
+}
+
+Table message_read_status{
+    message_id int [pk, ref: > messages.message_id]
+    user_id int [pk, ref: > users.user_id]
+    read_at timestamp
+}

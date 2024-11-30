@@ -24,22 +24,31 @@ let args_resize = [
 let args_m3u8_mp4 = [
   "-y",
   "-i",
-  "../temp/20805-LIVE-00006236/index.full.m3u8",
+  // "../temp/20805-LIVE-00006236/index.full.m3u8",
   // "https://livestreamcdn.webinaris.co/hlssave/7584-LIVE-00006376/index.full.m3u8",
+  // 'https://cdn.piepme.com/19968/livestream/19968.de636a8d17ceb6a83e234890b19c7db1/720p/index.m3u8',
+
+  'https://livevn.piepme.com/camhls/14789.1b5aa79584634429877ce7beeb68ca3a_720p/index.m3u8',
+
+  "-t",
+  "30",
 
   "-map",
   "0:v",
+
   "-c:v",
   "copy",
+  
   "-map",
   "0:a",
+  
   "-c:a",
   "copy",
   "-bsf:a",
   "aac_adtstoasc",
   "-threads",
   "2",
-  "../temp/20805-LIVE-00006236.mp4",
+  "out/vietnambaygio2.mp4",
 ].concat();
 
 // m3u8 to aac audio
@@ -47,11 +56,12 @@ let args_m3u8_aac = [
   "-y",
   "-i",
   // "https://storage.googleapis.com/as-piepme/19802/livestream/19802.675cefecf6c8afd0792e197fc18b4801/index.m3u8",
-  "https://cdn.piepme.com/19802/livestream/19802.4a7a566bf2aab82c9259a26bdee39447/index.m3u8",
+  // "https://cdn.piepme.com/19802/livestream/19802.4a7a566bf2aab82c9259a26bdee39447/index.m3u8",
+  "https://cdn.piepme.com/19802/livestream/19802.04260b7836685cb2aa680114f395e7fa/index.m3u8",
   "-vn",
   "-acodec",
   "copy",
-  "output.aac",
+  "khi-ban-la-phai-nu.aac",
 ].concat();
 
 // acc + image => mp4
@@ -149,11 +159,11 @@ let args_mp3_img_mp4 = [
 const args_audio_img__mp4 =  [
   "-y",
   // giây bắt đầu
-  "-ss", '09:36', // 576
+  "-ss", '10:04', // 576
   "-vn",
   "-i", 
   // "https://cdn.piepme.com/26792/livestream/26792.8dea3edb213e94f3a016738aa243544e/index.m3u8",
-  "https://cdn.piepme.com/26874/livestream/26874.f66e4913b9377f68719b6ed4417ee3d7/index.m3u8",
+  "https://cdn.piepme.com/21118/livestream/21118.36e4e3c35b84148e22172fe2522f1210/index.m3u8",
 
   "-stream_loop", "100",
   // "-i", "piepaudio.jpg",
@@ -170,8 +180,8 @@ const args_audio_img__mp4 =  [
   "-pix_fmt",
   "yuv420p",
   // tổng thời giây của video
-  "-t", "44",
-  "livevoice-december-radio.mp4"
+  "-t", "39",
+  "livevoice-loanloan.mp4"
 ];
 
 // m4a to mp3
@@ -270,6 +280,43 @@ let args_download_mp3 = [
   'maybeo-docsach-tamtruyen.mp3'
 ].concat();
 
+let args_m3u8_audio = [
+  "-y",
+  // '-vn',
+  "-i",
+  // "https://cdn.piepme.com/hls/18010.bfedc1fc3f678dfcc2c1e7c0b1ccaa4c/720p/index.m3u8",
+  'https://cdn.piepme.com/18010/livestream/18010.bfedc1fc3f678dfcc2c1e7c0b1ccaa4c/720p/index.m3u8',
+  
+  "-f", 'lavfi',
+  "-i", "color=c=blue:s=16x16",
+  // "-shortest",
+
+  '-map', '0:a',
+  '-map', '1:v',
+
+
+  '-c:a', "aac",
+
+  "-r", '30',
+  '-g', '90',
+  '-sc_threshold', '0',
+  '-strict', '-2',
+  '-threads', '2',
+  
+  '-b:a', '128k',
+  '-ar', '44100',
+
+  '-pix_fmt', 'yuv420p',
+
+  // '-f', 'flv',
+
+  "-f", "hls",
+  "-hls_time", "2",
+  "-hls_list_size","0",
+
+  './out/audio/index.m3u8'
+].concat();
+
 function runCommand(step, args, callback) {
   const process = spawn("ffmpeg", args);
 
@@ -284,7 +331,7 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_m3u8_vertical_mp4, () => {
+runCommand("step1", args_m3u8_mp4, () => {
   // runCommand("step2", args_2, () => {
   //   runCommand("step3", args_3, () => {});
   // });

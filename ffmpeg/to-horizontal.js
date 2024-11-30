@@ -7,7 +7,14 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/29266/videos/piep-Jz4PV1Uo17215324565681721532456568/hls/720p.m3u8",
+  // "https://cdn.piepme.com/28638/videos/piep-ehmHprnF17301714484321730171448432/hls/720p.m3u8",
+  // "https://cdn.piepme.com/27130/videos/piep-rmcjcqhJ17325046891121732504689112/hls/720p.m3u8",
+  "./inp/marshall.png",
+  
+  // "-ss",
+  // "0",
+  // "-t",
+  // `40`,
 
   "-vf",
   "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
@@ -15,7 +22,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "VietHungLoius-di-do-di-day.mp4",
+  "marshall.png",
 ].concat();
 
 
@@ -33,8 +40,4 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_m3u8_vertical_mp4, () => {
-  // runCommand("step2", args_2, () => {
-  //   runCommand("step3", args_3, () => {});
-  // });
-});
+runCommand("step1", args_m3u8_vertical_mp4, () => {});

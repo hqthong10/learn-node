@@ -164,49 +164,112 @@
 //     console.log('ok', flag, flagm3u8);
 // }
 
-const fs = require('fs-extra');
-const readline = require('readline');
-const filename = './temp/hlstemp_index.m3u8'
-const rl = readline.createInterface({
-    input: fs.createReadStream(filename),
-    crlfDelay: Infinity
-});
-let maxDuraOfTs = 0;
-let tmpTime = 0;
-const objs = {
-    keys: [],
-    vals: []
-};
-let lineDis = null;
+// const fs = require('fs-extra');
+// const readline = require('readline');
+// const filename = './temp/hlstemp_index.m3u8'
+// const rl = readline.createInterface({
+//     input: fs.createReadStream(filename),
+//     crlfDelay: Infinity
+// });
+// let maxDuraOfTs = 0;
+// let tmpTime = 0;
+// const objs = {
+//     keys: [],
+//     vals: []
+// };
+// let lineDis = null;
 
-rl.on('line', (line) => {
-    if(line.includes('EXTINF:')) {
-        tmpTime = +line.replace(/#EXTINF:|,/g, '');
-        maxDuraOfTs < tmpTime && (maxDuraOfTs = tmpTime);
-        console.log('EXTINF', tmpTime);
-    }
-    if(line.includes('.ts')) {
-        if (lineDis) {
-            objs.keys.push('DIS');
-            objs.vals.push(lineDis);
-            lineDis = null;
-        }
-        tmpKey = line.replace('.ts', '');
-        objs.keys.push(tmpKey);
-        objs.vals.push(tmpTime);
-    }
-    if(line.lastIndexOf('DISCONTINUITY') > 0) {
-        lineDis = line;
-    }
-})
+// rl.on('line', (line) => {
+//     if(line.includes('EXTINF:')) {
+//         tmpTime = +line.replace(/#EXTINF:|,/g, '');
+//         maxDuraOfTs < tmpTime && (maxDuraOfTs = tmpTime);
+//         console.log('EXTINF', tmpTime);
+//     }
+//     if(line.includes('.ts')) {
+//         if (lineDis) {
+//             objs.keys.push('DIS');
+//             objs.vals.push(lineDis);
+//             lineDis = null;
+//         }
+//         tmpKey = line.replace('.ts', '');
+//         objs.keys.push(tmpKey);
+//         objs.vals.push(tmpTime);
+//     }
+//     if(line.lastIndexOf('DISCONTINUITY') > 0) {
+//         lineDis = line;
+//     }
+// })
 
-rl.on('close', () => {
-    console.log('maxDuraOfTs', maxDuraOfTs)
-    console.log('objs', objs)
-    console.log('objs.keys', objs.keys)
-    console.log('objs.vals', objs.vals)
-})
+// rl.on('close', () => {
+//     console.log('maxDuraOfTs', maxDuraOfTs)
+//     console.log('objs', objs)
+//     console.log('objs.keys', objs.keys)
+//     console.log('objs.vals', objs.vals)
+// })
 
-rl.on('error', (e) => {
-    console.log('error =>', e);
-})
+// rl.on('error', (e) => {
+//     console.log('error =>', e);
+// })
+
+// const a = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const arr = a.slice(-5);
+
+// console.log(a)
+// console.log(arr)
+
+// console.log(new Date(1720091155951))
+// console.time('thong')
+// console.time('thong')
+// console.timeEnd('thong')
+// console.timeEnd('thong')
+
+// const logFilePath = 'application-' + new Date().toISOString().split('T')[0] + '.log'
+// console.log(logFilePath)
+
+// const arr = [1, 0, 2, 3, 0, -1, -1, 0, 2, 1];
+// const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// const rs = arr.some((num) => num % 2 === 0);
+
+// console.log(arr.slice(6,10));
+
+// const func = (a, b, c, d) => {
+//     console.log('a', a);
+//     console.log('b', b);
+//     console.log('c', c);
+//     console.log('d', d);
+// }
+
+// const a = '11';
+// const b = '22';
+// const c = '33';
+// const d = '44';
+
+// func(b, c, d)
+
+// const originalArray = [1, 2, 3, 4, 5];
+
+// const newArray = originalArray.slice(0, 8);
+
+// console.log(newArray); // Output: [2, 3, 4]
+// console.log(originalArray); // Output: [1, 2, 3, 4, 5] (không thay đổi)
+
+// const a = ['a', 'b', 'c', 'd'];
+
+// console.log('thong', ['a', 'b', 'c'].some((item) => a.includes(item)))
+// if (a.includes('a') || a.includes('b') || a.includes('c')) {
+//     console.log('success')
+// }
+
+const fs = require("fs-extra");
+
+const filepath = './ffmpeg/inps'
+
+
+async function example () {
+    const exists = await fs.pathExists(filepath)
+  
+    console.log(exists) // => false
+  }
+  
+  example()

@@ -1,0 +1,134 @@
+// 
+Table a100 {
+    PA100 int [pk, increment]
+}
+
+// 
+Table b000 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b030 {
+    PB030 int [pk, increment]
+}
+
+// 
+Table b050 {
+    PB050 int [pk, increment]
+}
+
+// 
+Table b100 {
+    PB100 int [pk, increment]
+}
+
+// 
+Table b300 {
+    PB300 int [pk, increment]
+}
+
+// 
+Table b320 {
+    PB320 int [pk, increment]
+}
+
+// 
+Table b350 {
+    PB350 int [pk, increment]
+}
+
+// 
+Table b400 {
+    PB400 int [pk, increment]
+}
+
+// 
+Table b500 {
+    PB500 int [pk, increment]
+}
+
+// 
+Table c000 {
+    PC000 int [pk, increment]
+}
+
+// 
+Table c050 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table c100 {
+    PC100 int [pk, increment]
+}
+
+// 
+Table c150 {
+    PC150 int [pk, increment]
+}
+
+// 
+Table c200 {
+    PC200 int [pk, increment]
+}
+
+// 
+Table c250 {
+    PC250 int [pk, increment]
+}
+
+// 
+Table c350 {
+    PC350 int [pk, increment]
+}
+
+// 
+Table c400 {
+    PC400 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}
+
+// 
+Table b00 {
+    PB000 int [pk, increment]
+}

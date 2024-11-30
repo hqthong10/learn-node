@@ -135,3 +135,35 @@ docker stop notes mongodb
 
 6. Kiểm tra trạng thái container
    docker-compose ps
+
+
+# docker-compose file
+1. version
+  Xác định phiên bản của Docker Compose. Các phiên bản phổ biến là 2, 2.1, 3, 3.8.
+  Phiên bản quyết định các tính năng và cú pháp được hỗ trợ.
+  ```
+    version: '3.8'
+  ```
+
+
+# Câu hỏi và trả lời
+
+- Docker volume được lưu ở đâu trong docker?
+Volume được tạo và quản lý bởi Docker và không thể truy cập bằng thực thể khác docker. Nó được lưu trữ trong hệ thống file host Docker ở /var/lib/docker/volumes/ .
+
+- Lệnh docker info là gì?
+Lệnh lấy thông tin chi tiết về Docker được cài đặt trên hệ thống host. Thông tin có thể giống như số lượng container hoặc image và chúng đang chạy ở trạng thái nào và các thông số kỹ thuật phần cứng như tổng bộ nhớ được cấp phát, tốc độ của bộ xử lý, phiên bản kernel,…
+
+- Ý nghĩa của các lệnh up, run và start của docker compose?
+  + Sử dụng lệnh up để duy trì docker-compose (lý tưởng là mọi lúc), chúng ta có thể khởi động hoặc khởi động lại tất cả các mạng, dịch vụ và driver được liên kết với ứng dụng được chỉ định trong file docker-compos.yml. Bây giờ, nếu chúng ta đang chạy docker-compose ở chế độ “attached” thì tất cả log từ các container sẽ có thể truy cập được đối với chúng ta. Trong trường hợp docker-compose được chạy ở chế độ “detached”, thì khi các container được khởi động, nó sẽ thoát ra và không hiển thị log nào.
+  + Sử dụng lệnh run, docker-compose có thể chạy các tác vụ một lần hoặc đột xuất dựa trên các yêu cầu nghiệp vụ. Ở đây, tên dịch vụ phải được cung cấp và docker chỉ bắt đầu dịch vụ cụ thể đó và cả các dịch vụ khác mà dịch vụ đích phụ thuộc (nếu có). Lệnh này hữu ích để kiểm tra container và cũng thực hiện các tác vụ như thêm hoặc xóa dữ liệu vào container,…
+  + Sử dụng lệnh start, chỉ những container đó mới có thể được khởi động lại đã được tạo và sau đó dừng lại. Điều này không hữu ích cho việc tạo các container mới của riêng nó.
+
+- Cách đăng nhập vào docker registry?
+Sử dụng lệnh docker login để đăng nhập vào kho lưu trữ đám mây của riêng họ có thể được nhập và truy cập.
+
+- Các instructions phổ biến trong Dockerfile?
+  + FROM: dùng cho thiết lập image cơ sở cho instruction sắp tới. File docker được xem là hợp lệ nếu nó bắt đầu bằng FROM.
+  + LABEL: dùng cho tổ chức image dựa trên dự án, module hoặc license. Nó còn giúp tự động hoá như một cặp key-value cụ thể trong khi xác định label mà sau này có thể được truy cập và xử lý theo chương trình.
+  + RUN: dùng cho thực thi instruction theo sau nó trên top image hiện tại trong lớp mới. Lưu ý: mỗi lần thực thi lệnh RUN, chúng ta thêm các lớp trên image và sử dụng lớp đó cho các bước tiếp theo.
+  + CMD: dùng cho cung cấp giá trị mặc định của container thực thi. Trong trường hợp nhiều lệnh CMD, lệnh cuối cùng sẽ được xem xét.

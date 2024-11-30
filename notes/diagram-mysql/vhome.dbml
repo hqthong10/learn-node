@@ -1,0 +1,331 @@
+Table K100 {
+    PK100 int [pk, increment]
+    KV101 varchar // (name)
+    KV102 varchar // (code)
+    KV104 varchar // (ms thue)
+    KV105 varchar // (Sdt)
+}
+
+Table Q100{
+    PQ100 int [pk, increment]
+    QV101 varchar // (fname)
+    QV102 varchar // (lname)
+    QV104 varchar // (email)
+    QV105 varchar // (pass)
+    QV107 varchar // (gender)
+    QV108 varchar (sdt)
+    QV145 char
+    FL100 int
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    FK100 int [ref: > K100.PK100]
+}
+
+Table Q100_MANAGER{
+    PQ100 int [pk, increment]
+    QV101 varchar // (fname)
+    QV102 varchar // (lname)
+    QV104 varchar // (email)
+    QV105 varchar // (pass)
+    QV107 varchar // (gender)
+    QV108 varchar // (sdt)
+    QV145 char
+    FL100 int
+    FK100 int [ref: > K100.PK100]
+}
+
+Table Q100_B200 {
+    FQ100 int [pk, increment]
+    FK100 int [ref: > K100.PK100]
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    BV202 varchar
+    QV169 char
+}
+
+// chung cư
+Table B050 {
+    PB050 int [pk, increment]
+    BV051 varchar // (name)
+    BV052 varchar // (code)
+    BV053 varchar // (address)
+    BV054 varchar // (email)
+    BV055 varchar // (sdt)
+    BN057 int
+    BN058 int
+    BN059 int
+    FQ100 int [ref: > Q100.PQ100]
+    FK100 int [ref: > K100.PK100]
+}
+
+// Block
+Table B100 {
+    PB100 int [pk, increment]
+    BV101 varchar // (name)
+    BV102 varchar // (code)
+    BV103 varchar // (descript)
+    BN104 int
+    BN105 int
+    BN106 int
+    BN107 int
+    FB050 int [ref: > B050.PB050]
+    FQ100 int [ref: > Q100.PQ100]
+    FK100 int [ref: > K100.PK100]
+}
+
+// Căn hộ
+Table B200 {
+    PB200 int [pk, increment]
+    BV201 varchar // (name)
+    BV202 varchar // (code)
+    BV203 varchar // (descript)
+    BN204 int
+    BN205 int
+    BN206 int
+    BN207 int
+    BN208 int
+    BN215 int
+    BN217 int
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FB500 int [ref: > B500.PB500]
+    FQ100 int [ref: > Q100.PQ100] 
+    FK100 int [ref: > K100.PK100]
+}
+
+// loại căn hộ
+Table B500 {
+    PB500 int [pk, increment]
+    BV501 varchar // (name)
+    BV502 varchar // (code)
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+}
+
+// chỉ số tiêu thụ
+Table C100 {
+    PC100 int [pk, increment]
+    CV101 varchar // (DIEN | NUOC)
+    CN102 int
+    CV105 varchar
+    CD106 date
+    CD107 date
+    CN108 int
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    FK100 int [ref: > K100.PK100]
+    FQ100C int [ref: > Q100.PQ100]
+}
+
+// chi phí
+Table C150 {
+    PC150 int [pk, increment]
+    CV151 varchar // (name)
+    CV152 varchar // (code)
+    CV153 varchar // (month)
+    CN154 int
+    CN156 int
+    CN157 int
+    CN158 int
+    CN159 int
+    CN160 int
+    CV161 varchar
+    CV162 varchar
+    CD163 date
+    CD164 date
+    FD400 int
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    FK100 int [ref: > K100.PK100]
+    FQ100C int [ref: > Q100.PQ100]
+}
+
+// chi phí quản lý
+Table C600 {
+    PC600 int [pk, increment]
+    CV601 varchar // (name)
+    CN602 int
+    CN603 int
+    CN604 int
+    CN605 int
+    CV606 varchar
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FK100 int [ref: > K100.PK100]
+}
+
+// nhóm dịch vụ
+Table D100 {
+    PD100 int [pk, increment]
+    DV101 varchar // (name)
+    DV105 varchar // (descript)
+    DV107 varchar // (color)
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+    FQ100C int [ref: > Q100.PQ100]
+}
+
+// KTV - Nhà cung cấp
+Table D200 {
+    PD200 int [pk, increment]
+    DV201 varchar // (name)
+    DV202 varchar
+    DV206 varchar // (phone)
+    DV207 varchar
+    DV208 varchar
+    DV209 varchar
+    DV210 varchar
+    FK100 int [ref: > K100.PK100]
+    FQ100 int [ref: > Q100.PQ100]
+    FB050 int [ref: > B050.PB050]
+}
+
+Table D200_B200 {
+    id int [pk, increment]
+    FD200 int [ref: > D200.PD200]
+    FB200 int [ref: > B100.PB100]
+    FB100 int [ref: > B100.PB100]
+    FB050 int [ref: > B050.PB050]
+    BV202 varchar // (code)
+}
+
+// dịch vụ
+Table D300 {
+    PD300 int [pk, increment]
+    DV301 varchar (name)
+    DN305 int
+    DV306 varchar (unit)
+    DN307 int //(đơn giá thấp nhất)
+    DN308 int //(đơn giá cao nhất)
+    FD100 int [ref: > D100.PD100]
+    FK100 int [ref: > K100.PK100]
+    FB050 int [ref: > B050.PB050]
+}
+
+Table D400 {
+    PD400 int [pk, increment]
+    DV401 varchar // (mã dịch vụ)
+    DN402 int // (số lượng)
+    DN403 int // (đơn giá)
+    DN405 int // (thành tiền)
+    DV407 char // (trạng thái cv)
+    DV412 char // (trạng thái confirm)
+    FQ100C int [ref: > Q100.PQ100]
+    FD100 int [ref: > D100.PD100]
+    FD200 int [ref: > D200.PD200]
+    FD300 int [ref: > D300.PD300]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+}
+
+// Quảng cáo
+Table E100 {
+    PE100 int [pk, increment]
+    EV101 varchar // (tên quảng cáo)
+    EN102 int // (active)
+    EV104 varchar // (type)
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+}
+
+// nhóm quyền
+Table L100 {
+    PL100 int [pk, increment]
+    LV101 varchar // (tên loại tk)
+    LV102 varchar // (mã loại tk)
+    LA104 varchar // (array quyền Q170)
+}
+
+// thông báo
+Table L500 {
+    PL500 int [pk, increment]
+    LV501 varchar // (loại)
+    LV502 varchar // (nội dung)
+    LV504 varchar // (loại tài khoản thao tác)
+    LA505 varchar // (danh sách FQ100 đã xem)
+    LV506 varchar // (trạng thái)
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    FQ100 int [ref: > Q100.PQ100]
+}
+
+// media
+Table M650 {
+    PM650 int [pk, increment]
+}
+
+// quyền
+Table Q170 {
+    PQ170 int [pk, increment]
+    QV171 varchar // (tên quyền)
+    QV172 varchar // (mã quyền)
+    QV173 varchar
+}
+
+// yêu cầu của người dùng
+Table Q200 {
+    PQ200 int [pk, increment]
+    QV201 varchar
+    QV202 varchar
+    QV203 char
+    FQ100 int [ref: > Q100.PQ100]
+    FB200 int [ref: > B200.PB200]
+    FB100 int [ref: > B100.PB100]
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+}
+
+// đánh giá
+Table R100 {
+    PR100 int [pk, increment]
+    RV101 varchar // nội dung đánh giá
+    RN102 int // điểm đánh giá
+    FQ100C int [ref: > Q100.PQ100]
+    FD400 int [ref: > D400.PD400]
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+}
+
+// 
+Table R200 {
+    PR200 int [pk, increment]
+    RV201 varchar // LI: login, LO: logout
+    FQ100 int [ref: > Q100.PQ100]
+    FB200 int [ref: > B200.PB200]
+    FB100 int [ref: > B100.PB100]
+    FB050 int [ref: > B050.PB050]
+    FK100 int [ref: > K100.PK100]
+}
+
+// report hệ thống tự insert để check bugs
+Table R300 {
+    PR300 int [pk, increment]    
+    RV301 varchar
+    RV302 varchar
+    RV303 varchar
+    RV304 varchar
+}
+
+// TOKEN FIREBASE bị lỗi
+Table R400 {
+    PR400 int [pk, increment]    
+    RV401 varchar
+    RV402 varchar
+    RV403 varchar
+    RN406 int // ID PQ100 hoặc PK100
+}
+
+// khảo sát
+Table R500 {
+
+}

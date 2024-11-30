@@ -44,7 +44,7 @@ module.exports = {
         fs.copy('/path/to/src', '/path/to/dest')
         .then(() => console.log('Copy successful!'))
         .catch(err => console.error('Error copying:', err));
-    }
+    },
 
     /**
      * remove
@@ -66,4 +66,12 @@ module.exports = {
      * fs.move
      */
 
+    /**
+     * Kiểm tra có tồn tại file hoặc thư mục  không
+     * fs.pathExists
+     * return true | false
+     */
+    pathExists: async (path) => {
+        return await fs.pathExists(path);
+    }
 };

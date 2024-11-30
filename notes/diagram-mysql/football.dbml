@@ -1,0 +1,107 @@
+// người dùng
+Table Users {
+    user_id int [pk, increment]
+    username varchar
+    email varchar
+    password varchar
+    full_name varchar
+    phone_number varchar
+    created_at date
+    updated_at date
+}
+
+// sân bóng
+Table Pitches {
+    pitch_id int [pk, increment]
+    pitch_name varchar
+    location varchar
+    price_per_hour decimal
+    available boolean
+    status char (ready, maintenance) 
+    created_at date
+    updated_at date
+}
+
+// Đặt sân
+Table Bookings {
+    booking_id int [pk, increment]
+    user_id int [ref: > Users.user_id] // asd
+    pitch_id int [ref: > Pitches.pitch_id]
+    booking_date date
+    start_time time
+    end_time time
+    price decimal
+    status char (pending, confirmed, cancelled)
+    created_at date
+    updated_at date
+}
+
+// đội bóng
+Table Teams {
+    team_id int [pk, increment]
+    team_name varchar
+    created_at date
+    updated_at date
+}
+
+// thành viên đội bóng
+Table User_Teams {
+    user_id int [pk, ref: > Users.user_id]
+    team_id int [pk, ref: > Teams.team_id]
+}
+
+// thành viên hệ thống
+Table Memberships {
+    membership_id int [pk, increment]
+    user_id int [ref: > Users.user_id]
+    membership_type varchar (silver, gold, platinum)
+    membership_code char(8)
+    start_date date
+    end_date date
+}
+
+// Chương trình khách hàng thân thiết
+Table Loyalty {
+    loyalty_id int [pk, increment]
+    user_id int [ref: > Users.user_id]
+    points int
+    last_updated timestamp
+}
+
+// Giải đấu
+Table Tournaments {
+    tournament_id int [pk, increment]
+    tournament_name varchar
+    start_date date
+    end_date date
+    created_at date
+    updated_at date
+}
+
+// đội bóng trong giải đấu
+Table Team_Tournaments {
+    team_id int [pk, ref: > Teams.team_id]
+    tournament_id int [pk, ref: > Tournaments.tournament_id]
+    investor_id int [ref: > Investors.investor_id] // nếu có
+}
+
+// Nhà đầu tư
+Table Investors {
+    investor_id int [pk, increment]
+    investor_name varchar
+    contact_info varchar
+    available boolean
+    created_at date
+    updated_at date
+}
+
+Table Matches {
+    match_id int [pk, increment]
+    tournament_id int [ref: > Tournaments.tournament_id]
+    team1_id int [ref: > Teams.team_id]
+    team2_id int [ref: > Teams.team_id]
+    pitch_id int [ref: > Pitches.pitch_id]
+    match_date date
+    start_time time
+    end_time time
+}
