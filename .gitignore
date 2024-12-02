@@ -10,5 +10,5 @@ node_modules/
 output/
 temp/
 ffmpeg/out/*
-# *.mp3
-# *.mp4
+ffmpeg/inp/*
+ffmpeg/out/*

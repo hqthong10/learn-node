@@ -85,4 +85,32 @@ Babel là một công cụ biên dịch (transpiler) JavaScript mã nguồn mở
 
 # Middleware Pipeline
 - Luồng xử lý của middleware khi một yêu cầu HTTP đi qua ứng dụng backend.
-- 
+- Mỗi middleware có thể thực hiện một số hành động hoặc chuyển tiếp yêu cầu cho middleware tiếp theo.
+
+# Data Modeling
+- Quá trình thiết kế cách dữ liệu được tổ chức, lưu trữ và quan hệ trong cơ sở dữ liệu.
+- Ví dụ: Tạo bảng và ánh xạ quan hệ (1-nhiều, nhiều-nhiều).
+
+# Rate Throttling
+- Giới hạn tạm thời và làm chậm các yêu cầu quá tải.
+
+# Rate Limiting
+- Ngăn chặn hoàn toàn yêu cầu vượt ngưỡng.
+
+# Session Store
+Một nơi lưu trữ thông tin phiên (session) của người dùng, thường sử dụng Redis hoặc cơ sở dữ liệu SQL.
+
+# Lazy Loading
+- Chỉ tải dữ liệu hoặc module khi cần thiết, thay vì tải toàn bộ ngay từ đầu.
+- Thường được dùng để tối ưu hiệu suất.
+
+# Hot Reloading
+- Cho phép ứng dụng tự động cập nhật mã nguồn mà không cần khởi động lại server.
+
+# Circuit Breaker Pattern
+- Một mẫu thiết kế để xử lý lỗi hệ thống, ngăn các yêu cầu lặp lại đến một dịch vụ đang gặp sự cố.
+
+# Reverse DNS Lookup
+- Tra cứu tên miền từ địa chỉ IP. Thường được dùng trong log và xác thực.
+
+# ETag (Entity Tag)
