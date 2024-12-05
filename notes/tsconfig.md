@@ -1,0 +1,47 @@
+- target: Phiên bản JavaScript đầu ra (ES3, ES5, ES6, ES2020,...)
+- module: Loại module (CommonJS, ESNext, AMD, UMD,...)
+- lib: Thêm các định nghĩa thư viện (DOM, ES6, ES2020, WebWorker,...)
+- allowJs: Cho phép biên dịch các file Javascript
+- checkJs: Kiểm tra lỗi trong file Javascript khi biên dịch
+- outDir: Thư mục đầu ra cho các file biên dịch
+- rootDir: Thư mục gốc chứa mã nguồn Typescript
+- strict: Bật các kiểm tra nghiêm ngặt (có thể cấu hình riêng các kiểm tra khác)
+- strictNullChecks: Kiểm tra giá trị null và undefined
+- noImplicitAny: Báo lỗi nếu kiểu any được suy luận một cách tự động
+- noImplicitThis: Báo lỗi khi this không có kiểu cụ thể.
+- esModuleInterop: Tương thích tốt hơn với các module CommonJS
+- resolveJsonModule: Cho phép import file JSON như module
+- baseUrl: Thiết lập đường dẫn cơ sở cho module (giúp import theo alias).
+- paths: Định nghĩa alias cho các đường dẫn module.
+- typeRoots: Các thư mục chứa file định nghĩa TypeScript (.d.ts).
+- types: Danh sách các thư viện được tải định nghĩa kiểu.
+- jsx: Kiểu file JSX đầu ra (preserve, react, react-jsx).
+- incremental: Tăng tốc độ biên dịch bằng cách lưu trữ thông tin lần biên dịch trước.
+- skipLibCheck: Bỏ qua kiểm tra kiểu trong file .d.ts.
+- sourceMap: Tạo file source map để hỗ trợ debug.
+- declaration: Tạo các file định nghĩa kiểu (.d.ts).
+- emitDecoratorMetadata: Tạo metadata cho các decorator (cần thiết khi dùng Angular).
+- experimentalDecorators: Bật hỗ trợ decorator.
+- include: Danh sách các file hoặc thư mục được biên dịch.
+- exclude: Danh sách các file hoặc thư mục cần loại trừ.
+- files: Chỉ định danh sách file cụ thể cần biên dịch.
+- references: Sử dụng cho các dự án lớn với cấu trúc dự án tham chiếu (project references).
+- extends: Kế thừa từ file cấu hình TypeScript khác
+- compileOnSave: Tự động biên dịch khi lưu file (nếu trình chỉnh sửa hỗ trợ).
+- allowSyntheticDefaultImports: Cho phép import kiểu import React from 'react' ngay cả khi module không có default export
+- moduleResolution: Chiến lược giải quyết module
+- preserveConstEnums: Bảo toàn const enum trong đầu ra JavaScript.
+- noEmitOnError: Dừng việc xuất file nếu có lỗi.
+- noEmitHelpers: Không nhúng helper (cần thiết khi dùng thư viện như tslib).
+- importsNotUsedAsValues: Kiểm soát việc xóa import chỉ để sử dụng kiểu (type-only imports).
+- useDefineForClassFields: Sử dụng cú pháp define chuẩn cho các trường trong class.
+- strictFunctionTypes: Kiểm tra kiểu chặt chẽ hơn cho các hàm.
+- importHelpers: Sử dụng thư viện tslib để tái sử dụng các helpers (hàm trợ giúp) như __extends, __assign, v.v. thay vì nhúng chúng vào mỗi file.
+- isolatedModules: Biên dịch từng file .ts độc lập như thể chúng không có phụ thuộc vào file khác. Không tương thích với một số tính năng TypeScript, như const enum.
+- removeComments: Loại bỏ toàn bộ comment trong file JavaScript sau khi biên dịch.
+- noFallthroughCasesInSwitch: Báo lỗi nếu một case trong câu lệnh switch không có từ khóa break hoặc không rơi vào case khác một cách rõ ràng.
+- noImplicitReturns: Báo lỗi nếu một hàm có thể không trả về giá trị trong tất cả các nhánh.
+- noUnusedLocals: Báo lỗi nếu có biến được khai báo nhưng không sử dụng.
+- noUnusedParameters: Báo lỗi nếu có tham số được khai báo trong hàm nhưng không sử dụng.
+- forceConsistentCasingInFileNames: Báo lỗi nếu có sự không nhất quán về chữ hoa/chữ thường trong tên file import/export.
+- 

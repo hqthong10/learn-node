@@ -9,7 +9,7 @@ let args_m3u8_vertical_mp4 = [
   "-i",
   // "https://cdn.piepme.com/28638/videos/piep-ehmHprnF17301714484321730171448432/hls/720p.m3u8",
   // "https://cdn.piepme.com/27130/videos/piep-rmcjcqhJ17325046891121732504689112/hls/720p.m3u8",
-  "./inp/marshall.png",
+  "https://cdn.piepme.com/29439/videos/piep-YmXkTA6Z17329752566341732975256634/hls/720p.m3u8",
   
   // "-ss",
   // "0",
@@ -22,7 +22,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "marshall.png",
+  "sun-dang-an-com.mp4",
 ].concat();
 
 

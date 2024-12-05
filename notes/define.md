@@ -114,3 +114,196 @@ Một nơi lưu trữ thông tin phiên (session) của người dùng, thườn
 - Tra cứu tên miền từ địa chỉ IP. Thường được dùng trong log và xác thực.
 
 # ETag (Entity Tag)
+- Mã nhận dạng phiên bản tài nguyên trên server, giúp client xác định tài nguyên đã thay đổi hay chưa.
+- Dùng để tối ưu cache HTTP.
+
+# Static Assets
+- Các tệp không thay đổi thường xuyên, như hình ảnh, CSS, JavaScript, được phục vụ trực tiếp từ server hoặc CDN.
+
+# Backend as a Service (BaaS)
+- Các dịch vụ cung cấp tính năng backend sẵn có, như Firebase, AWS Amplify.
+- Dành cho những dự án muốn tiết kiệm thời gian xây dựng backend.
+
+# Gzip Compression
+- Nén dữ liệu phản hồi (response) để giảm kích thước và tăng tốc độ truyền tải.
+
+# Rate Queue
+- Một cơ chế quản lý số lượng yêu cầu được xử lý đồng thời, thường sử dụng để giới hạn tải.
+
+# RPC (Remote Procedure Call)
+- Gọi hàm từ xa (trên một server khác) như thể nó đang chạy cục bộ.
+- Ví dụ: gRPC, XML-RPC.
+
+# Templating Engine
+- Công cụ để tạo giao diện động trên server.
+- Ví dụ: EJS, Handlebars, Pug.
+
+# Web Crawler/Spider
+- Chương trình tự động duyệt web để thu thập dữ liệu.
+- Backend thường xây dựng API để bảo vệ khỏi bot hoặc crawler.
+
+# Multi-tenancy
+- Một kiến trúc nơi nhiều khách hàng (tenant) dùng chung một hệ thống mà vẫn giữ dữ liệu tách biệt.
+
+# CQRS (Command Query Responsibility Segregation)
+- Tách các thao tác đọc (query) và ghi (command) dữ liệu thành hai mô hình độc lập để tăng hiệu suất.
+
+# Idempotency
+- Tính chất đảm bảo rằng một yêu cầu được thực hiện nhiều lần vẫn cho cùng một kết quả.
+- Thường áp dụng trong các API HTTP PUT, DELETE.
+
+# Webhook vs Polling
+- Webhook: Server chủ động gửi dữ liệu đến client khi có sự kiện.
+- Polling: Client tự động gửi yêu cầu để kiểm tra trạng thái định kỳ.
+
+# Binary Data
+- Dữ liệu được lưu trữ ở dạng nhị phân (binary), như file hình ảnh hoặc video.
+
+# Token-Based Authentication
+- Cách xác thực bằng việc phát hành token cho người dùng (thường là JWT hoặc OAuth).
+
+# Server Sent Events (SSE)
+- Gửi dữ liệu từ server đến client qua HTTP, khác với WebSocket ở chỗ nó chỉ truyền một chiều.
+
+# Headless Server
+- Server không có giao diện người dùng, chỉ xử lý logic và API.
+
+# CDN (Content Delivery Network)
+- Mạng lưới máy chủ phân phối nội dung để giảm độ trễ và tải trên server chính.
+
+# Sticky Session
+- Một cơ chế đảm bảo người dùng luôn kết nối đến cùng một server trong suốt phiên làm việc.
+
+# TLS/SSL
+- Giao thức mã hóa dữ liệu truyền qua mạng, bảo vệ thông tin nhạy cảm.
+
+# Event Loop
+- Cơ chế xử lý tác vụ bất đồng bộ trong Node.js.
+
+# Event-Driven Architecture
+- Mô hình xử lý các sự kiện (event) thay vì luồng logic tuần tự, ví dụ: Kafka, RabbitMQ.
+
+# Shadow API
+- Các API không được tài liệu hóa hoặc không có ý định sử dụng công khai.
+
+# Soft Delete vs Hard Delete
+- Soft Delete: Dữ liệu chỉ được đánh dấu là "đã xóa" nhưng vẫn tồn tại trong database.
+- Hard Delete: Dữ liệu bị xóa hoàn toàn.
+
+# Dependency Tree
+- Sơ đồ biểu diễn các phụ thuộc của một module hoặc ứng dụng.
+
+# API (Application Programming Interface)
+- Giao diện để các ứng dụng giao tiếp với nhau.
+- Trong backend, thường được sử dụng để cung cấp dữ liệu hoặc thực hiện các chức năng qua HTTP (REST API hoặc GraphQL).
+
+# RESTful API
+- Kiến trúc API dựa trên các phương thức HTTP như GET, POST, PUT, DELETE.
+- Mỗi endpoint đại diện cho một tài nguyên (resource), ví dụ: /users để quản lý người dùng.
+
+# Middleware
+- Là các hàm trung gian xử lý logic trước khi yêu cầu (request) đến controller hoặc phản hồi (response) trả về.
+Ví dụ: Xác thực người dùng, log yêu cầu.
+
+# Authentication và Authorization
+- Authentication (Xác thực): Kiểm tra danh tính người dùng (như đăng nhập qua username/password).
+- Authorization (Phân quyền): Xác định quyền của người dùng đối với tài nguyên hoặc hành động.
+
+# Session và Cookie
+- Session: Lưu thông tin tạm thời của người dùng trên server (ví dụ: thông tin đăng nhập).
+- Cookie: Lưu trữ dữ liệu nhỏ trên trình duyệt để gửi lại server trong các yêu cầu tiếp theo.
+
+# ORM (Object Relational Mapping)
+- Công cụ giúp làm việc với cơ sở dữ liệu (database) một cách dễ dàng bằng cách ánh xạ bảng (table) thành đối tượng (object) trong ngôn ngữ lập trình.
+- Ví dụ: Sequelize (Node.js), Hibernate (Java).
+
+# Database
+- Hệ thống lưu trữ dữ liệu.
+- SQL Database: Dựa trên bảng (ví dụ: MySQL, PostgreSQL).
+- NoSQL Database: Không có cấu trúc bảng cố định (ví dụ: MongoDB, Redis).
+
+# Web Server
+- Chương trình nhận yêu cầu từ client và trả về phản hồi (ví dụ: Nginx, Apache).
+- Backend thường chạy trên web server để xử lý logic.
+
+# Load Balancer
+- Phân phối lưu lượng truy cập (traffic) đến nhiều server để giảm tải và tăng hiệu suất.
+
+# Caching
+- Lưu trữ dữ liệu tạm thời để giảm tải truy vấn đến cơ sở dữ liệu hoặc API.
+- Công cụ phổ biến: Redis, Memcached.
+
+# Microservices
+- Kiến trúc chia ứng dụng thành nhiều dịch vụ nhỏ, độc lập, mỗi dịch vụ thực hiện một chức năng cụ thể.
+
+# WebSocket
+- Giao thức liên lạc hai chiều giữa client và server, dùng cho các ứng dụng real-time (chat, livestream).
+
+# Containerization
+- Gói ứng dụng và tất cả các thành phần phụ thuộc vào một môi trường độc lập (container).
+- Ví dụ: Docker.
+
+# Message Queue
+- Hệ thống hàng đợi để xử lý các nhiệm vụ không đồng bộ.
+- Ví dụ: RabbitMQ, Kafka.
+
+# Rate Limiting
+- Giới hạn số lượng yêu cầu (requests) mà một client có thể gửi trong một khoảng thời gian.
+
+# Middleware Frameworks
+- Các framework hỗ trợ xây dựng backend dựa trên middleware.
+- Ví dụ: Express.js (Node.js), Koa.js (Node.js).
+
+# Serverless
+- Mô hình triển khai mà không cần quản lý server, ứng dụng chỉ chạy khi có yêu cầu.
+- Ví dụ: AWS Lambda, Google Cloud Functions.
+
+# CI/CD (Continuous Integration/Continuous Deployment)
+- CI: Tích hợp liên tục - kiểm tra và tích hợp mã nguồn vào nhánh chính.
+- CD: Triển khai liên tục - tự động đưa mã nguồn lên môi trường sản xuất.
+
+# Reverse Proxy
+- Lớp trung gian giữa client và server, giúp phân phối yêu cầu, caching, hoặc bảo mật.
+- Ví dụ: Nginx làm reverse proxy.
+
+# Logging
+- Quá trình ghi lại các sự kiện hoặc lỗi xảy ra trong ứng dụng.
+- Ví dụ: Sử dụng Winston, Bunyan (Node.js).
+
+# Cron Job
+Công việc tự động chạy định kỳ, thường dùng để thực hiện các tác vụ nền như sao lưu dữ liệu.
+
+# Webhook
+Một cơ chế cho phép ứng dụng nhận thông báo từ một dịch vụ khác khi có sự kiện xảy ra.
+
+# Middleware Stack
+- Tập hợp các middleware chạy tuần tự khi xử lý một request.
+
+# Scaling
+- Vertical Scaling: Nâng cấp tài nguyên (CPU, RAM) của server.
+- Horizontal Scaling: Thêm nhiều server để xử lý tải.
+
+# JWT (JSON Web Token)
+- Một chuẩn mở để truyền tải dữ liệu an toàn giữa các bên dưới dạng token.
+
+# GraphQL
+- Một ngôn ngữ truy vấn API cho phép client yêu cầu chính xác dữ liệu mà họ cần, không hơn không kém.
+
+# Middleware Exception Handling
+- Xử lý lỗi phát sinh trong pipeline của middleware.
+
+# Throttling
+- Kiểm soát số lượng yêu cầu được phép xử lý trong một thời gian nhất định để bảo vệ tài nguyên.
+
+# Incremental Static Regeneration (ISR)
+- là một tính năng mạnh mẽ của Next.js cho phép bạn kết hợp những lợi ích của Static Site Generation (SSG) và Server-Side Rendering (SSR) để tối ưu hóa hiệu suất và trải nghiệm người dùng.
+- Cho phép bạn tái tạo một số trang tĩnh cụ thể (incrementally regenerate) sau khi chúng đã được deploy mà không cần phải rebuild toàn bộ ứng dụng.
+- ISR được kích hoạt bằng cách sử dụng hàm getStaticProps trong Next.js với tham số revalidate
+
+# Server-Side Rendering (SSR)
+
+# Static Site Generation (SSG)
+
+# batteries included
+
+# Edge Rendering
