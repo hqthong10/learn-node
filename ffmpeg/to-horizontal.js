@@ -22,7 +22,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "sun-dang-an-com.mp4",
+  "./out/sun-dang-an-com.mp4",
 ].concat();
 
 
