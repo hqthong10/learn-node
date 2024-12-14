@@ -307,3 +307,10 @@ Một cơ chế cho phép ứng dụng nhận thông báo từ một dịch vụ
 # batteries included
 
 # Edge Rendering
+
+# stream collision (xung đột luồng)
+- Đây là tình huống khi nhiều nguồn (clients) cùng gửi dữ liệu đến một key hoặc link RTMP duy nhất.
+- Server có thể ghi đè dữ liệu từ một luồng bởi luồng khác. Hoặc server từ chối các kết nối sau vì luồng đã được "khóa" bởi client đầu tiên.
+
+# Stream Key Overlap (Trùng khóa stream)
+- Khi nhiều client sử dụng cùng một stream key, hệ thống không thể phân biệt được các luồng khác nhau, dẫn đến việc một luồng ghi đè hoặc làm gián đoạn luồng khác.

@@ -3,12 +3,12 @@
 1. Ngôn ngữ lập trình backend
 Lựa chọn một hoặc một vài ngôn ngữ lập trình phù hợp với phát triển backend là rất quan trọng. Một số ngôn ngữ phổ biến bao gồm:
 
-JavaScript (Node.js): Phổ biến với việc xây dựng API, ứng dụng real-time.
-Python: Được ưa chuộng cho các ứng dụng web, khoa học dữ liệu, và machine learning.
-Java: Mạnh mẽ trong phát triển ứng dụng lớn, các hệ thống phức tạp.
-PHP: Phù hợp với phát triển web, đặc biệt với các hệ thống quản lý nội dung (CMS) như WordPress.
-Ruby: Phổ biến trong phát triển nhanh các ứng dụng web qua framework Ruby on Rails.
-Go: Tối ưu cho các hệ thống phân tán và dịch vụ hiệu suất cao.
+- JavaScript (Node.js): Phổ biến với việc xây dựng API, ứng dụng real-time.
+- Python: Được ưa chuộng cho các ứng dụng web, khoa học dữ liệu, và machine learning.
+- Java: Mạnh mẽ trong phát triển ứng dụng lớn, các hệ thống phức tạp.
+- PHP: Phù hợp với phát triển web, đặc biệt với các hệ thống quản lý nội dung (CMS) như WordPress.
+- Ruby: Phổ biến trong phát triển nhanh các ứng dụng web qua framework Ruby on Rails.
+- Go: Tối ưu cho các hệ thống phân tán và dịch vụ hiệu suất cao.
 
 2. Cơ sở dữ liệu
 Hiểu rõ về cơ sở dữ liệu là nền tảng quan trọng cho backend, bao gồm:
