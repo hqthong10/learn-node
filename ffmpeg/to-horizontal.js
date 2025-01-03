@@ -7,9 +7,7 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  // "https://cdn.piepme.com/28638/videos/piep-ehmHprnF17301714484321730171448432/hls/720p.m3u8",
-  // "https://cdn.piepme.com/27130/videos/piep-rmcjcqhJ17325046891121732504689112/hls/720p.m3u8",
-  "https://cdn.piepme.com/22788/videos/piep-kNQjlUyc17331980051151733198005115/hls/480p.m3u8",
+  "https://cdn.piepme.com/26207/videos/piep-9AoNqIk617354776403301735477640330/hls/480p.m3u8",
   
   // "-ss",
   // "0",
@@ -22,7 +20,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "./out/nhungnguyen.mp4",
+  "./out/tram-vy.mp4",
 ].concat();
 
 

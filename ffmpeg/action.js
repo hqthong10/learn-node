@@ -105,25 +105,27 @@ let args_m3u8_mp3 = [
   // "https://cdn.piepme.com/19802/livestream/19802.4a7a566bf2aab82c9259a26bdee39447/index.m3u8",
   // "https://cdn.piepme.com/26207/livestream/26207.019b1d411d9bd4f5f974778d37c27994/index.m3u8",
   // "https://cdn.piepme.com/26787/livestream/26787.b4e1d4d996f5cc634a04768205b60f0b/index.m3u8",
-  "https://cdn.piepme.com/26792/livestream/26792.8dea3edb213e94f3a016738aa243544e/index.m3u8",
+  // "https://cdn.piepme.com/26792/livestream/26792.8dea3edb213e94f3a016738aa243544e/index.m3u8",
+  "https://cdn.piepme.com/19802/livestream/19802.c9afd47f85c770f5bf732abbd5a22bda/index.m3u8",
 
   "-vn",
   // "-acodec",
   // "copy",
-  // "-acodec",
-  // "libmp3lame",
+
+  "-acodec",
+  "libmp3lame",
   // "-ss",
   // "00:09:55",
-  "-ss",
-  "851",
+  // "-ss",
+  // "851",
 
   // "-t",
   // "64",
-  "-t",
-  "37",
+  // "-t",
+  // "37",
 
   // "labannho-tinh-ao.mp3",
-  "maybeo-docsach-tamtruyen.mp3",
+  "van-hoa-thuong-tet-2.mp3",
 ].concat();
 
 let args_mp3_img_mp4 = [
@@ -331,7 +333,7 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_m3u8_mp4, () => {
+runCommand("step1", args_m3u8_mp3, () => {
   // runCommand("step2", args_2, () => {
   //   runCommand("step3", args_3, () => {});
   // });

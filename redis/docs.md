@@ -1,8 +1,16 @@
-Redis là một cơ sở dữ liệu lưu trữ cấu trúc dữ liệu trong bộ nhớ (in-memory data structure store), được sử dụng như một cơ sở dữ liệu, bộ nhớ đệm (cache), và message broker. 
+- Redis là một cơ sở dữ liệu lưu trữ cấu trúc dữ liệu trong bộ nhớ (in-memory data structure store), được sử dụng như một cơ sở dữ liệu, bộ nhớ đệm (cache), và message broker. 
 
-Redis hỗ trợ các cấu trúc dữ liệu như chuỗi (strings), danh sách (lists), bộ tập hợp (sets), các bộ tập hợp có thứ tự (sorted sets), hàm băm (hashes), bitmaps, hyperloglogs, và các chỉ mục địa lý (geospatial indexes). 
+- \- Redis hỗ trợ các cấu trúc dữ liệu như: 
+  + \+ Chuỗi (strings).
+  + \+ Danh sách (lists).
+  + \+ Bộ tập hợp (sets).
+  + \+ Các bộ tập hợp có thứ tự (sorted sets).
+  + \+ Hàm băm (hashes).
+  + \+ bitmaps.
+  + \+ hyperloglogs.
+  + \+ Các chỉ mục địa lý (geospatial indexes). 
 
-Redis nổi tiếng với hiệu suất cao, độ trễ thấp và khả năng mở rộng tốt.
+- \- Redis nổi tiếng với hiệu suất cao, độ trễ thấp và khả năng mở rộng tốt.
 
 ### **Các Tính Năng Chính của Redis**
 
@@ -527,8 +535,59 @@ Bộ Redis là một tập hợp các chuỗi (thành viên) duy nhất không c
 - **SINTER** trả về tập hợp các thành viên mà hai hoặc nhiều tập hợp có điểm chung (tức là giao điểm).
 - **SCARD** trả về kích thước (còn gọi là cardinality) của một tập hợp.
 
-### **Subscriber/publish**
+### **Publish/Subscribe (Pub/Sub)**
+- Redis hỗ trợ mô hình Publish/Subscribe (Pub/Sub) để giao tiếp giữa các client qua các kênh (channel).
+- Đây là một cách hiệu quả để triển khai hệ thống thời gian thực như thông báo, chat hoặc truyền tải sự kiện.
+  
+  #### Cách hoạt động của Pub/Sub
+  - Publisher:
+    + Gửi tin nhắn tới một kênh cụ thể.
+    + Các client nào đã "subscribe" (đăng ký) kênh đó sẽ nhận được tin nhắn.
 
+  - Subscriber:
+    + Lắng nghe các tin nhắn từ một hoặc nhiều kênh mà nó đã đăng ký.
+
+- Các hàm quan trọng:
+  + subscribe(channel): Đăng ký nhận tin nhắn từ kênh.
+  + unsubscribe(channel): Hủy đăng ký khỏi kênh.
+  + on('message', callback): Lắng nghe tin nhắn từ kênh đã đăng ký.
+  + publish(channel, message): Gửi tin nhắn tới kênh.
+
+- Ví dụ: 
+```
+const redis = require('redis');
+const subscriber = redis.createClient();
+
+// connect
+subscriber.on('connect', () => {
+  console.log('Subscriber connected to Redis');
+});
+
+// Người gửi tin nhắn
+publisher.publish('notifications', 'Hello from Redis Pub/Sub!');
+
+// Người nhận tin nhắn
+subscriber.on('connect', () => {
+  console.log('Subscriber connected to Redis');
+});
+
+// Đăng ký kênh
+subscriber.subscribe('notifications');
+
+// nhận tin nhắn
+subscriber.on('message', (channel, message) => {
+  console.log(`Received message: "${message}" from channel: "${channel}"`);
+});
+```
+- Lưu ý khi dùng Pub/Sub:
+  + **Không lưu trữ tin nhắn:** Tin nhắn chỉ được gửi tới các Subscriber đã đăng ký. Những Subscriber kết nối sau sẽ không nhận được tin nhắn đã gửi trước đó.
+  + **Không phù hợp cho hệ thống lớn:** Với số lượng lớn Publisher/Subscriber hoặc tin nhắn, Redis có thể trở thành điểm nghẽn.
+  + **Thay thế Redis Streams nếu cần lưu trữ tin nhắn:** Redis Streams là lựa chọn tốt nếu bạn cần lưu tin nhắn để xử lý sau.
+
+
+## Transactions
+  - Redis hỗ trợ các lệnh giao dịch theo nhóm để đảm bảo tính nhất quán.
+  - Một giao dịch được bắt đầu bằng MULTI, các lệnh được thêm vào hàng đợi và thực thi bằng EXEC.
 
 ### **Tổng Kết**
 

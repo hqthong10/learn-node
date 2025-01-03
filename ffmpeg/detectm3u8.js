@@ -12,15 +12,13 @@ let downm3u8 = [
   // 'https://livestreamcdn.webinaris.co/hls/20052-LIVE-00007344/index.m3u8',
   // 'https://livestreamcdn.webinaris.co/hls/14071-LIVE-THONGTEST5/index.m3u8',
   // 'https://livevncdn.piepme.com/hls/18010.7f57c23c4f05a7ef99bb99aed334b647/720p/index.m3u8',
-  // './inp/r-2.mp4',
+  './inp/ga-tha-tim.riv',
   // newLocal,
   // 'rtmp://livestream.webinaris.co/hls/14071-LIVE-00007427',
 
   // "-v", "error", "-show_format", "-show_streams",
   // 'rtmp://livestream.webinaris.co/hls/14071-LIVE-00007506',
-  // 'https://livevncdn.piepme.com/hls/29760.6d542494a5f407eafb97b5ff7370cd79/index.m3u8',
-  // "https://livevncdn.piepme.com/hls/18010.c3abb5d25cfc1ac65a81a98ef67445e3/index.m3u8",
-  "https://cdn.piepme.com/18010/livestream/18010.69e5a76f085f29fc9c55ef3ba916d893/index.m3u8",
+  // "https://cdn.piepme.com/18010/livestream/18010.69e5a76f085f29fc9c55ef3ba916d893/index.m3u8",
 
   // '-vn',
 
