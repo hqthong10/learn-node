@@ -270,6 +270,6 @@ async function example () {
     const exists = await fs.pathExists(filepath)
   
     console.log(exists) // => false
-  }
+}
   
   example()

@@ -7,7 +7,7 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/26207/videos/piep-9AoNqIk617354776403301735477640330/hls/480p.m3u8",
+  "https://cdn.piepme.com/26987/videos/piep-In6LpQ9517357816801671735781680167/hls/480p.m3u8",
   
   // "-ss",
   // "0",
@@ -20,7 +20,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "./out/tram-vy.mp4",
+  "./out/juki.mp4",
 ].concat();
 
 
