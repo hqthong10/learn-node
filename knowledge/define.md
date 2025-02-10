@@ -11,6 +11,9 @@ MPEG-DASH là đối thủ cạnh tranh với HLS. Trong khi HLS đang cạnh tr
 Cách đây vài năm thì MPEG-DASH cũng mấp mé tranh ngôi quán quân với HLS nhưng bây giờ tình hình đã thay đổi.
 Thời điểm năm 2017 MPEG-DASH không được hỗ trợ bởi Safari, trong khi các thiết bị của Apple ngày càng phổ biến trên toàn cầu. Đến giữa năm 2019 thì Apple cũng cho ra mắt Low-Latency HLS thế nên tính đến thời điểm hiện tại HLS vẫn đang là giao thức streaming phổ biến nhất.
 
+# CMAF (Common Media Application Format)
+CMAF là một định dạng tệp chuẩn hóa được phát triển bởi Apple và Microsoft để hợp nhất HLS và DASH. Nó giúp giảm chi phí lưu trữ và băng thông khi phát video trực tuyến bằng cách sử dụng một tệp video duy nhất cho cả hai giao thức.
+
 # RTMP - Real-Time Messaging Protocol
 RTMP là giao thức được phát triển bởi Adobe, sử dụng để truyền tải âm thanh và video với Adobe Flash Player. Nó giống như là việc cách đây khoảng 10 năm bạn ra hàng net, muốn xem video bạn phải cài thêm Adobe Flash Player cho trình duyệt IE chẳng hạn. Vì thời buổi đó các flash web đang rất thông dụng
 

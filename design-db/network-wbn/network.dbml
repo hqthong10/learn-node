@@ -1,0 +1,28 @@
+Table c200 {
+    PC200 int [pk, increment]
+    CV201 varchar // (code)
+    CV202 varchar // (de)
+    CD203 date // (de)
+    FP000 int
+    FK100 int
+}
+
+Table p000 {
+    PQ100 int [pk, increment]
+    QV101 varchar // (fname)
+    QV102 varchar // (lname)
+    QV104 varchar // (email)
+    QV105 varchar // (pass)
+    QV107 varchar // (gender)
+    QV108 varchar (sdt)
+    QV145 char
+    FL100 int
+    FB050 int [ref: > B050.PB050]
+    FB100 int [ref: > B100.PB100]
+    FB200 int [ref: > B200.PB200]
+    FK100 int [ref: > K100.PK100]
+}
+
+Table p100 {
+
+}

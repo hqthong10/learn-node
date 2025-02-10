@@ -106,11 +106,52 @@ let test = [
 
 let test2 = [
   "-y",
-  "-i", "./inp/tram-vy.mov",
-  "./out/tram-vy/index.mp4",
+  "-i", "./inp/piep-ZWuQfF8i17388380310511738838031051.mov",
+  // "-i", "./out/test.mov",
+  // "-i", "test.mov",
+
+  
+  "-c:v", "libx264", 
+  "-pix_fmt", "yuv420p", 
+  "-crf", "23", 
+  "-c:a", "aac", 
+  "-r", "30",
+  "-g", "60",
+  "-preset", "fast",
+
+  "-map", "0:v", "-map", "0:a", 
+  "-map", "0:v", "-map", "0:a",
+  "-map", "0:v", "-map", "0:a", 
+  
+  "-filter:v:0", "scale=-2:480",
+  "-filter:v:1", "scale=-2:720", 
+  "-filter:v:2", "scale=-2:1080", 
+  
+  "-maxrate:v:0", "800000", 
+  "-maxrate:v:1", "1500000", 
+  "-maxrate:v:2", "3000000", 
+  
+  "-bufsize:v:0", "800000",
+  "-bufsize:v:1", "1500000", 
+  "-bufsize:v:2", "3000000",
+  
+  "-hls_playlist_type", "vod", 
+  "-hls_time", "6", 
+  "-hls_flags", "independent_segments",
+  "-master_pl_name", "index.m3u8",
+  "-var_stream_map", "v:0,a:0,name:480p v:1,a:1,name:720p v:2,a:2,name:1080p", 
+  './out/%v.m3u8'
 ]
 
-let child = spawn("ffmpeg", test);
+let info = [
+  "-y",
+  "-i", "./inp/piep-ZWuQfF8i17388380310511738838031051.mov",
+];
+// ffprobe
+
+let child = spawn("ffprobe", info);
+// let child = spawn("ffmpeg", test2);
+
 child.stderr.setEncoding("utf8");
 
 child.stdout.on("data", (data) => {
