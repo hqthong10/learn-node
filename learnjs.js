@@ -260,16 +260,6 @@
 // if (a.includes('a') || a.includes('b') || a.includes('c')) {
 //     console.log('success')
 // }
+let str;
 
-const fs = require("fs-extra");
-
-const filepath = './ffmpeg/inps'
-
-
-async function example () {
-    const exists = await fs.pathExists(filepath)
-  
-    console.log(exists) // => false
-}
-  
-  example()
+console.log(typeof str == 'undefined');

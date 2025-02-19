@@ -7,7 +7,8 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/21118/videos/piep-rxZmWLcT17395983016551739598301655/hls/720p.m3u8",
+  // "./inp/livevoice.mp4",
+  "./out/do-hai-yen.mp4",
   
   // "-ss",
   // "0",
@@ -15,12 +16,14 @@ let args_m3u8_vertical_mp4 = [
   // `40`,
 
   "-vf",
-  "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
+  "fps=1", // 1 frame per second
+  // "fps=1/0.1", // 1 frame per 0.1 seconds
+  // "fps=1/60", // 1 frame per minute
+  // "fps=1/600", // 1 frame per 10 minutes
+  // "fps=1/2", // 1 frame per 2 seconds 
+  // "select='between(t,2,6)+between(t,15,24)'", // select frames between 2-6 and 15-24 seconds
 
-  "-c:a",
-  "copy",
-
-  "./out/loan-loan.mp4",
+  "./out/images/im%d.jpg",
 ].concat();
 
 

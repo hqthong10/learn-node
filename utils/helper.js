@@ -70,6 +70,11 @@ export function removeUnicode(str) {
 }
 
 //
+export function removeUnicodeV2(str) {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+//
 export function removeUnicodeRemoveSpace(str) {
     return removeUnicode(str).replace(/[\s:\/\\\.]/g, '');
 }

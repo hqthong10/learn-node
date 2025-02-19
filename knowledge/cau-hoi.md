@@ -95,3 +95,96 @@ Có thể lưu vào bộ nhớ đệm
 Máy khách-Máy chủ
 Hệ thống phân lớp
 Mã theo yêu cầu (tùy chọn)
+
+
+1. Câu hỏi về JavaScript cơ bản
+- let, const, và var khác nhau như thế nào?
+- Giải thích về hoisting trong JavaScript?
+- == và === khác nhau thế nào?
+- null và undefined khác nhau thế nào?
+- Closures là gì? Lấy ví dụ.
+- Giải thích về scope và lexical scope.
+- Callback function là gì?
+- Sự khác nhau giữa synchronous và asynchronous trong JavaScript?
+- Event Loop hoạt động như thế nào?
+- Debounce và Throttle là gì? Khi nào sử dụng?
+
+2. Câu hỏi về ES6+
+- Template literals là gì?
+- Sự khác nhau giữa arrow function và function thông thường?
+- Rest parameters và spread operator (...) khác nhau thế nào?
+- Destructuring là gì? Lấy ví dụ.
+- map(), filter(), và reduce() khác nhau như thế nào?
+- Promise là gì? Các trạng thái của một Promise?
+- Sự khác nhau giữa async/await và Promise.then()?
+- Symbol và BigInt là gì?
+- WeakMap và WeakSet là gì?
+- Giải thích về Modules (import/export) trong ES6.
+
+3. Câu hỏi về TypeScript
+- TypeScript khác gì với JavaScript?
+- Các kiểu dữ liệu cơ bản trong TypeScript?
+- Sự khác nhau giữa any, unknown, và never?
+- Khi nào sử dụng interface và khi nào sử dụng type?
+- Generics là gì? Lấy ví dụ.
+- Mapped Types là gì?
+- Utility Types phổ biến trong TypeScript (Partial<T>, Readonly<T>, Pick<T>, Omit<T>)?
+- Enum trong TypeScript hoạt động như thế nào?
+- type assertion là gì?
+- Khi nào nên dùng readonly và const?
+
+4. Câu hỏi về Object-Oriented Programming (OOP) trong JavaScript/TypeScript
+- Các nguyên lý OOP trong JavaScript?
+- class và prototype khác nhau như thế nào?
+- this trong JavaScript hoạt động như thế nào?
+- Các cách để bind this (call(), apply(), bind()) trong JavaScript?
+- Tính kế thừa (extends và super) trong TypeScript?
+- Sự khác nhau giữa private, protected, và public trong TypeScript?
+- Khi nào dùng abstract class thay vì interface?
+- static trong class có ý nghĩa gì?
+- Decorator trong TypeScript là gì?
+- Tính đa hình (polymorphism) trong TypeScript?
+
+5. Câu hỏi về DOM và Event Handling
+- Event bubbling và event capturing là gì?
+- event.preventDefault() và event.stopPropagation() khác nhau thế nào?
+- Sự khác nhau giữa document.querySelector() và getElementById()?
+- Khi nào nên sử dụng event delegation?
+- Khi nào dùng addEventListener() thay vì onclick?
+
+6. Câu hỏi về Async JavaScript
+- Microtask queue và macrotask queue khác nhau như thế nào?
+- setTimeout(fn, 0) có thực sự chạy ngay lập tức không?
+- Khi nào nên sử dụng Promise.all(), Promise.race(), Promise.any()?
+- Tại sao await chỉ hoạt động bên trong một async function?
+- Các cách xử lý lỗi khi dùng async/await?
+
+7. Câu hỏi về Performance Optimization
+- Kỹ thuật tối ưu hiệu suất JavaScript?
+- Khi nào sử dụng lazy loading?
+- Khi nào nên sử dụng memoization?
+- JavaScript Engine hoạt động như thế nào?
+- Khi nào nên sử dụng Web Workers?
+
+8. Câu hỏi về Testing trong JavaScript/TypeScript
+- Sự khác nhau giữa Unit Test, Integration Test và End-to-End Test?
+- Jest và Mocha khác nhau thế nào?
+- Mocking trong testing là gì?
+- Cách kiểm tra một function có bị gọi trong Jest?
+- TDD (Test-Driven Development) là gì?
+
+9. Câu hỏi về Security trong JavaScript
+- Các lỗ hổng bảo mật phổ biến trong JavaScript?
+- CORS là gì?
+- XSS (Cross-Site Scripting) và cách phòng tránh?
+- CSRF (Cross-Site Request Forgery) là gì?
+- Khi nào nên sử dụng Content Security Policy (CSP)?
+
+10. Câu hỏi về JavaScript Runtime và Build Tools
+- Node.js hoạt động như thế nào?
+- Khi nào nên sử dụng Webpack, Rollup, Parcel?
+- Tree shaking trong Webpack là gì?
+- Khi nào nên dùng Babel?
+- Deno khác gì với Node.js?
+
+
