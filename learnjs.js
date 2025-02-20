@@ -60,18 +60,6 @@
 // async function init() {
 //   return null;
 // }
-// async function start() {
-//   let _infoLive = (await init()) ?? {};
-
-//   console.log("first", _infoLive);
-
-//   _infoLive.start = _infoLive.start ? new Date(_infoLive.start) : "no";
-
-//   _infoLive.hyb_type = "LVLE";
-//   _infoLive.hyb_video = "video";
-
-//   console.log("end", _infoLive);
-// }
 
 // const arr = ["a", "b", "c"];
 // let i = arr.splice(1, 1, "d");
@@ -260,6 +248,11 @@
 // if (a.includes('a') || a.includes('b') || a.includes('c')) {
 //     console.log('success')
 // }
-let str;
 
-console.log(typeof str == 'undefined');
+const arr = [2, 4, 6, 8, 9];
+const num = arr.reduce((prevValue, currentVal, currentIdx, arrRoot) => {
+    console.log(currentIdx, currentVal, prevValue);
+    return prevValue + currentVal;
+})
+
+console.log(num)
