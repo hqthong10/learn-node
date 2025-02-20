@@ -25,7 +25,7 @@
 ✅ Context API
 ✅ Custom Hooks
 ✅ useReducer
-- Optimization (React.memo, useCallback, useMemo)
+✅ Optimization (React.memo, useCallback, useMemo)
 - Server State với SWR hoặc React Query
 
 📌 Thực hành:
