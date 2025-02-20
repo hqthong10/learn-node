@@ -317,3 +317,12 @@ Một cơ chế cho phép ứng dụng nhận thông báo từ một dịch vụ
 
 # Stream Key Overlap (Trùng khóa stream)
 - Khi nhiều client sử dụng cùng một stream key, hệ thống không thể phân biệt được các luồng khác nhau, dẫn đến việc một luồng ghi đè hoặc làm gián đoạn luồng khác.
+
+# SWC (Speedy Web Compiler)
+- là một công cụ biên dịch (compiler) và minifier mã nguồn JavaScript/TypeScript được viết bằng Rust. Nó được thiết kế để thay thế các công cụ như Babel và Terser, với mục tiêu chính là tốc độ và hiệu suất.
+- SWC biên dịch mã nguồn JavaScript/TypeScript (bao gồm cả JSX/TSX) thành mã JavaScript tương thích với các trình duyệt cũ.
+- Tốc độ biên dịch của SWC nhanh hơn nhiều so với Babel, giúp giảm thời gian phát triển (development) và build.
+- SWC hỗ trợ các tính năng mới nhất của JavaScript/TypeScript, bao gồm ES modules, async/await, optional chaining, v.v.
+- Nó cũng hỗ trợ JSX/TSX, giúp biên dịch mã React một cách hiệu quả.
+- SWC có thể minify mã JavaScript, giúp giảm kích thước file và tối ưu hiệu suất.
+- SWC có thể tích hợp với các công cụ build như Vite, Webpack, hoặc thậm chí được sử dụng trực tiếp thông qua CLI.
