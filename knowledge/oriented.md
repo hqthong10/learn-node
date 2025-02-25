@@ -1,12 +1,10 @@
 # Fontend
-
 - NuxtJS
 - NextJS
 - Electron
 - Flutter
 
 # Backend
-
 - ExpressJS
 - NestJS
 - Laravel
@@ -15,7 +13,6 @@
 - Supervisord
 
 # Database
-
 - MySQL
 - MongoBD
 - PostgreSQL
@@ -51,7 +48,6 @@
 - Grafana
 
 # Other
-
 - Agile vs scrum
 - CI/CD
 - google cloud, AWS, Azure, google analytic, facebook API,...
@@ -67,11 +63,10 @@
 - GraphQL
 
 # Define
-
 - map of the internet
 - request
 - response
-- ssl v
+- ssl
 - domain
 - routing
 - dns

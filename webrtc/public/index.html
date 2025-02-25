@@ -6,29 +6,63 @@
     <title>WebRTC Video Call</title>
 </head>
 <body>
-    <h2>WebRTC Video Chat</h2>
     <div class="video-container">
-        <div>
-            <video id="localVideo" autoplay playsinline></video>
+        <div class="video-box">
             <p>local</p>
+            <video id="localVideo" autoplay playsinline></video>
+            <canvas id="visualizer" width="460" height="100"></canvas>
+            <p>audioInputs</p>
+            <div id="audioInputs" class="localDevices"></div>
+            <p>audioOutputs</p>
+            <div id="audioOutputs" class="localDevices"></div>
+            <p>videoInputs</p>
+            <div id="videoInputs" class="localDevices"></div>
         </div>
-        <div>
-            <video id="remoteVideo" autoplay playsinline></video>
+        <div class="video-box">
             <p>remote</p>
+            <video id="remoteVideo" autoplay playsinline></video>
         </div>
     </div>
     <button id="startCall">Start Call</button>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="lib.js"></script>
     <script src="script.js"></script>
     <style>
         .video-container {
             display: flex;
             justify-content: space-around;
         }
+        .video-box {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            background-color: #f2f2f2;
+        }
+
+        canvas{
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
         video {
             width: 300px;
             height: 300px;
             border: 1px solid black;
+        }
+        .localDevices{
+            /* background-color: #f2f2f2; */
+            /* margin-top: 10px; */
+        }
+        .localDevices .device{
+            background-color: #fff;
+            margin: 5px;
+            cursor: pointer;
+            display: flex;
+            flex-flow: column;
+            padding: 5px;
+        }
+        .localDevices .device.selected{
+            background-color: #53e1d8;
         }
         </style>
 </body>

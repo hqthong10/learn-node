@@ -26,26 +26,21 @@
 ✅ Custom Hooks
 ✅ useReducer
 ✅ Optimization (React.memo, useCallback, useMemo)
-- Server State với SWR hoặc React Query
-
-📌 Thực hành:
-🚀 Viết một Blog App có chức năng CRUD với React Router & Context API.
+✅ Server State với SWR hoặc React Query
+- RTK Query
 
 4. Giai đoạn 4: Quản lý State chuyên sâu
 🔹 Mục tiêu: Sử dụng các thư viện state management chuyên sâu.
 🔹 Những gì cần học:
-- Redux Toolkit
-- Zustand, Recoil
-- React Query
-
-📌 Thực hành:
-🚀 Xây dựng E-Commerce App với Redux Toolkit & React Query.
+✅ Redux Toolkit
+✅ Zustand, Recoil
+✅ React Query
 
 5. Giai đoạn 5: Fullstack với ReactJS
 🔹 Mục tiêu: Kết nối React với Backend (Node.js, NestJS, Firebase, Supabase, v.v.).
 🔹 Những gì cần học:
 - Authentication (JWT, OAuth, Firebase Auth)
-- CRUD API với NestJS + MongoDB hoặc PostgreSQL
+✅ CRUD API với NestJS + MongoDB hoặc PostgreSQL
 - WebSockets với Socket.io
 - Next.js (SSR, ISR, SSG)
 
