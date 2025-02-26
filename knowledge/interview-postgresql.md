@@ -1,5 +1,31 @@
 # Câu hỏi PostgreSQL cơ bản
-1. PostgreSQL là gì? So sánh với MySQL?
+1. [v] PostgreSQL là gì?
+1. So sánh với MySQL?
+- Kiến trúc:
++ PostgreSQL: Hỗ trợ cả SQL và NoSQL
++ MySQL: Chỉ hỗ trợ SQL
+
+- Kiểu dữ liệu
++ PostgreSQL: JSON, XML, Array, UUID, Hstore…
++ MySQL: Hạn chế hơn
+
+- Chỉ mục
++ PostgreSQL: B-tree, Hash, GIN, GiST (đa dạng hơn)
++ MySQL: B-tree, Hash
+
+- ACID
++ PostgreSQL: Hỗ trợ đầy đủ
++ MySQL: Hỗ trợ nhưng không mạnh bằng
+
+- Mở rộng:
++ PostgreSQL: Hỗ trợ sharding, partitioning tốt hơn
++ MySQL: Kém hơn
+
+- Ứng dụng
++ PostgreSQL: Hệ thống lớn, AI, Big Data, Blockchain
++ MySQL: Web, ứng dụng nhỏ & vừa
+
+
 2. PostgreSQL có phải là SQL hay NoSQL?
 3. PostgreSQL có hỗ trợ ACID không?
 4. PostgreSQL lưu trữ dữ liệu như thế nào?

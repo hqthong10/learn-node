@@ -28,6 +28,23 @@ VOD là một hệ thống cho phép người dùng có thể lựa chọn và x
 Là giao thức peer-to-peer livestream với độ trễ thậm chí
 Ngày nay để ứng dụng tối đa các lợi ích mà các giao thức livestream đem lại người ta sẽ sử dụng RTMP cho việc nhận video để thu về các video nguồn một cách nhanh nhất và sử dụng HLS để phục vụ đa dạng người dùng cuối nhanh nhất (kết hợp HLS với CDN).
 
+# SFU (Selective Forwarding Unit)
+SFU là một kiến trúc máy chủ trung gian trong WebRTC giúp tối ưu việc truyền tải dữ liệu video & audio trong các cuộc họp trực tuyến, livestream, hoặc hội nghị nhiều người.
+
+# MCU (Multipoint Control Unit)
+
+# P2P (Peer To Peer)
+
+# SD-RTN™ (Software Defined Real-Time Network) Một mạng lưới máy chủ phân tán toàn cầu.
+
+# Adaptive Bitrate (ABR) – Tự động điều chỉnh chất lượng video/audio theo tốc độ mạng.
+
+# FEC (Forward Error Correction) – Giúp giảm mất gói tin khi mạng yếu.
+
+# UDP (User Datagram Protocol) – Tối ưu độ trễ so với TCP.
+
+# AI Noise Suppression – Lọc tiếng ồn bằng AI khi call hoặc livestream.
+
 # UMD
 UMD là viết tắt của "Universal Module Definition" (Định nghĩa Mô-đun Đa năng). Đây là một kỹ thuật trong lập trình JavaScript để viết các thư viện hoặc module có thể sử dụng trong nhiều môi trường khác nhau, bao gồm cả môi trường trình duyệt và môi trường máy chủ (như Node.js).
 
@@ -310,6 +327,8 @@ Một cơ chế cho phép ứng dụng nhận thông báo từ một dịch vụ
 # batteries included
 
 # Edge Rendering
+
+# Edge Computing
 
 # stream collision (xung đột luồng)
 - Đây là tình huống khi nhiều nguồn (clients) cùng gửi dữ liệu đến một key hoặc link RTMP duy nhất.

@@ -8,6 +8,8 @@
 7. [v] Callback function là gì?
 8. [v] Sự khác nhau giữa synchronous và asynchronous trong JavaScript?
 9. Event Loop hoạt động như thế nào?
+-- Vòng lặp sự kiện trong Node.js hay còn gọi là Event Loop cho phép Nodejs thực hiện nhiều thao tác cùng một lúc, Nodejs có thể một lúc xử lý cả ngàn request dù chỉ dùng một thread duy nhất. Vòng lặp sự kiện trong Node.js cho phép Node.js thực hiện những hoạt động I/O không chặn. Về bản chất thì Node.js là một ứng dụng đơn luồng, nhưng Node.js có thể hỗ trợ xử lý đồng thời thông qua định nghĩa về event và callbacks. Mọi API của Node.js là không đồng bộ và là một luồng, chúng sử dụng async function calls để duy trì đồng thời.
+
 - Event Loop chính là cơ chế giúp JavaScript thực hiện xử lý được bất đồng bộ mà không bị chặn
 - JavaScript sử dụng Event Loop để quản lý việc thực thi mã, bao gồm:
 + Call Stack (Ngăn xếp thực thi)
@@ -20,7 +22,6 @@
 3️⃣ Callback Queue: Khi tác vụ hoàn thành, callback của nó được đưa vào hàng đợi.
 4️⃣ Microtask Queue: Chứa các Promise .then() và process.nextTick() (trong Node.js).
 5️⃣ Event Loop: Liên tục kiểm tra nếu Call Stack rỗng thì lấy các hàm từ Microtask Queue (trước) hoặc Callback Queue (sau) để đưa vào Call Stack.
-
 
 
 10. [v] Debounce và Throttle là gì? Khi nào sử dụng?
@@ -41,7 +42,7 @@
 # Câu hỏi về TypeScript
 1. [v] TypeScript khác gì với JavaScript?
 2. [v] Các kiểu dữ liệu cơ bản trong TypeScript?
-3. Sự khác nhau giữa any, unknown, và never?
+3. [v] Sự khác nhau giữa any, unknown, và never?
 4. Khi nào sử dụng interface và khi nào sử dụng type?
 5. Generics là gì? Lấy ví dụ.
 6. Mapped Types là gì?

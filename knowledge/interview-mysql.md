@@ -1,5 +1,5 @@
 # Câu hỏi MySQL cơ bản
-1. MySQL là gì? So sánh MySQL với các hệ quản trị cơ sở dữ liệu khác như PostgreSQL, MongoDB?
+1. [v] MySQL là gì?
 2. InnoDB và MyISAM khác nhau như thế nào?
 3. Giải thích ACID trong cơ sở dữ liệu?
 4. Các kiểu dữ liệu chính trong MySQL là gì?

@@ -1,8 +1,8 @@
 # Câu hỏi MongoDB cơ bản
-1. MongoDB là gì?
+1. [v] MongoDB là gì?
 2. So sánh MongoDB với MySQL (SQL vs NoSQL)?
 3. MongoDB lưu trữ dữ liệu dưới dạng gì?
-4. Khi nào nên sử dụng MongoDB thay vì SQL?
+4. [v] Khi nào nên sử dụng MongoDB thay vì SQL?
 5. Tài liệu (document) trong MongoDB là gì?
 6. Cấu trúc của một document MongoDB như thế nào?
 7. Một collection là gì?

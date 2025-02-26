@@ -1,5 +1,6 @@
 # Câu hỏi NestJS cơ bản
-1. NestJS là gì? Tại sao nên sử dụng NestJS thay vì ExpressJS?
+1. [v] NestJS là gì?
+1. Tại sao nên sử dụng NestJS thay vì ExpressJS?
 2. NestJS có hỗ trợ kiến trúc MVC không?
 3. So sánh NestJS với ExpressJS và Fastify?
 4. Module trong NestJS là gì?

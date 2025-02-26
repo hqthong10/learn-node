@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Video Call</title>
+</head>
+<body>
+    <script type="text/javascript" crossorigin="anonymous" src="./webrtc.js?ver=848"></script>
+    <div class="video-container">
+        <div class="container-inner" id="add_camera_inner">
+            <video id="previewWebcam" class="previewWebcam task" aria-hidden="true" title="Right-click this video for additional options" data-menu="context-menu-video" oncanplay="updateStats();" controlsList="nodownload" muted autoplay playsinline ></video>
+        </div>
+        <div id="videoMenu" class="videoMenu" aria-hidden="true">
+            <div class="title">
+                <i class="las la-video"></i><span data-translate="video-source"> Video Source </span>
+            </div>
+            <span style="display:inline-block;padding-top: 5px;">
+                <select id="videoSourceSelect" tabindex="1" title="Video source list"></select>
+                <span id="gear_webcam" onclick="toggle(document.getElementById('videoSettings'));">
+                    <i class="las la-cog" style="font-size: 140%; vertical-align: middle;" aria-hidden="true"></i>
+                </span>
+            </span>
+            <div id="cameraTip1" class="cameraTip hidden">
+                <i class="las la-info-circle"></i>
+                <p><span id="cameraTipContext1"></span></p>
+            </div>
+        </div>
+        <div id="audioMenu" class="form-group multiselect" alt="tip: Hold CTRL (command) to select Multiple" title="tip: Hold CTRL (command) to select Multiple">
+            <span class='gear_microphone hidden'>
+                <input type="checkbox" id='micStereoMonoInput' alt="Mono microphone audio"  onchange="toggleMonoStereoMic(this);">Mono
+            </span>
+            <a id="multiselect-trigger" class="form-control multiselect-trigger" data-state="1">
+                <div class="title">
+                    <i class="las la-microphone-alt"></i><span data-translate="select-audio-source"> Audio Source(s) </span>
+                    <i id='chevarrow1' class="chevron bottom" aria-hidden="true"></i>
+                    <div class="meter" id="meter1"></div><div class="meter2" id="meter2"></div>
+                </div>
+            </a>
+            <ul id="audioSource" class="multiselect-contents" >
+                <li>
+                    <input type="checkbox" id="multiselect1" name="multiselect1" style="display: none;" checked value="ZZZ" />
+                    <label for="multiselect1">
+                        <span data-translate="no-audio"> No Audio</span>
+                    </label>
+                </li>
+            </ul>
+            <div id="audioTip1" class="cameraTip hidden">
+                <i class="las la-info-circle"></i>
+                <p><span id="audioTipContext1"></span></p>
+            </div>
+        </div>
+        <div id="headphonesDiv" class="audioMenu hidden" aria-hidden="true">
+            <div class="title">
+                <i class="las la-headphones"></i><span data-translate="select-output-source"> Audio Output Destination</span><button onclick="playtone()" title="Play a sound out of the selected audio playback device" class="testtonebutton" type="button">Test</button>
+            </div>
+            <select id="outputSource" alt="Audio output device" ></select>
+            <div id="headphoneTip1" class="cameraTip hidden">
+                <i class="las la-info-circle"></i>
+                <p><span id="headphoneTipContext1"></span></p>
+            </div>
+            <div id="audioTipSR" class="cameraTip hidden">
+                <i class="las la-exclamation-circle"></i>
+                <p><span id="audioTipContextSR"></span></p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="webcamstats" style="padding: 5px 0 0 0;"></div>
+    </div>
+    <button id="startCall">Start Call</button>
+    
+    <script type="text/javascript" crossorigin="anonymous" src="./vdo-lib.js"></script>
+    <script>
+            var session = WebRTC.Media; // session is a required global variable if configuring manually. Run before loading main.js but after webrtc.js.
+			session.version = "27.1";
+			session.streamID = session.generateStreamID(); 
+            session.defaultPassword = "someEncryptionKey123";
+            session.stunServers = [{ urls: ["stun:stun.l.google.com:19302", "stun:stun.cloudflare.com:3478"]}]; // google + cloudflare stun servers. default
+
+            // custom settings
+            session.webcamonly = true;
+		    session.screensharebutton = false;
+            session.videoDevice = 1;
+            session.audioDevice = 1;
+            // session.audioBitrate = 128;
+
+            var getUserMediaRequestID = 0;
+            var mediaStreamCounter = 0;
+            var gotDevices2AlreadyRan = false;
+            var SelectedAudioOutputDevices = false; // session.sink
+            var SelectedAudioInputDevices = []; // ..
+            var SelectedVideoInputDevices = []; // ..
+            var Firefox = false;
+            var iOS = false;
+            var iPad = false;
+            var translation = false;
+
+            function updateStats() {
+                if (document.getElementById("previewWebcam")) {
+                    var ele = document.getElementById("previewWebcam");
+                    var wcs = "webcamstats";
+                } else if (document.getElementById("videosource")) {
+                    var ele = document.getElementById("videosource");
+                    var wcs = "webcamstats3";
+                } else {
+                    return;
+                }
+
+                try {
+                    getById(wcs).innerHTML = "";
+                    ele.srcObject.getVideoTracks().forEach(function (track) {
+                        if (obsvc && parseInt(track.getSettings().frameRate) == 30) {
+                            getById(wcs).innerHTML = "Video Settings: " + (track.getSettings().width || 0) + "x" + (track.getSettings().height || 0) + " @ up to 60fps";
+                        } else {
+                            var frameRateFPS = track.getSettings().frameRate;
+                            if (frameRateFPS) {
+                                getById(wcs).innerHTML = "Current Video Settings: " + (track.getSettings().width || 0) + "x" + (track.getSettings().height || 0) + "@" + parseInt(frameRateFPS * 100) / 100.0 + "fps";
+                            } else {
+                                getById(wcs).innerHTML = "Current Video Settings: " + (track.getSettings().width || 0) + "x" + (track.getSettings().height || 0);
+                            }
+                        }
+                    });
+                } catch (e) {
+                    errorlog(e);
+                }
+            }
+
+            function previewWebcam(miconly = false) {
+                if (session.taintedSession === null) {
+                    console.log("STILL WAITING ON HASH TO VALIDATE");
+                    setTimeout(
+                        function (miconly) {
+                            previewWebcam(miconly);
+                        },
+                        1000,
+                        miconly
+                    );
+                    return;
+                } else if (session.taintedSession === true) {
+                    console.log("HASH FAILED; PASSWORD NOT VALID");
+                    return;
+                } else {
+                    console.log("NOT TAINTED");
+                }
+
+                var constraint = {
+                    audio: true
+                };
+
+                enumerateDevices()
+                    .then(function (devices) {
+                        console.log(devices);
+                        var vtrue = false;
+                        var atrue = false;
+                        devices.forEach(function (device) {
+                            if (device.kind === "audioinput") {
+                                atrue = true;
+                            } else if (device.kind === "videoinput") {
+                                vtrue = true;
+                            }
+                        });
+                        if (atrue === false) {
+                            constraint.audio = false;
+                        }
+                        if (vtrue === false) {
+                            constraint.video = false;
+                        }
+                        setTimeout(
+                            function (constraint, miconly) {
+                                requestBasicPermissions(constraint, setupWebcamSelection, miconly);
+                            },
+                            0,
+                            constraint,
+                            miconly
+                        );
+                    })
+                    .catch(error => {
+                        console.log("enumeratated failed. Seeking permissions.");
+                        setTimeout(
+                            function (constraint, miconly) {
+                                requestBasicPermissions(constraint, setupWebcamSelection, miconly);
+                            },
+                            0,
+                            constraint,
+                            miconly
+                        );
+                    });
+            }
+
+            previewWebcam();
+
+            console.log(session);
+    </script>
+    
+    <style>
+        .video-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .video-box {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            background-color: #f2f2f2;
+        }
+
+        canvas{
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        video {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .localDevices{
+            /* background-color: #f2f2f2; */
+            /* margin-top: 10px; */
+        }
+        .localDevices .device{
+            background-color: #fff;
+            margin: 5px;
+            cursor: pointer;
+            display: flex;
+            flex-flow: column;
+            padding: 5px;
+        }
+        .localDevices .device.selected{
+            background-color: #53e1d8;
+        }
+        </style>
+</body>
+</html>

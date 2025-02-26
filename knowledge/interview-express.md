@@ -1,7 +1,40 @@
 # Câu hỏi về Express.js cơ bản
-1. Express.js là gì? Tại sao nên sử dụng nó?
+1. [v] Express.js là gì? Tại sao nên sử dụng nó?
+
 2. So sánh Express.js với NestJS hoặc Koa.js?
+- Express.js: Nhẹ, linh hoạt, phổ biến, phù hợp cho REST API & web server, mức độ phổ biến cao.
+- NestJS: Kiến trúc module hóa, sử dụng TypeScript, phù hợp cho dự án lớn, mức độ phổ biến cao nhưng thấp hơn Express.js
+- Koa.js: Nhẹ hơn Express, sử dụng async/await thay vì callback, mức độ phổ biến thấp hơn NestJS.
+- Fastify: Hiệu suất cao hơn Express, tối ưu cho API tốc độ cao, mức độ phổ biến tương đương Koa.js
+
 3. Cách tạo một server đơn giản với Express.js?
+```
+npm init -y        # Khởi tạo project Node.js
+npm install express  # Cài đặt Express.js
+
+const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// Middleware để parse JSON request body
+app.use(express.json());
+
+// Route đơn giản
+app.get('/', (req, res) => {
+    res.send('Hello, Express!');
+});
+
+// API lấy danh sách người dùng (demo)
+app.get('/users', (req, res) => {
+    res.json([{ id: 1, name: "John Doe" }, { id: 2, name: "Jane Doe" }]);
+});
+
+// Khởi động server
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+});
+
+```
 4. Middleware trong Express.js là gì? Có bao nhiêu loại middleware?
 5. app.use() khác gì với app.get(), app.post()?
 6. Sự khác nhau giữa req.query, req.params và req.body?

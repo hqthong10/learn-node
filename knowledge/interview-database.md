@@ -1,6 +1,6 @@
 # Câu hỏi Database cơ bản
-1. Database là gì? Các loại Database phổ biến?
-2. So sánh SQL vs NoSQL? Khi nào nên dùng SQL, khi nào dùng NoSQL?
+1. [v] Database là gì? Các loại Database phổ biến?
+2. [v] So sánh SQL vs NoSQL? Khi nào nên dùng SQL, khi nào dùng NoSQL?
 3. ACID trong Database là gì?
 4. BASE trong NoSQL là gì?
 5. Sự khác nhau giữa Schema, Table, View?

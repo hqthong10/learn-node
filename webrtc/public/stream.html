@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Video Call</title>
+</head>
+<body>
+    <div class="video-container">
+        <div class="iframe-box">
+            <iframe id="iframe" width="880" height="520" ></iframe>
+        </div>
+    </div>
+    <button id="startCall">Start Call</button>
+    
+    <script>
+            const iframe = document.getElementById("iframe");
+            iframe.allow = `autoplay;camera;microphone;fullscreen;picture-in-picture;display-capture;midi;geolocation;gyroscope;screen-wake-lock;unsafe-url;allow-scripts;`;
+            iframe.src = "https://vdo.ninja/?push=aaa&transparent&screenshare";
+            // iframe.src = "https://vdo.ninja/?push=aaa&transparent&webcam&screenshare&chroma&videodevice=1&audiodevice=1"
+    </script>
+    <style>
+        .video-container {
+            display: flex;
+            justify-content: space-around;
+        }
+        .video-box {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            background-color: #f2f2f2;
+        }
+
+        canvas{
+            background-color: #fff;
+            margin-top: 10px;
+        }
+
+        video {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        .localDevices{
+            /* background-color: #f2f2f2; */
+            /* margin-top: 10px; */
+        }
+        .localDevices .device{
+            background-color: #fff;
+            margin: 5px;
+            cursor: pointer;
+            display: flex;
+            flex-flow: column;
+            padding: 5px;
+        }
+        .localDevices .device.selected{
+            background-color: #53e1d8;
+        }
+        </style>
+</body>
+</html>
