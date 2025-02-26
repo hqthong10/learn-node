@@ -1,34 +1,49 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
+const { PubSub } = require("graphql-subscriptions");
+
+const pubsub = new PubSub();
+
+const resolvers = {
+  Mutation: {
+    createUser: (_, { name, email }) => {
+      const newUser = { id: Date.now().toString(), name, email };
+      pubsub.publish("USER_CREATED", { newUser });
+      return newUser;
+    }
+  },
+  Subscription: {
+    newUser: {
+      subscribe: () => pubsub.asyncIterator(["USER_CREATED"])
+    }
+  }
+};
 
 // Xây dựng một Schema, sử dụng ngôn ngữ Schema GraphQL
-// var schema = buildSchema(`
-//     type Query {
-//       hello: String
-//     }
-// `);
-
 const schema = buildSchema(`
   type Query {
     hello: String
+    hi: String
     books: [Book]
+    findBooks(id: Int): Book
   }
 
   type Mutation {
-    addBook(title: String!, author: String!): Book
+    addBook(id: Int, title: String!, author: String!): Book
   }
 
   type Book {
-    title: String
-    author: String
+    id: Int!
+    title: String!
+    author: String!
   }
 `);
 
 // Dữ liệu mẫu
 const books = [
-    { title: 'Book 1', author: 'Author 1' },
-    { title: 'Book 2', author: 'Author 2' }
+    { id: 1, title: 'Book 1', author: 'Author 1' },
+    { id: 2, title: 'Book 2', author: 'Author 2' }
 ];
 
 // Root cung cấp chức năng phân giải cho mỗi endpoint API
@@ -36,9 +51,13 @@ const root = {
     hello: () => {
         return 'Hello world!';
     },
+    hi: () => {
+        return 'Hi world!';
+    },
     books: () => books,
-    addBook: ({ title, author }) => {
-        const newBook = { title, author };
+    findBooks: (id) => books.find(book => book.id === id),
+    addBook: ({ id, title, author }) => {
+        const newBook = { id, title, author };
         books.push(newBook);
         return newBook;
     }
