@@ -1,16 +1,49 @@
-# Câu hỏi NestJS cơ bản
-1. [v] NestJS là gì?
-1. Tại sao nên sử dụng NestJS thay vì ExpressJS?
-2. NestJS có hỗ trợ kiến trúc MVC không?
-3. So sánh NestJS với ExpressJS và Fastify?
-4. Module trong NestJS là gì?
-5. Controller trong NestJS là gì?
-6. Service trong NestJS là gì?
-7. Provider trong NestJS là gì?
-8. NestJS sử dụng Dependency Injection như thế nào?
-9. Pipe là gì? Khi nào nên sử dụng Pipe?
-10. Cách sử dụng ConfigModule trong NestJS để quản lý biến môi trường?
-11. Làm thế nào để bảo mật API trong NestJS?
+# [v] NestJS là gì?
+# Tại sao nên sử dụng NestJS thay vì ExpressJS?
+# NestJS có hỗ trợ kiến trúc MVC không?
+# So sánh NestJS với ExpressJS và Fastify?
+# Module trong NestJS là gì?
+- Module là một cách tổ chức code giúp chia nhỏ ứng dụng thành nhiều phần có thể tái sử dụng và quản lý dễ dàng.
+- NestJS sử dụng module-based architecture, nghĩa là mỗi tính năng hoặc nhóm chức năng của ứng dụng sẽ được đóng gói trong một module riêng biệt.
+
+- Mỗi module trong NestJS có thể chứa các thành phần sau:
++ Controllers (Xử lý request từ client)
++ Providers (Services, Guards, Interceptors, etc.)
++ Exports (Cho phép module khác sử dụng các thành phần của nó)
++ Imports (Nhập module khác để sử dụng)
++ Dependencies Injection (Inject các service)
+
+# Controller trong NestJS là gì?
+- Controllers là nơi xử lý các request từ client và trả về response.
+- Chúng đóng vai trò như một điểm truy cập cho ứng dụng, giúp định tuyến và xử lý dữ liệu trước khi chuyển đến Service hoặc Database.
+
+# Service trong NestJS là gì?
+- Service trong NestJS là một provider giúp tách biệt business logic ra khỏi controllers, giúp code dễ quản lý, tái sử dụng và dễ kiểm thử (unit test).
+
+# Provider trong NestJS là gì?
+- Provider trong NestJS là một class hoặc một giá trị có thể được inject vào các thành phần khác như Controllers, Services, Guards, Interceptors... thông qua Dependency Injection (DI).
+- Provider giúp:
+✅ Quản lý business logic tách biệt với Controller.
+✅ Tái sử dụng logic trong nhiều nơi.
+✅ Hỗ trợ Dependency Injection, giúp code dễ mở rộng và test.
+- Bất kỳ class nào có @Injectable() đều có thể trở thành một Provider.
+
+# Middleware
+
+# Exception filters
+
+# Pipes
+
+# Guards
+
+# Interceptors
+
+# Custom route decorators
+
+# NestJS sử dụng Dependency Injection như thế nào?
+# Pipe là gì? Khi nào nên sử dụng Pipe?
+# Cách sử dụng ConfigModule trong NestJS để quản lý biến môi trường?
+# Làm thế nào để bảo mật API trong NestJS?
 
 # Câu hỏi NestJS nâng cao
 1. Cách kết nối NestJS với PostgreSQL?

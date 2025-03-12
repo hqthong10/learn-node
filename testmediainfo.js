@@ -1,7 +1,5 @@
 const mediaInfoFactory = require('mediainfo.js');
 
-
-
 async function getFileDuration(filePath) {
     const mediaInfo = await mediaInfoFactory({})
   

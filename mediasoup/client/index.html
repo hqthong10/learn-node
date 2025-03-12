@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Mediasoup</title>
+    <link rel="stylesheet" href="room.css">
+    <script src="mediasoup-client.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="join-screen">
+        <h2>Join Room</h2>
+        <input type="text" id="username" placeholder="Enter your name">
+        <input type="text" id="room-id" placeholder="Enter room ID">
+        <label>
+            <input type="checkbox" id="provider" checked="1"/>
+            provider
+        </label>
+        <button id="join-button">Join</button>
+    </div>
+
+    <div id="participant-view" style="display: none;">
+        <!-- Participant view will be added here -->
+    </div>
+
+    <div id="controls" style="display: none;">
+        <button id="camera-button">Start Camera</button>
+        <button id="screen-button">Share Screen</button>
+        <button id="mute-button">Mute Audio</button>
+        <button id="video-button">Stop Video</button>
+        <button id="push-button">Push stream</button>
+        <button id="leave-button">Leave Room</button>
+    </div>
+
+    <script src="./room.js"></script>
+</body>
+</html>

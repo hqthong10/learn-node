@@ -1,7 +1,7 @@
 1. Kiến thức nền tảng cần có
-- JavaScript/TypeScript: Biết về ES6+, hiểu cơ bản về TypeScript.
-- Node.js: Hiểu cách hoạt động của Node.js, event loop, async/await.
-- REST API & GraphQL: Hiểu về API, HTTP methods, status codes.
+- [v] JavaScript/TypeScript: Biết về ES6+, hiểu cơ bản về TypeScript.
+- [v] Node.js: Hiểu cách hoạt động của Node.js, event loop, async/await.
+- [v] REST API & GraphQL: Hiểu về API, HTTP methods, status codes.
 
 2. Bắt đầu với NestJS
 - Hiểu cấu trúc thư mục của NestJS.

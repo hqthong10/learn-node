@@ -1,18 +1,8 @@
-1. Ngôn ngữ lập trình (Programming Languages)
-Bạn cần chọn một ngôn ngữ backend phổ biến như:
-
-- JavaScript (Node.js) → Phổ biến với Express.js, NestJS.
-- Python → Dùng với Django, Flask, FastAPI.
-- PHP → Laravel, CodeIgniter.
-- Java → Spring Boot.
-- C# → ASP.NET.
-- Go → Gin, Echo.
-- Ruby → Ruby on Rails.
-📌 Gợi ý: Nếu bạn làm việc với Node.js, hãy tập trung vào JavaScript/TypeScript.
 
 2. Kiến thức về HTTP & API
 - HTTP Methods (GET, POST, PUT, DELETE, PATCH)
 - Status Codes (200 OK, 404 Not Found, 500 Internal Server Error, ...)
+
 - RESTful API vs GraphQL
 - WebSockets (Realtime communication)
 - OAuth, JWT, API Keys (Xác thực API)

@@ -7,12 +7,12 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/27380/videos/piep-m6rgmqwY17403704691881740370469188/hls/720p.m3u8",
+  "https://cdn.piepme.com/25372/videos/piep-IOsBfSvN17415301927381741530192738/hls/720p.m3u8",
   
-  // "-ss",
-  // "0",
-  // "-t",
-  // `40`,
+  "-ss",
+  "0",
+  "-t",
+  `60`,
 
   "-vf",
   "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
@@ -20,7 +20,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "./out/thanh-trang-lan-nha.mp4",
+  "./out/ucmypham.mp4",
 ].concat();
 
 

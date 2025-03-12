@@ -29,9 +29,12 @@ Là giao thức peer-to-peer livestream với độ trễ thậm chí
 Ngày nay để ứng dụng tối đa các lợi ích mà các giao thức livestream đem lại người ta sẽ sử dụng RTMP cho việc nhận video để thu về các video nguồn một cách nhanh nhất và sử dụng HLS để phục vụ đa dạng người dùng cuối nhanh nhất (kết hợp HLS với CDN).
 
 # SFU (Selective Forwarding Unit)
-SFU là một kiến trúc máy chủ trung gian trong WebRTC giúp tối ưu việc truyền tải dữ liệu video & audio trong các cuộc họp trực tuyến, livestream, hoặc hội nghị nhiều người.
+- SFU là một kiến trúc máy chủ trung gian trong WebRTC giúp tối ưu việc truyền tải dữ liệu video & audio trong các cuộc họp trực tuyến, livestream, hoặc hội nghị nhiều người.
 
 # MCU (Multipoint Control Unit)
+- MCU là một thành phần quan trọng trong hệ thống hội nghị truyền hình (video conferencing), cho phép nhiều thiết bị (clients) kết nối và trao đổi video, âm thanh cùng lúc.
+- Nó hoạt động như một trung tâm điều phối, giúp giảm tải xử lý trên mỗi client bằng cách nhận luồng từ tất cả các thiết bị, xử lý (trộn hoặc định tuyến) rồi gửi lại cho từng client theo nhu cầu.
+
 
 # P2P (Peer To Peer)
 
@@ -98,6 +101,14 @@ Babel là một công cụ biên dịch (transpiler) JavaScript mã nguồn mở
 - InnoDB là một storage engine mạnh mẽ và linh hoạt trong MySQL, cung cấp nhiều tính năng quan trọng giúp quản lý dữ liệu một cách hiệu quả và an toàn. Với hỗ trợ transactions, foreign keys, và khả năng xử lý đồng thời cao, InnoDB thích hợp cho hầu hết các ứng dụng cơ sở dữ liệu hiện đại. Để tận dụng tối đa các ưu điểm của InnoDB, bạn cần hiểu rõ cách cấu hình và tối ưu hóa các tham số của nó, cũng như thiết kế cơ sở dữ liệu và chỉ mục một cách hợp lý.
 
 # MyISAM
+- MyISAM là một trong những storage engine phổ biến của MySQL
+- Hiệu suất cao cho đọc dữ liệu
+- Chiếm ít RAM hơn so với InnoDB.
+- Không hỗ trợ transaction
+- Chỉ hỗ trợ table-level locking
+- Không hỗ trợ khóa ngoại
+- Hỗ trợ nén bảng để tiết kiệm dung lượng
+- Hỗ trợ FULLTEXT index
 
 # Dependency Injection (DI)
 - Một kỹ thuật trong đó các phụ thuộc (dependencies) của một class hoặc module được cung cấp từ bên ngoài thay vì tự tạo bên trong.
