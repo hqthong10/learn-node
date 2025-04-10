@@ -5,15 +5,20 @@
 // const room = new Room('room-name');
 // Room.addRoom(room, 'room-name');
 
-// console.log(Room.rooms['room-name']);
+// console.log(Room.rooms['room-name'
+//  for(let i to 20) {
+//     console.log(i);
+//  }
+const async = require("async");
 
-// console.log(room);
+function log(text, callback) {
+    const t = Math.floor(Math.random() * 100) + 1;
+    setTimeout(() => {
+        callback(null,`${text}-${t}`);
+    }, Math.floor(Math.random() * 100) + 1);
+}
 
-console.log('a', a);
-// console.log('b', b);
-// console.log('c', c);
-
-var a = null;
-let b = null;
-const c = null;
-
+async.concat(['log1', 'log2', 'log3'], log, (err, results) => {
+    console.log(results);
+})
+//

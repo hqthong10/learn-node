@@ -4,12 +4,14 @@ const socketIO = require("socket.io");
 
 const { createMediasoupWorker, createMediasoupRouter, createWebRtcTransport, createConsumer } = require("./mediasoupHandler");
 const Room = require("./room-storage");
+const path = require("path");
 
 const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
-app.use(express.static('client'));
+
+app.use(express.static(path.join(__dirname, 'client')));
 
 // -- static member --
 Room.rooms = {};

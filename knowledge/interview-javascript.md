@@ -22,8 +22,8 @@
 ```
 
 # [v] null và undefined khác nhau thế nào?
-- null biểu thị “không có giá trị”. Kiểu dữ liệu object. được gán = null
-- undefined biểu thị “không được khai báo” hoặc “chưa có giá trị”. Kiểu dữ liệu undefined, không thể gán trược tiếp = undefined
+- null biểu thị “không có giá trị”. Kiểu dữ liệu object.
+- undefined biểu thị “không được khai báo” hoặc “chưa có giá trị”. Kiểu dữ liệu undefined.
 
 # [v] Closures là gì? Lấy ví dụ.
 - Closures là một hàm có thể nhớ và truy cập các biến trong phạm vi của nó ngay cả khi hàm đó được gọi bên ngoài phạm vi ban đầu.
@@ -202,6 +202,7 @@ Trong JavaScript, từ khóa this dùng để tham chiếu đến context (ngữ
     + Chặn hành vi mặc định của trình duyệt đối với một sự kiện.
     + Không ngăn sự kiện lan truyền (bubbling hoặc capturing).
     + Thường dùng khi muốn ngăn các hành vi mặc định như: Chặn gửi form (submit event), Chặn mở link (click event trên <a> tag), Chặn kéo thả file (dragover event)
+
 - event.stopPropagation()
     + Ngăn sự kiện tiếp tục lan truyền (bubbling hoặc capturing) lên các phần tử cha.
     + Không chặn hành vi mặc định của trình duyệt.
@@ -211,6 +212,7 @@ Trong JavaScript, từ khóa this dùng để tham chiếu đến context (ngữ
     + Chọn phần tử đầu tiên phù hợp với CSS selector.
     + Có thể chọn bằng id (#id), class (.class), tag (div), attribute ([type="text"]), v.v.
     + Hỗ trợ tất cả các CSS selector.
+
 - document.getElementById()
     + Chọn phần tử duy nhất theo id.
     + Không cần dấu # khi chọn id.
@@ -268,24 +270,129 @@ Cả hai queue này đều được xử lý trong Event Loop, nhưng có sự k
 - Promise.any trả về resolve khi có ít nhất một promise trả về fulfilled và chỉ trả về reject khi tất cả promise đều là reject
 
 # Tại sao await chỉ hoạt động bên trong một async function?
+- await dừng execution của hàm cho đến khi Promise được giải quyết.
+- Nếu nó không giới hạn bên trong async function, nó sẽ làm block toàn bộ JavaScript runtime, vi phạm nguyên tắc bất đồng bộ (asynchronous programming) của JavaScript.
+- JavaScript chạy theo cơ chế Event Loop (single-threaded). Nếu await được dùng ở top-level mà không có async function, nó sẽ chặn hoàn toàn main thread, làm cho các sự kiện khác như UI update, I/O operations bị delay.
 
 # Các cách xử lý lỗi khi dùng async/await?
+- try...catch
+- .catch()
 
 # Kỹ thuật tối ưu hiệu suất JavaScript?
+- Tối ưu vòng lặp (Loop Optimization)
+    + Tránh sử dụng forEach(), thay bằng for hoặc for...of
+    + forEach() có overhead callback function, for nhanh hơn do không tạo function mới mỗi lần lặp.
+- Tránh reflow và repaint khi thao tác DOM
+    + Hạn chế số lần thao tác trực tiếp vào DOM
+    + Sử dụng Document Fragment khi thêm nhiều phần tử vào DOM
+- Debounce & Throttle để tối ưu sự kiện
+    + Sử dụng debounce để giới hạn số lần thực thi khi nhập liệu
+    + Sử dụng throttle để tối ưu sự kiện scroll, resize
+- Tránh memory leak (rò rỉ bộ nhớ)
+    + Xóa event listener khi không dùng nữa
+    + Tránh giữ tham chiếu đến DOM cũ
+- Tối ưu Object & Array xử lý dữ liệu lớn
+    + Sử dụng Map và Set thay vì Object & Array cho truy vấn nhanh hơn
+- Tận dụng Web Worker cho các tác vụ nặng
+- Dùng requestAnimationFrame() thay vì setTimeout() cho animation
+- Load JavaScript bất đồng bộ (async & defer)
+    ```
+        <!-- ❌ Chặn render -->
+        <script src="script.js"></script>
+
+        <!-- ✅ Tốt hơn - Tải song song, chạy ngay khi tải xong -->
+        <script src="script.js" async></script>
+
+        <!-- ✅ Tốt nhất - Tải song song, chạy sau khi DOM load -->
+        <script src="script.js" defer></script>
+    ```
+- Code Splitting & Lazy Loading (Tối ưu Webpack, React, Vue)
+    + Dùng Dynamic Import để tải module chỉ khi cần
+
 
 # Khi nào sử dụng lazy loading?
+- Lazy Loading là kỹ thuật trì hoãn việc tải tài nguyên (hình ảnh, video, JavaScript, module...) cho đến khi cần thiết.
+- Mục tiêu:
+    + Giảm thời gian tải trang ban đầu (First Contentful Paint - FCP).
+    + Tiết kiệm băng thông, giảm dung lượng tải về.
+    + Tăng hiệu suất trang web, đặc biệt trên thiết bị di động & mạng chậm.
+
+- Khi nào nên sử dụng Lazy Loading
+    + Hình ảnh & video không nằm trong viewport (ảnh bên dưới màn hình): Chỉ tải khi user cuộn xuống, giúp load trang nhanh hơn.
+    + Component hoặc Page không cần ngay khi load trang: Giảm kích thước JavaScript tải ban đầu.
+    + Dữ liệu API lớn, chỉ cần khi user click: Tránh gửi request API không cần thiết.
+    + Code splitting (React/Vue/Angular): Chỉ tải module khi cần, giúp tối ưu performance.
 
 # Khi nào nên sử dụng memoization?
+- Memoization là kỹ thuật tối ưu hiệu suất bằng cách lưu trữ kết quả của các hàm đã tính toán trước đó.
+    + Khi gọi lại hàm với cùng tham số, memoization trả về kết quả đã lưu, không tính toán lại.
+    + Giúp tăng tốc chương trình, đặc biệt với các hàm tính toán nặng hoặc gọi lại nhiều lần.
+
+- Mục tiêu:
+    + Giảm số lần tính toán lặp lại (Tránh tính toán thừa).
+    + Tăng hiệu suất, giảm độ trễ khi xử lý dữ liệu lớn.
+    + Tối ưu UI, tránh re-render không cần thiết trong React/Vue.
+
+- Khi nào nên dùng Memoization
+    + Tính toán phức tạp, lặp lại nhiều lần: Tránh tính toán lại, tăng tốc độ.
+    + Gọi API có kết quả không đổi: Giảm request API thừa, tăng hiệu suất.
+    + Tối ưu UI trong React (tránh re-render): Ngăn component render lại không cần thiết.
+    + Xử lý dữ liệu lớn (lọc, sort, tính toán...): Giảm thời gian xử lý khi dữ liệu không đổi.
+
 
 # JavaScript Engine hoạt động như thế nào?
+- JavaScript Engine là chương trình giúp chạy và thực thi code JavaScript bằng cách biên dịch (compile) và tối ưu hóa mã nguồn JS thành mã máy (machine code).
+- JavaScript Engine không chạy trực tiếp code JS, mà phải chuyển đổi nó thành mã máy (machine code) để CPU hiểu được.
+1. Parser (Phân tích cú pháp)
+    + Chuyển mã JS thành Abstract Syntax Tree (AST).
+    + Nếu có lỗi cú pháp (SyntaxError), quá trình dừng ngay tại đây.
+2. Interpreter (Thông dịch - Baseline Compiler)
+    + Chuyển đổi AST thành bytecode, rồi thực thi ngay (chạy nhanh, nhưng chưa tối ưu).
+3. JIT Compiler (Just-In-Time Compiler - Trình biên dịch tức thời):
+    + Phát hiện đoạn code chạy nhiều lần, biên dịch thành mã máy tối ưu để tăng tốc độ.
+4. Garbage Collector (Dọn dẹp bộ nhớ tự động):
+    + Tự động thu hồi vùng nhớ không còn được sử dụng để tối ưu RAM.
 
 # Khi nào nên sử dụng Web Workers?
+- Web Workers là cơ chế cho phép JavaScript chạy trong background thread (luồng nền) không chặn UI.
+- Bình thường, JavaScript chạy trên một luồng duy nhất (single-threaded), nên tác vụ nặng sẽ làm đơ UI.
+- Web Workers giúp xử lý các tác vụ tốn tài nguyên mà không ảnh hưởng đến giao diện người dùng.
+- Khi nào nên sử dụng Web Workers:
+    + Tác vụ tính toán nặng (Heavy Computation)
+    + Xử lý dữ liệu lớn (Big Data, JSON, Array processing)
+    + Tải và parse file lớn (CSV, JSON, XML,...)
+    + Mã hóa & giải mã dữ liệu (Encryption/Decryption)
+    + Xử lý hình ảnh, video, WebGL
+    + Real-time data processing (Streaming, WebRTC, WebSocket, AI... )
 
 # Sự khác nhau giữa Unit Test, Integration Test và End-to-End Test?
+- Unit Test (Kiểm thử đơn vị)
+    + Kiểm tra từng hàm (function), module riêng biệt mà không cần hệ thống bên ngoài.
+    + Đảm bảo mỗi thành phần hoạt động đúng theo mong muốn.
+- Integration Test (Kiểm thử tích hợp)
+    + Kiểm tra sự tương tác giữa các module (ví dụ: service gọi API, kết nối database).
+    + Đảm bảo các module hoạt động đúng khi kết hợp với nhau.
+- End-to-End Test (E2E Test - Kiểm thử đầu cuối)
+    + Mô phỏng hành vi của người dùng thực sự (click chuột, nhập liệu, điều hướng trang).
+    + Kiểm tra toàn bộ hệ thống từ frontend đến backend, database.
+    + Thường dùng Cypress, Playwright, Selenium.
 
 # Jest và Mocha khác nhau thế nào?
+- Jest tích hợp sẵn nhiều tính năng
+- mocha cần cài thêm một số thư viện để hoạt động tôt như chai, sinon, nyc
 
 # Mocking trong testing là gì?
+- Mocking là kỹ thuật tạo giả đối tượng (Object), hàm (Function) hoặc API trong quá trình testing.
+- Giúp kiểm tra từng phần riêng biệt của ứng dụng mà không cần phụ thuộc vào database, API thật hoặc service bên ngoài.
+- Mục tiêu của Mocking:
+    + Giảm phụ thuộc vào service bên ngoài (API, Database, File, WebSocket, v.v.).
+    + Tăng tốc độ chạy test vì không phải gọi API thực.
+    + Dễ kiểm soát test case (mô phỏng các phản hồi khác nhau từ API).
+- Khi nào nên dùng Mocking?
+    + Gọi API trong Unit Test
+    + Test Database mà không muốn thay đổi dữ liệu thực
+    + Kiểm tra hàm gọi API bên ngoài (axios, fetch)
+    + Khi test phụ thuộc vào Date, Time hoặc Random
 
 # Cách kiểm tra một function có bị gọi trong Jest?
 

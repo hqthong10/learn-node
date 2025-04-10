@@ -2,8 +2,8 @@ const mediasoup = require("mediasoup");
 const config = require("./config");
 
 const createMediasoupWorker = async () => {
-    // const worker = await mediasoup.createWorker(config.mediasoup.worker);
-    const worker = await mediasoup.createWorker();
+    const worker = await mediasoup.createWorker(config.mediasoup.worker);
+    // const worker = await mediasoup.createWorker();
     return worker;
 };
 

@@ -83,7 +83,7 @@ const startRoom = () => {
     }
     
     // Connect to the server and join the room
-    socket = io("http://localhost:3000");
+    socket = io("http://localhost:3009");
 
     socket.on('connect', async function (evt) {
         await sendRequest('joinRoom', { username, roomId });

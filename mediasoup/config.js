@@ -17,8 +17,8 @@ module.exports = {
                 },
                 {
                     kind: "video",
-                    // mimeType: "video/VP8",
-                    mimeType: "video/H264",
+                    mimeType: "video/VP8",
+                    // mimeType: "video/H264",
                     clockRate: 90000,
                     parameters: {
                         'x-google-start-bitrate': 1000
@@ -29,7 +29,7 @@ module.exports = {
         webRtcTransport: {
             listenIps: [
                 { ip: '127.0.0.1', announcedIp: null },
-                { ip: '192.168.1.16', announcedIp: null }
+                { ip: '192.168.1.53', announcedIp: null }
             ],
             enableUdp: true,
             enableTcp: true,
