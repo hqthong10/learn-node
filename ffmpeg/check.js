@@ -147,10 +147,31 @@ let info = [
   "-y",
   "-i", "./inp/piep-ZWuQfF8i17388380310511738838031051.mov",
 ];
+
+let test3 = [
+  "-y",
+   "-i", 
+   "./inp/piep-4XANd0VJ17515264987211751526498721.mp4",
+   "-preset", "veryfast",
+   "-c:v", "h264", "-pix_fmt", "yuv420p", "-crf", '23',
+   "-c:a", "aac", 
+   "-g", 60,
+    "-map", "0:v:0",
+   "-map", "0:a:0", 
+   "-filter:v:0", "scale=480:-2",
+   "-maxrate:v:0", "800000", 
+   "-bufsize:v:0", "800000",
+   "-hls_playlist_type", "vod", 
+   "-hls_time", '6', 
+   "-hls_flags", "independent_segments", 
+   "-master_pl_name", "index.m3u8", 
+   "-var_stream_map", "v:0,a:0,name:480p", 
+   "./out/%v.m3u8"
+];
 // ffprobe
 
-let child = spawn("ffprobe", info);
-// let child = spawn("ffmpeg", test2);
+// let child = spawn("ffprobe", info);
+let child = spawn("ffmpeg", test3);
 
 child.stderr.setEncoding("utf8");
 

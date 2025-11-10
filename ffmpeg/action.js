@@ -28,10 +28,10 @@ let args_m3u8_mp4 = [
   // "https://livestreamcdn.webinaris.co/hlssave/7584-LIVE-00006376/index.full.m3u8",
   // 'https://cdn.piepme.com/19968/livestream/19968.de636a8d17ceb6a83e234890b19c7db1/720p/index.m3u8',
 
-  'https://livevn.piepme.com/camhls/14789.1b5aa79584634429877ce7beeb68ca3a_720p/index.m3u8',
+  'https://cdn.piepme.com/2302/livestream/2302.5644278dced67b6c680b32c58c8ddb1d/index.m3u8',
 
-  "-t",
-  "30",
+  // "-t",
+  // "05:00",
 
   "-map",
   "0:v",
@@ -48,7 +48,7 @@ let args_m3u8_mp4 = [
   "aac_adtstoasc",
   "-threads",
   "2",
-  "out/vietnambaygio2.mp4",
+  "out/anh-phong-live.mp4",
 ].concat();
 
 // m3u8 to aac audio
@@ -333,7 +333,7 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_m3u8_mp3, () => {
+runCommand("step1", args_m3u8_mp4, () => {
   // runCommand("step2", args_2, () => {
   //   runCommand("step3", args_3, () => {});
   // });

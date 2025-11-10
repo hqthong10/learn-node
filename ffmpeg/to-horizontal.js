@@ -1,13 +1,11 @@
 const { spawn } = require("child_process");
 
-
-
 // m3u8 to mp4 vertical
 let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/29185/videos/piep-3KayXVt117466199563071746619956307/hls/406p.m3u8",
+  "https://cdn.piepme.com/22788/videos/piep-hlAJ9WJ117616497033951761649703395/hls/480p.m3u8",
   
   "-ss",
   "0",
@@ -20,7 +18,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "./out/sunny-ha.mp4",
+  "./out/nhungnguyen.mp4",
 ].concat();
 
 
