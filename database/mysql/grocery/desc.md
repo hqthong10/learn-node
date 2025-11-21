@@ -1,3 +1,10 @@
+- Employees (Nhân viên & phân quyền)
+GET	/api/employees	–	[ { id, name, username, role } ]	Danh sách nhân viên
+GET	/api/employees/:id	–	{ id, name, username, role }	Thông tin nhân viên
+POST	/api/employees	{ name, username, password, role }	{ id }	Tạo nhân viên
+PUT	/api/employees/:id	{ name?, role?, active? }	{ updated: true }	Cập nhật thông tin
+DELETE	/api/employees/:id	–	{ deleted: true }	Xóa nhân viên
+
 - Products
 GET	/api/products	?q=, ?category=, ?page=, ?limit=	[ { id, name, sku, unit_price, quantity_in_stock, ... } ]	Danh sách sản phẩm
 GET	/api/products/:id	–	{ id, name, sku, category, unit_price, cost_price, supplier_id, quantity_in_stock }	Lấy chi tiết sản phẩm
@@ -41,12 +48,6 @@ GET	/api/reports/inventory-value	–	[ { product_id, name, quantity_in_stock, to
 GET	/api/reports/top-customers	?limit=10	[ { id, name, total_points } ]	Khách hàng thân thiết
 GET	/api/reports/employee-sales	?from=&to=	[ { employee_id, name, total_sales } ]
 
-- Employees (Nhân viên & phân quyền)
-GET	/api/employees	–	[ { id, name, username, role } ]	Danh sách nhân viên
-GET	/api/employees/:id	–	{ id, name, username, role }	Thông tin nhân viên
-POST	/api/employees	{ name, username, password, role }	{ id }	Tạo nhân viên
-PUT	/api/employees/:id	{ name?, role?, active? }	{ updated: true }	Cập nhật thông tin
-DELETE	/api/employees/:id	–	{ deleted: true }	Xóa nhân viên
 
 - Settings (Cấu hình hệ thống)
 GET	/api/settings	–	{ point_rate: 1000, currency: 'VND' }	Lấy cấu hình hệ thống

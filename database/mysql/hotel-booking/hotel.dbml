@@ -1,0 +1,42 @@
+Table customers {
+    id int [pk, increment]
+    name varchar(100)
+    phong varchar(15)
+    type enum('regular','vip')
+    created_at datetime
+}
+
+Table rooms {
+    id int [pk, increment]
+    room_number varchar(10)
+    type enum('standard','deluxe','suite')
+    price_per_night decimal(10,2)
+    status enum('available','occupied','maintenance')
+}
+
+Table bookings {
+    id int [pk, increment]
+    customer_id int [pk, ref: > customers.id]
+    room_id int [pk, ref: > rooms.id]
+    check_in datetime
+    check_out datetime
+    total_room_price decimal(10,2)
+    total_service_price decimal(10,2)
+    final_total decimal(10,2)
+    payment_status enum('pending','paid')
+    status enum('confirmed','checked_in','checked_out','cancelled')
+}
+
+Table services {
+    id int [pk, increment]
+    name varchar(100)
+    price decimal(10,2)
+}
+
+Table booking_services {
+    id int [pk, increment]
+    booking_id int [pk, ref: > bookings.id]
+    service_id int [pk, ref: > services.id]
+    quantity int
+    price_at_time decimal(10,2)
+}

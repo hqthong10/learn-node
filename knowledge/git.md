@@ -90,4 +90,3 @@
 
 - Xóa nhánh đã hợp nhất
     git branch -d <branch-name>
-    

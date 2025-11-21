@@ -145,7 +145,18 @@ let test2 = [
 
 let info = [
   "-y",
-  "-i", "./inp/piep-ZWuQfF8i17388380310511738838031051.mov",
+  "-i", "1761914028149-download.mp4",
+  // "-i", "https://2bewebinaris-fra.s3.amazonaws.com/22093/1761311467966.mp4",
+  "-c:v", "libx264",
+  '-crf', '16',
+  '-preset', 'veryslow',
+  '-pix_fmt', 'yuv420p',
+  '-profile:v', 'high',
+  '-tune', 'film',
+  '-c:a', 'copy',
+
+
+  '1761914028149.mp4'
 ];
 
 let test3 = [
@@ -171,7 +182,7 @@ let test3 = [
 // ffprobe
 
 // let child = spawn("ffprobe", info);
-let child = spawn("ffmpeg", test3);
+let child = spawn("ffmpeg", info);
 
 child.stderr.setEncoding("utf8");
 
