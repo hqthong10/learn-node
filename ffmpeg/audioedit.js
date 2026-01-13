@@ -4,7 +4,7 @@ let downm3u8 = [
   "-y",
 
   "-i",
-  "https://cdn.piepme.com/27380/sounds/piep-8xDawi2C17293943514631729394351463.mp3",
+  "https://cdn.piepme.com/30521/sounds/piep-BIg9pZ3T17641341785161764134178516.mp3",
 
   // "-map",
   // "0:v",
@@ -12,7 +12,7 @@ let downm3u8 = [
   // "-c:v",
   // "copy",
 
-  '-filter:a', "volume=4.0, afftdn", // anlmdn
+  // '-filter:a', "volume=4.0, afftdn", // anlmdn
 
   // '-b:a', '128k',
 
@@ -25,7 +25,7 @@ let downm3u8 = [
   // "-threads",
   // "2",
 
-  "./out/thanh-trang-lan-nha-6.mp3",
+  "./out/minh-vu.mp3",
 ].concat();
 
 let child = spawn("ffmpeg", downm3u8);

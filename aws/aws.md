@@ -10,3 +10,19 @@
 3. Cài đặt git:
    - sudo yum install git
    - git version
+
+Kiểm tra CPU (vCPU, model, core)
+lscpu
+
+Kiểm tra RAM
+free -h
+
+Kiểm tra Disk
+lsblk
+
+Kiểm tra network card
+ethtool eth0
+
+Kiểm tra OS & kernel
+uname -a
+

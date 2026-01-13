@@ -79,3 +79,143 @@
     Data Encryption (AES, RSA, bcrypt, Argon2)
     
 📌 Thực hành: Cấu hình Helmet.js và rate limit trong Express.js.
+
+
+# Master Backend Developer
+## Enterprise Backend Platform
+✔ Security
+✔ Performance
+✔ Scalability
+✔ Monitoring
+✔ Observability
+✔ Worker Jobs (queue)
+✔ Search engine
+✔ Real-time
+✔ Cloud architecture
+✔ Testing
+✔ CI/CD
+✔ System design chuẩn
+
+1. Caching Layer
+Redis GET/SET
+Redis expire / TTL
+Redis locking (distributed lock)
+Cache aside pattern
+Cache invalidation
+Query caching
+Rate limiting bằng Redis
+Storing user sessions per device
+Leaderboard real-time
+
+2. Background Jobs (Worker Queue) – BullMQ / Redis queues
+BullMQ
+Job retry
+Dead letter queue (DLQ)
+Cron jobs
+Worker scaling
+Email queue
+Notification queue
+Audio processing queue
+
+3. Search Engine (Elasticsearch / Meilisearch)
+Indexing
+Search by keyword
+Fuzzy search
+Auto-complete search
+Ranking
+
+4. Role-Based Access Control (RBAC) chuẩn Enterprise
+Role hierarchy
+Permission engine
+Multi-role per user
+API policy layer
+Admin audit trail
+
+5. Testing – Unit + Integration + E2E
+Jest
+Supertest
+MongoDB Memory Server
+
+6. CI/CD pipelines (GitHub Actions / GitLab CI)
+Build + Test tự động
+✔ Deploy tự động
+✔ Lint + Typescript check
+
+7. Dockerization + Container Orchestration
+Dockerfile tối ưu
+Docker Compose
+Multi-stage build
+Bind mount
+Scaling containers
+Healthcheck
+Auto restart policies
+
+8. Monitoring & Observability (PRO)
+Monitoring:
+    Prometheus
+    Grafana dashboards
+    Alerts
+    Uptime Robot
+
+🔥 Observability:
+    Trace API calls
+    Request ID
+    Metrics endpoint
+    Latency charts
+    Error rate tracking
+
+9. Performance Optimization & Profiling
+MongoDB indexes
+Query analyzer
+Slow query logging
+Connection pooling
+Response compression
+N+1 query fix
+Memory leak detection
+Node.js event loop debugging
+
+10. System Architecture (Senior → Master)
+Microservices vs Monolithic
+Domain-driven design (DDD)
+Event-driven architecture
+CQRS
+Message brokers (Kafka/NATS/RabbitMQ)
+REST vs GraphQL
+API versioning
+
+11. Advanced Authentication & Security
+- Học thêm:
+OAuth 2.1 / OpenID Connect
+JWT introspection
+JWK (JSON Web Keys)
+MFA (2FA)
+WebAuthn (passkeys)
+Rotating refresh token family
+Secret rotation
+Rate-limit per device
+IP throttling
+Geo-IP block
+
+12. File service + video/audio processing (FFmpeg)
+Bạn đã có chút kinh nghiệm → nâng thêm:
+Upload service (S3)
+CDN caching
+Audio normalization
+Audio waveform
+Convert pronunciation audio to text
+Video transcoding
+
+13. Analytics Engine (User Stats / Learning Stats)
+Bạn có user progress → nhưng thêm:
+
+✔ Engagement score
+✔ Streak logic nâng cao
+✔ Retention analysis
+✔ Forgetting curve simulation
+✔ Personalized Recommendations (algorithm)
+
+14. Real-time Systems (WebSocket)
+Online user tracking
+Real-time learning room
+Live quiz
+Notifications

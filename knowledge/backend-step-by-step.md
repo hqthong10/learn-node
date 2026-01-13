@@ -9,7 +9,7 @@
 
 3. Làm việc với cơ sở dữ liệu
 - [v] NoSQL Database (MongoDB): Học cách kết nối và thao tác với MongoDB từ Node.js bằng Mongoose.
-- SQL Database (MySQL/PostgreSQL): Học cách làm việc với cơ sở dữ liệu quan hệ, sử dụng Sequelize hoặc TypeORM để thao tác dữ liệu.
+- [v] SQL Database (MySQL/PostgreSQL): Học cách làm việc với cơ sở dữ liệu quan hệ, sử dụng Sequelize hoặc TypeORM để thao tác dữ liệu.
 - ORM (Object-Relational Mapping): Hiểu cách sử dụng ORM để ánh xạ các bảng cơ sở dữ liệu thành các mô hình trong ứng dụng.
 
 4. Quản lý API

@@ -24,31 +24,29 @@ let args_resize = [
 let args_m3u8_mp4 = [
   "-y",
   "-i",
-  // "../temp/20805-LIVE-00006236/index.full.m3u8",
-  // "https://livestreamcdn.webinaris.co/hlssave/7584-LIVE-00006376/index.full.m3u8",
-  // 'https://cdn.piepme.com/19968/livestream/19968.de636a8d17ceb6a83e234890b19c7db1/720p/index.m3u8',
-
-  'https://cdn.piepme.com/2302/livestream/2302.5644278dced67b6c680b32c58c8ddb1d/index.m3u8',
+  'https://cdn.piepme.com/1458/livestream/1458.46ffd301c0d31f37671629307b7c19a7/index.m3u8',
 
   // "-t",
-  // "05:00",
+  // "10:00",
 
-  "-map",
-  "0:v",
+  // "-map",
+  // "0:v",
 
   "-c:v",
   "copy",
   
-  "-map",
-  "0:a",
+  // "-map",
+  // "0:a",
   
   "-c:a",
   "copy",
   "-bsf:a",
   "aac_adtstoasc",
-  "-threads",
-  "2",
-  "out/anh-phong-live.mp4",
+
+  // "-threads",
+  // "2",
+
+  "out/tat-nen-queenb.mp4",
 ].concat();
 
 // m3u8 to aac audio
@@ -319,7 +317,23 @@ let args_m3u8_audio = [
   './out/audio/index.m3u8'
 ].concat();
 
+let args_mp4_mp4 = [
+  "-y",
+  "-i",
+  "https://cdn.piepme.com/30431/livestream/30431.442ec82ea0559bbafaec30329a825e74/index.m3u8",
+
+  // '-c:a', "aac",
+  // '-c:v', "libx264",
+  //  "-ss",
+  // "0",
+  // "-t",
+  // "25",
+
+  // './out/piep-phuong-out.mp4'
+].concat();
+
 function runCommand(step, args, callback) {
+  // const process = spawn("ffprobe", args);
   const process = spawn("ffmpeg", args);
 
   process.on("close", (code) => {

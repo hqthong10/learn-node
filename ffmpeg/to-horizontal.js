@@ -5,7 +5,7 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/29801/videos/piep-re2N6H5y17632930613061763293061306/hls/480p.m3u8",
+  "https://cdn.piepme.com/15025/videos/piep-boggBGcs17681385694041768138569404/hls/480p.m3u8",
   
   "-ss",
   "0",
@@ -18,7 +18,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "./out/nang.mp4",
+  "./out/dang-khoi.mp4",
 ].concat();
 
 
