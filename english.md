@@ -29,3 +29,8 @@ keep you posted: sẽ cập nhật thông tin cho bạn
 
 There’s a minor issue in production
 
+I intend to: Tôi dự định làm gì đó
+I've just: Tôi vừa mới làm gì đó
+I've already: Tôi đã làm gì đó rồi
+I've never: Tôi chưa từng làm gì đó
+I haven't ... yet: Tôi vẫn chưa làm gì đó

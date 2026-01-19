@@ -24,29 +24,22 @@ let args_resize = [
 let args_m3u8_mp4 = [
   "-y",
   "-i",
-  'https://cdn.piepme.com/1458/livestream/1458.46ffd301c0d31f37671629307b7c19a7/index.m3u8',
+  'https://cdn.piepme.com/15392/livestream/15392.0a80e314aef3ffaac05eff06b3e84ffa/720p/index.m3u8',
 
-  // "-t",
-  // "10:00",
+  "-t",
+  "2:00",
 
-  // "-map",
-  // "0:v",
 
   "-c:v",
   "copy",
-  
-  // "-map",
-  // "0:a",
-  
+    
   "-c:a",
   "copy",
   "-bsf:a",
   "aac_adtstoasc",
 
-  // "-threads",
-  // "2",
 
-  "out/tat-nen-queenb.mp4",
+  "out/qua-tang-368.mp4",
 ].concat();
 
 // m3u8 to aac audio
@@ -320,16 +313,17 @@ let args_m3u8_audio = [
 let args_mp4_mp4 = [
   "-y",
   "-i",
-  "https://cdn.piepme.com/30431/livestream/30431.442ec82ea0559bbafaec30329a825e74/index.m3u8",
+  "./inp/TÌNH YÊU GIỮA MÙA ĐÔNG.mp4",
 
-  // '-c:a', "aac",
-  // '-c:v', "libx264",
+  '-c:a', "aac",
+  '-c:v', "libx264",
+  
   //  "-ss",
   // "0",
   // "-t",
   // "25",
 
-  // './out/piep-phuong-out.mp4'
+  './out/TÌNH YÊU GIỮA MÙA ĐÔNG.mp4'
 ].concat();
 
 function runCommand(step, args, callback) {
@@ -347,7 +341,7 @@ function runCommand(step, args, callback) {
   return process;
 }
 
-runCommand("step1", args_m3u8_mp4, () => {
+runCommand("step1", args_mp4_mp4, () => {
   // runCommand("step2", args_2, () => {
   //   runCommand("step3", args_3, () => {});
   // });

@@ -16,6 +16,7 @@ async function run() {
         amount: 500000,
         createdAt: new Date().toISOString()
     };
+    
     const order2 = {
         orderId: 'o124',
         userId: 'u01',

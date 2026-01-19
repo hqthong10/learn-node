@@ -62,6 +62,31 @@ async function run() {
                     break;
                 }
             }
+        },
+
+        // example
+        eachBatch: async ({ batch, resolveOffset, commitOffsetsIfNecessary }) => {
+            for (const message of batch.messages) {
+                const event = JSON.parse(message.value.toString());
+
+                try {
+                    await db.processed_events.insertOne({ eventId: event.eventId });
+
+                    await processBusiness(event.data);
+
+                    resolveOffset(message.offset);
+                    await commitOffsetsIfNecessary();
+
+                } catch (err) {
+                    if (err.code === 'DUPLICATE_KEY') {
+                        // đã xử lý → commit luôn
+                        resolveOffset(message.offset);
+                        await commitOffsetsIfNecessary();
+                    } else {
+                        throw err;
+                    }
+                }
+            }
         }
     });
 }
