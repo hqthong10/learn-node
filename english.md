@@ -34,3 +34,17 @@ I've just: Tôi vừa mới làm gì đó
 I've already: Tôi đã làm gì đó rồi
 I've never: Tôi chưa từng làm gì đó
 I haven't ... yet: Tôi vẫn chưa làm gì đó
+
+- walk me through
+Hãy giải thích chi tiết cho tôi.
+
+- technical debt: nợ kỹ thuật
+Technical debt = làm nhanh cho xong bây giờ, nhưng sẽ tốn nhiều công sức hơn để sửa sau này
+
+- Race condition: tranh chấp tài nguyên do chạy song song
+Lỗi xảy ra khi nhiều tiến trình / luồng / request cùng truy cập và thay đổi một tài nguyên chung, và kết quả phụ thuộc vào thứ tự thực thi.
+
+- enforce constraint: thực thi ràng buộc
+
+- Crash recovery: Khôi phục sau sự cố
+
