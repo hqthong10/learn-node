@@ -9,6 +9,7 @@ const consumer = kafka.consumer({ groupId: 'email-service' });
 
 async function run() {
     await consumer.connect();
+    
     await consumer.subscribe({
         topic: 'order_created',
         fromBeginning: true,

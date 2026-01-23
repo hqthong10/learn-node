@@ -1,6 +1,11 @@
-// src/server.js
-require('dotenv').config();
-const { initCronJobs } = require('./app');
+// require('dotenv').config();
+// const { initCronJobs } = require('./app');
+
+// import 'dotenv/config';
+import dotenv from 'dotenv';
+import { initCronJobs } from './app.js';
+
+dotenv.config();
 
 const startServer = async () => {
     try {

@@ -1,16 +1,36 @@
-// src/app.js
-const cron = require('node-cron');
-const { cronJobs } = require('./config/cronConfig');
+
+import cron from 'node-cron';
+
+const timeLog = () => {
+    return new Intl.DateTimeFormat('vi-VN', {
+        timeZone: 'Asia/Ho_Chi_Minh',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    })
+        .format(new Date())
+        .replace(',', '');
+}
 
 // Khởi chạy tất cả các jobs
-const initCronJobs = () => {
-    cronJobs.forEach((job) => {
-        cron.schedule(job.schedule, job.task, {
-            scheduled: job.scheduled || true,
-            timezone: job.timezone || 'UTC',
-        });
-        console.log(`Job "${job.name}" được khởi chạy với lịch: ${job.schedule}`);
-    });
+export const initCronJobs = () => {
+    try {
+        console.log('vao day');
+        cron.schedule(
+            '*/2 * * * * *',
+            () => {
+                console.log(`[${timeLog()}] Example Job đang chạy...`);
+            },
+            {
+                scheduled: true,
+                timezone: 'Asia/Ho_Chi_Minh',
+            }
+        );
+    } catch (error) {
+        console.log('>> error', error);
+    }
 };
-
-module.exports = { initCronJobs };
