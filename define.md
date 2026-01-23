@@ -78,6 +78,29 @@ Babel là một công cụ biên dịch (transpiler) JavaScript mã nguồn mở
 # event-driven programming (Lập trình hướng sự kiện)
 - là mô hình lập trình mà trong đó luồng thực thi chương trình được xác định bởi các sự kiện (events). NodeJS xây dựng dựa trên lập trình hướng sự kiện, tức là source code viết ra để đáp ứng với các sự kiện tác động lên ứng dụng, chúng ta cần viết code lấy thông tin của các sự kiện cùng tham số đầu vào, tiếp đến là xử lý thực thi hành động và trả về kết quả tương ứng.
 
+# libuv
+- libuv là một thư viện đa nền tảng, mã nguồn mở, triển khai mô hình I/O không chặn (non-blocking I/O) theo hướng sự kiện (event-driven) [1, 2]. Nó là thành phần cốt lõi cung cấp nền tảng cho Node.js, cho phép Node.js đạt được hiệu suất cao trong các ứng dụng mạng và I/O chuyên sâu [1, 3].
+- Các đặc điểm và chức năng chính của libuv bao gồm:
+    + Mô hình hoạt động không đồng bộ (Asynchronous): libuv sử dụng các cơ chế I/O hiệu quả nhất của hệ điều hành (ví dụ: epoll trên Linux, kqueue trên BSD/macOS, và IO Completion Ports (IOCP) trên Windows) để xử lý hàng nghìn kết nối đồng thời một cách hiệu quả mà không cần tạo ra nhiều luồng (thread) cho mỗi kết nối [1, 3, 4].
+    + Vòng lặp sự kiện (Event Loop): Đây là trái tim của libuv, quản lý và điều phối tất cả các sự kiện (kết nối mạng, hoạt động file system, timers) [1, 3].
+    + Đa nền tảng: Nó được thiết kế để hoạt động thống nhất trên các hệ điều hành khác nhau, giúp các nhà phát triển viết mã nguồn một lần và chạy được ở mọi nơi [1, 2].
+    + Hỗ trợ các tác vụ chặn (Blocking tasks): Đối với các tác vụ có tính chất chặn (như đọc/ghi file lớn) mà không thể xử lý hoàn toàn không đồng bộ trên một số nền tảng, libuv sử dụng một pool các luồng phụ (thread pool) để thực thi chúng mà không làm tắc nghẽn vòng lặp sự kiện chính [1, 3, 4].
+
+# Blocking I/O (Chặn Đầu vào/Đầu ra)
+- Xảy ra khi một chương trình yêu cầu thực hiện một thao tác đầu vào hoặc đầu ra (Input/Output - I/O), ví dụ như đọc một file từ đĩa cứng, gửi hoặc nhận dữ liệu qua mạng, hoặc chờ phản hồi từ cơ sở dữ liệu.
+
+# Blocking CPU (Chặn CPU / CPU Bound)
+- Xảy ra khi một chương trình thực hiện một khối lượng công việc tính toán khổng lồ, phức tạp, đòi hỏi toàn bộ sức mạnh xử lý của một hoặc nhiều nhân CPU trong một khoảng thời gian đáng kể.
+
+# CPU-bound
+- CPU-bound, hay còn gọi là "ràng buộc bởi CPU", là một thuật ngữ trong công nghệ thông tin dùng để mô tả tình huống mà hiệu suất của một chương trình hoặc hệ thống bị giới hạn chủ yếu bởi tốc độ và khả năng xử lý của Bộ xử lý trung tâm (CPU).
+
+# DoS (Denial of Service)
+- Tấn công từ chối dịch vụ (DoS) là một nỗ lực của kẻ tấn công nhằm làm cho một dịch vụ trực tuyến không khả dụng bằng cách làm gián đoạn tạm thời hoặc vô thời hạn các dịch vụ của một máy chủ lưu trữ được kết nối với Internet.
+
+# Risk DoS (Risk of Denial of Service): Nguy cơ bị từ chối dịch vụ bị từ chối dịch vụ
+- Đây là một thuật ngữ dùng để chỉ khả năng hoặc rủi ro mà một hệ thống, dịch vụ mạng, hoặc ứng dụng web có thể bị tấn công làm tê liệt, khiến người dùng hợp pháp không thể truy cập hoặc sử dụng được dịch vụ đó.
+
 # worker thread
 
 # NPM
@@ -356,3 +379,83 @@ Một cơ chế cho phép ứng dụng nhận thông báo từ một dịch vụ
 - Nó cũng hỗ trợ JSX/TSX, giúp biên dịch mã React một cách hiệu quả.
 - SWC có thể minify mã JavaScript, giúp giảm kích thước file và tối ưu hiệu suất.
 - SWC có thể tích hợp với các công cụ build như Vite, Webpack, hoặc thậm chí được sử dụng trực tiếp thông qua CLI.
+
+# Garbage Collector (GC): Bộ thu gom rác
+- Thay vì lập trình viên phải tự tay giải phóng bộ nhớ (dễ gây lỗi "rò rỉ bộ nhớ" - memory leak), GC sẽ tự động:
+    + Phát hiện: Tìm những đối tượng (objects) trong bộ nhớ RAM không còn được chương trình sử dụng nữa.
+    + Thu hồi: Giải phóng không gian đó để dành chỗ cho các dữ liệu mới.
+    + Nén (Compaction): Sắp xếp lại bộ nhớ để tránh tình trạng phân mảnh.
+- Mark-and-Sweep (Đánh dấu và Quét): Thuật toán cơ bản nhất, đánh dấu các đối tượng còn dùng và xóa những thứ còn lại.
+- Generational GC (Thu gom theo thế hệ): Chia bộ nhớ thành "thế hệ trẻ" (đối tượng mới tạo) và "thế hệ già" (đối tượng tồn tại lâu). Các GC hiện đại như trong Java 25 tập trung dọn dẹp thế hệ trẻ vì chúng thường "chết" nhanh hơn, giúp tăng tốc độ xử lý.
+- Reference Counting (Đếm tham chiếu): Thường dùng trong Python hoặc Swift, tự động xóa đối tượng khi không còn biến nào trỏ đến nó.
+
+- Node.js sử dụng mô hình Generational Garbage Collection (Thu gom rác theo thế hệ), chia bộ nhớ heap thành hai vùng chính:
+    + New Space (Young Generation): Nơi chứa các đối tượng mới tạo. Vùng này nhỏ và được dọn dẹp rất thường xuyên bằng thuật toán Scavenge để thu hồi bộ nhớ nhanh chóng.
+    + Old Space (Old Generation): Nếu một đối tượng sống sót qua vài chu kỳ dọn dẹp ở New Space, nó sẽ được chuyển sang Old Space. Vùng này lớn hơn và được dọn dẹp bằng thuật toán Mark-Sweep & Mark-Compact.
+
+# Puppeteer
+- Puppeteer là một thư viện Node.js mã nguồn mở do nhóm phát triển Chrome DevTools của Google tạo ra, cung cấp một API cấp cao để điều khiển trình duyệt Chrome hoặc Chromium.
+- Nó cho phép các nhà phát triển tự động hóa các tác vụ trên trình duyệt web thông qua lập trình.
+- Công dụng chính của Puppeteer:
+    + Kiểm thử tự động (Automated Testing): Tự động hóa việc gửi biểu mẫu, kiểm tra giao diện người dùng (UI testing), mô phỏng tương tác của người dùng (nhập liệu bàn phím, nhấp chuột, v.v.).
+    + Web Scraping (Cào dữ liệu web): Trích xuất dữ liệu từ các trang web một cách hiệu quả, đặc biệt là các ứng dụng web một trang (SPA) có nội dung được tạo động bằng JavaScript.
+    + Tạo ảnh chụp màn hình và tệp PDF: Chụp ảnh màn hình của các trang web hoặc tạo tệp PDF từ nội dung trang web.
+    + Kết xuất phía máy chủ (Server-Side Rendering - SSR): Tạo nội dung được kết xuất trước cho các SPA để tối ưu hóa hiệu suất và SEO.
+    + Ghi lại dấu vết thời gian (Timeline Tracing): Phân tích hiệu suất của trang web bằng cách ghi lại dấu vết thời gian hoạt động của trang.
+
+# XSS
+- XSS, hay Cross-Site Scripting (Tấn công kịch bản chéo trang), là một lỗ hổng bảo mật phổ biến cho phép kẻ tấn công chèn các mã độc (thường là JavaScript) vào một trang web hợp pháp mà sau đó được trình duyệt của người dùng khác thực thi [1, 2].
+- Có ba loại tấn công XSS chính:
+    + XSS Phản ánh (Reflected XSS): Mã độc được gửi đến ứng dụng web qua các tham số URL hoặc form, và được phản hồi lại trình duyệt của người dùng ngay lập tức mà không được làm sạch (sanitize) đúng cách [1, 2].
+    + XSS Lưu trữ (Stored XSS/Persistent XSS): Mã độc được lưu trữ vĩnh viễn trên máy chủ của ứng dụng (ví dụ: trong cơ sở dữ liệu, diễn đàn, phần bình luận) và sau đó được phân phối đến tất cả người dùng xem trang đó [1, 2].
+    + XSS dựa trên DOM (DOM-based XSS): Lỗ hổng tồn tại hoàn toàn ở phía máy khách (trong mã JavaScript) thay vì ở phía máy chủ. Dữ liệu độc hại được xử lý bởi mã JavaScript phía máy khách theo cách không an toàn [1, 2].
+- Mục tiêu chính của cuộc tấn công này là thao túng hành vi của trang web hoặc đánh cắp dữ liệu nhạy cảm từ người dùng, chẳng hạn như:
+    + Đánh cắp cookie: Kẻ tấn công có thể lấy cắp cookie phiên (session cookies), cho phép chúng chiếm quyền tài khoản của người dùng mà không cần mật khẩu [1, 2].
+    + Chiếm quyền điều khiển phiên: Kẻ tấn công có thể thực hiện các hành động thay mặt người dùng trên trang web [1].
+    + Chuyển hướng độc hại: Người dùng có thể bị chuyển hướng đến các trang web lừa đảo (phishing) hoặc trang web chứa mã độc khác [2].
+    + Thay đổi nội dung trang: Kẻ tấn công có thể thay đổi nội dung hiển thị trên trang web, gây nhầm lẫn hoặc lừa dối người dùng [1].
+
+# Heap memory
+- Heap memory (bộ nhớ Heap) là một vùng bộ nhớ quan trọng trong bộ nhớ máy tính, được sử dụng để lưu trữ dữ liệu có thời gian sống không xác định hoặc thời gian sống dài hơn thời gian tồn tại của hàm hoặc khối mã tạo ra nó.
+
+- Cấp phát động (Dynamic Allocation): Bộ nhớ trong Heap được cấp phát trong thời gian chạy (runtime), không phải trong thời gian biên dịch (compile time).
+- Thời gian sống linh hoạt (Flexible Lifespan): Dữ liệu tồn tại trong Heap cho đến khi chương trình không còn sử dụng nó nữa hoặc cho đến khi chương trình kết thúc.
+- Quản lý bởi Garbage Collector (ở các ngôn ngữ cấp cao): Trong các ngôn ngữ như JavaScript (Node.js), Java, Python, việc giải phóng bộ nhớ trong Heap được thực hiện tự động bởi một cơ chế gọi là Trình thu gom rác (Garbage Collector - GC). Lập trình viên không cần quản lý thủ công (không giống như C/C++ yêu cầu malloc() và free()).
+- Truy cập chậm hơn Stack: Việc truy cập dữ liệu trong Heap thường chậm hơn so với Stack memory (vùng nhớ ngăn xếp) vì dữ liệu không được tổ chức theo thứ tự tuyến tính đơn giản.
+
+# Race condition
+- Race condition (tình trạng chạy đua) là một lỗi thiết kế hoặc một điểm yếu trong hệ thống hoặc chương trình máy tính đa luồng (multi-threaded) hoặc đa tiến trình (multi-process).
+- Nó xảy ra khi hành vi hoặc kết quả đầu ra của chương trình phụ thuộc vào thứ tự hoặc thời điểm tương đối mà các phần khác nhau của chương trình được thực thi.
+
+# Idempotent
+- Gọi nhiều lần dữ liệu vẫn không thay đổi.
+- Gửi cùng một request nhiều lần thì kết quả trên server vẫn như nhau.
+- Một operation được gọi là idempotent nếu thực hiện nhiều lần vẫn cho ra cùng một kết quả cuối cùng.
+
+# Anti-pattern
+Anti-pattern (Phản mẫu) là thuật ngữ dùng để chỉ những giải pháp sai lầm cho một vấn đề.
+Mặc dù ban đầu nó có vẻ là một giải pháp tốt hoặc dễ thực hiện, nhưng về lâu dài, Anti-pattern sẽ gây ra nhiều rắc rối như: làm hệ thống chạy chậm, khó bảo trì, dễ phát sinh lỗi và tốn kém chi phí sửa chữa.
+
+# Spaghetti Code
+Spaghetti Code: Mã nguồn rối rắm, không có cấu trúc rõ ràng, khiến việc đọc và sửa đổi trở nên cực kỳ khó khăn.
+
+# God Object
+God Object: Một lớp (Class) hoặc một tệp tin đảm nhận quá nhiều nhiệm vụ. Nếu "vật thể chúa" này gặp lỗi, toàn bộ hệ thống sẽ sụp đổ.
+
+# Golden Hammer
+Golden Hammer (Chiếc búa vàng): Việc lạm dụng một công nghệ hoặc ngôn ngữ quen thuộc cho mọi vấn đề, ngay cả khi nó không phù hợp (ví dụ: cố dùng SQL để lưu trữ dữ liệu không cấu trúc thay vì dùng NoSQL).
+
+# Hard Coding
+Hard Coding: Ghi trực tiếp các giá trị (như mật khẩu, IP máy chủ) vào mã nguồn thay vì để trong tệp cấu hình.
+
+# Analysis Paralysis
+Analysis Paralysis (Liệt sĩ phân tích): Dành quá nhiều thời gian để phân tích và lập kế hoạch mà không bao giờ bắt tay vào thực hiện, dẫn đến dự án bị đình trệ.
+
+# Death March
+Death March (Hành trình chết): Ép buộc nhân viên làm việc quá sức với mục tiêu không tưởng, dẫn đến chất lượng sản phẩm kém và nhân sự nghỉ việc.
+
+# Monolithic Hell
+Monolithic Hell: Xây dựng một ứng dụng quá lớn và cồng kềnh, khiến việc cập nhật một tính năng nhỏ cũng mất rất nhiều thời gian để triển khai.
+
+# Microservices Envy
+Microservices Envy: Cố gắng chia nhỏ hệ thống thành các Microservices quá mức cần thiết, gây ra sự phức tạp không đáng có trong việc quản lý kết nối giữa các dịch vụ.
