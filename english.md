@@ -71,3 +71,19 @@ cache miss spike
 observability
 
 QPS
+
+personal interest: sở thích cá nhân
+perform better at work: làm việc hiệu quả hơn
+
+What motivates you to keep improving
+Điều gì thúc đẩy bạn không ngừng cải thiện bản thân?
+
+opportunity: cơ hội
+
+That makes sense: Điều đó hợp lý.
+
+Do you see yourself staying in tech long term?
+Bạn có dự định gắn bó lâu dài với lĩnh vực công nghệ không?
+
+Yes, I want to stay in this industry long-term.
+Vâng, tôi muốn gắn bó lâu dài với ngành này.
