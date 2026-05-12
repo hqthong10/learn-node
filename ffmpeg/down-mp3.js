@@ -1,6 +1,6 @@
 const { spawn } = require("child_process");
 
-let downm3u8 = [
+let down_mp3 = [
   "-y",
 
   "-i",
@@ -28,8 +28,9 @@ let downm3u8 = [
   "./out/minh-vu.mp3",
 ].concat();
 
-let child = spawn("ffmpeg", downm3u8);
+let child = spawn("ffmpeg", down_mp3);
 // let child = spawn("ffprobe", downm3u8);
+
 child.stderr.setEncoding("utf8");
 
 child.stdout.on("data", (data) => {
@@ -48,5 +49,3 @@ child.on("error", function (err) {
 child.on("close", function (code) {
   console.log("close >>>> ", code);
 });
-
-//

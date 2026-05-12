@@ -1,4 +1,4 @@
-const { spawn } = require("child_process");
+import { spawn } from "child_process";
 
 
 let ffmpeg_args = [
@@ -179,10 +179,17 @@ let test3 = [
    "-var_stream_map", "v:0,a:0,name:480p", 
    "./out/%v.m3u8"
 ];
+
+let test4 = [
+  "-y",
+   "-i", 
+  "./inp/input.mp4", "./out/images/output_%04d.png"
+   
+];
 // ffprobe
 
 // let child = spawn("ffprobe", info);
-let child = spawn("ffmpeg", info);
+let child = spawn("ffmpeg", test4);
 
 child.stderr.setEncoding("utf8");
 

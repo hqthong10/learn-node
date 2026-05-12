@@ -29,7 +29,3 @@
 //         .format(new Date())
 //         .replace(',', '')
 // );
-const obj = {
-    b: 3
-}
-console.log(obj.a%2);

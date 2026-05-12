@@ -1,61 +1,47 @@
 - Redis là một cơ sở dữ liệu lưu trữ cấu trúc dữ liệu trong bộ nhớ (in-memory data structure store), được sử dụng như một cơ sở dữ liệu, bộ nhớ đệm (cache), và message broker. 
-
-- \- Redis hỗ trợ các cấu trúc dữ liệu như: 
-  + \+ Chuỗi (strings).
-  + \+ Danh sách (lists).
-  + \+ Bộ tập hợp (sets).
-  + \+ Các bộ tập hợp có thứ tự (sorted sets).
-  + \+ Hàm băm (hashes).
-  + \+ bitmaps.
-  + \+ hyperloglogs.
-  + \+ Các chỉ mục địa lý (geospatial indexes). 
-
-- \- Redis nổi tiếng với hiệu suất cao, độ trễ thấp và khả năng mở rộng tốt.
-
-### **Các Tính Năng Chính của Redis**
-
-1. **In-Memory Storage:** Redis lưu trữ toàn bộ dữ liệu trong bộ nhớ (RAM), giúp truy xuất dữ liệu rất nhanh.
-2. **Các Cấu Trúc Dữ Liệu Phong Phú:** Redis hỗ trợ nhiều loại cấu trúc dữ liệu: strings, lists, sets, sorted sets, hashes, bitmaps, hyperloglogs, và geospatial indexes.
-3. **Persistence:** Redis có khả năng lưu trữ dữ liệu trên đĩa để đảm bảo tính bền vững của dữ liệu thông qua cơ chế snapshotting (RDB) và append-only file (AOF).
-4. **Replication:** Redis hỗ trợ replication (nhân bản dữ liệu), giúp sao chép dữ liệu từ master đến các slave để tăng tính sẵn sàng và hiệu suất đọc.
-5. **Pub/Sub Messaging:** Redis hỗ trợ mô hình publish/subscribe (pub/sub) cho phép các ứng dụng giao tiếp với nhau thông qua các kênh (channels).
-6. **Transactions:** Redis hỗ trợ các giao dịch, cho phép nhóm các lệnh lại và thực thi chúng một cách nguyên tử.
-7. **Lua Scripting:** Redis hỗ trợ chạy các script Lua để thực hiện các tác vụ phức tạp.
-8. **High Availability with Redis Sentinel:** Redis Sentinel cung cấp khả năng giám sát, thông báo lỗi và tự động chuyển đổi dự phòng cho các Redis instance.
-9. **Partitioning with Redis Cluster:** Redis Cluster cho phép phân vùng dữ liệu trên nhiều Redis nodes, giúp tăng khả năng mở rộng.
+- Redis nổi tiếng với hiệu suất cao, độ trễ thấp và khả năng mở rộng tốt.
+- Redis hỗ trợ các cấu trúc dữ liệu như: 
+  + Chuỗi (strings).
+  + Bộ tập hợp (sets).
+  + Hàm băm (hashes).
+  + Danh sách (lists).
+  + Các bộ tập hợp có thứ tự (sorted sets).
+  + bitmaps.
+  + hyperloglogs.
+  + Các chỉ mục địa lý (geospatial indexes). 
 
 
-### **Sử Dụng Redis**
+# Các Tính Năng Chính của Redis
+1. In-Memory Storage: Redis lưu trữ toàn bộ dữ liệu trong bộ nhớ (RAM), giúp truy xuất dữ liệu rất nhanh.
+2. Các Cấu Trúc Dữ Liệu Phong Phú: Redis hỗ trợ nhiều loại cấu trúc dữ liệu: strings, lists, sets, sorted sets, hashes, bitmaps, hyperloglogs, và geospatial indexes.
+3. Persistence: Redis có khả năng lưu trữ dữ liệu trên đĩa để đảm bảo tính bền vững của dữ liệu thông qua cơ chế snapshotting (RDB) và append-only file (AOF).
+4. Replication: Redis hỗ trợ replication (nhân bản dữ liệu), giúp sao chép dữ liệu từ master đến các slave để tăng tính sẵn sàng và hiệu suất đọc.
+5. Pub/Sub Messaging: Redis hỗ trợ mô hình publish/subscribe (pub/sub) cho phép các ứng dụng giao tiếp với nhau thông qua các kênh (channels).
+6. Transactions: Redis hỗ trợ các giao dịch, cho phép nhóm các lệnh lại và thực thi chúng một cách nguyên tử.
+7. Lua Scripting: Redis hỗ trợ chạy các script Lua để thực hiện các tác vụ phức tạp.
+8. High Availability with Redis Sentinel: Redis Sentinel cung cấp khả năng giám sát, thông báo lỗi và tự động chuyển đổi dự phòng cho các Redis instance.
+9. Partitioning with Redis Cluster: Redis Cluster cho phép phân vùng dữ liệu trên nhiều Redis nodes, giúp tăng khả năng mở rộng.
 
-1. **Caching:**
-    Lưu trữ tạm thời dữ liệu để giảm tải truy vấn đến cơ sở dữ liệu chính và tăng tốc độ truy xuất dữ liệu.
-2. **Session Store:**
-    Lưu trữ phiên làm việc của người dùng trong các ứng dụng web.
-3. **Real-Time Analytics:**
-    Xử lý và lưu trữ dữ liệu thời gian thực như thống kê và đo lường.
-4. **Queues:**
-    Sử dụng danh sách (lists) và các cấu trúc dữ liệu khác để xây dựng hàng đợi nhiệm vụ (task queues).
-5. **Leaderboards:**
-    Sử dụng bộ tập hợp có thứ tự (sorted sets) để xây dựng bảng xếp hạng.
-6. **Publish/Subscribe Messaging:**
-    Sử dụng mô hình pub/sub để tạo các hệ thống thông báo thời gian thực.
+# Sử Dụng Redis
+1. Caching: Lưu trữ tạm thời dữ liệu để giảm tải truy vấn đến cơ sở dữ liệu chính và tăng tốc độ truy xuất dữ liệu.
+2. Session Store: Lưu trữ phiên làm việc của người dùng trong các ứng dụng web.
+3. Real-Time Analytics: Xử lý và lưu trữ dữ liệu thời gian thực như thống kê và đo lường.
+4. Queues: Sử dụng danh sách (lists) và các cấu trúc dữ liệu khác để xây dựng hàng đợi nhiệm vụ (task queues).
+5. Leaderboards: Sử dụng bộ tập hợp có thứ tự (sorted sets) để xây dựng bảng xếp hạng.
+6. Publish/Subscribe Messaging: Sử dụng mô hình pub/sub để tạo các hệ thống thông báo thời gian thực.
 
-
-### **Cài Đặt Redis**
-
+# Cài Đặt Redis
 Bạn có thể cài đặt Redis trên hệ điều hành của bạn bằng cách tải về từ trang chủ Redis hoặc sử dụng Docker:
 
 ```docker run --name redis -d redis```
 
 
-### **Sử Dụng Redis với Node.js**
-
+# Sử Dụng Redis với Node.js
 - Cài đặt thư viện Redis cho Node.js:
-
 ```npm install redis```
+```npm install ioredis```
 
 - Tạo tập tin index.js:
-
 ```
 const redis = require('redis');
 const client = redis.createClient();
@@ -78,85 +64,59 @@ client.get('key', function(err, reply) {
 client.quit();
 ```
 
+# Các kiểu dữ liệu trong Redis
+## String
+- set: Đặt giá trị value cho key
+  client.set("LOCAL_LEARN_INFO", "xin chào");
 
-### **Các kiểu dữ liệu trong Redis**
+- setnx: Đặt giá trị value cho key chỉ khi key không tồn tại
+  client.set("LOCAL_LEARN_INFO", "xin chào", { NX:true });
 
-#### **String**
+- get: Lấy giá trị lưu trữ bởi key
+  await client.get("LOCAL_LEARN_INFO");
+  hoặc
+  client.get(key, (err, result) => {})
 
-- **set** Đặt giá trị value cho key
+- keys: Lấy tất cả các key
+  await client.keys("*");
 
-```client.set("LOCAL_LEARN_INFO", "xin chào");```
+- mset
+  const res5 = await client.mSet([
+    ["bike:1", "Deimos"],
+    ["bike:2", "Ares"],
+    ["bike:3", "Vanth"]
+  ]);
+  console.log(res5);  // OK
 
-- **setnx** Đặt giá trị value cho key chỉ khi key không tồn tại
-```client.set("LOCAL_LEARN_INFO", "xin chào", { NX:true });```
+- mget: truy xuất nhiều giá trị chuỗi trong một thao tác
+  const res6 = await client.mGet(["bike:1", "bike:2", "bike:3"]);
+  console.log(res6);  // ['Deimos', 'Ares', 'Vanth']
 
-- **get** Lấy giá trị lưu trữ bởi key
+- del Xóa key nếu nó tồn tại => 0 | 1
+  await client.del("LOCAL_LEARN_INFO");
 
-```
-await client.get("LOCAL_LEARN_INFO");
-hoặc
-client.get(key, (err, result) => {})
-```
+- exists Kiểm tra key có tồn tại không => 0 | 1
+  await client.exists("LOCAL_LEARN_INFO");
 
-- **keys** Lấy tất cả các key
+- expire Đặt expire time cho key sau n giây
+  client.expire("LOCAL_LEARN_INFO", 60);
 
-```await client.keys("*");```
+- persist Xóa expire time của key
+ 
+- ttl Lấy thời gian sống của key (giây)
+  await client.ttl("LOCAL_LEARN_INFO");
 
-- **mset** 
+- rename Đổi tên key sang newkey, nếu newkey đã tồn tại giá trị của nó sẽ bị ghi đè bởi giá trị của key
 
-```
-const res5 = await client.mSet([
-  ["bike:1", "Deimos"],
-  ["bike:2", "Ares"],
-  ["bike:3", "Vanth"]
-]);
 
-console.log(res5);  // OK
-```
+- incr và incrBy  DECR and DECRBY
+  await client.set("total_crashes", 0);
+  const res7 = await client.incr("total_crashes");
+  console.log(res7); // 1
+  const res8 = await client.incrBy("total_crashes", 10);
+  console.log(res8); // 11
 
-- **mget** truy xuất nhiều giá trị chuỗi trong một thao tác
-
-```
-const res6 = await client.mGet(["bike:1", "bike:2", "bike:3"]);
-console.log(res6);  // ['Deimos', 'Ares', 'Vanth']
-```
-
-- **del** Xóa key nếu nó tồn tại => 0 | 1
-
-```await client.del("LOCAL_LEARN_INFO");```
-
-- **exists** Kiểm tra key có tồn tại không => 0 | 1
-
-```await client.exists("LOCAL_LEARN_INFO");```
-
-- **expire** Đặt expire time cho key sau n giây
-
-```client.expire("LOCAL_LEARN_INFO", 60);```
-
-- **persist** Xóa expire time của key
-
-``` ```
-
-- **ttl** Lấy thời gian sống của key (giây)
-
-```await client.ttl("LOCAL_LEARN_INFO");```
-
-- **rename** Đổi tên key sang newkey, nếu newkey đã tồn tại giá trị của nó sẽ bị ghi đè bởi giá trị của key
-
-``` ```
-
-- **incr và incrBy  DECR and DECRBY**
-
-```
-await client.set("total_crashes", 0);
-const res7 = await client.incr("total_crashes");
-console.log(res7); // 1
-const res8 = await client.incrBy("total_crashes", 10);
-console.log(res8); // 11
-```
-- **flushall** Xóa tất cả các key
-
-``` ```
+- flushall Xóa tất cả các key
 
 #### Use Redis with JSON
 
@@ -256,30 +216,27 @@ const res27 = await client.json.objKeys("bike:1", "$");
 console.log(res27); //  [['model', 'brand', 'price']]
 ```
 
-#### Hashes
+# Hashes
+- Redis hashes là các loại bản ghi được cấu trúc dưới dạng tập hợp các cặp giá trị trường.
+- Bạn có thể sử dụng hàm hash để biểu diễn các đối tượng cơ bản và để lưu trữ các nhóm bộ đếm, cùng nhiều thứ khác.
 
-Redis hashes là các loại bản ghi được cấu trúc dưới dạng tập hợp các cặp giá trị trường.
-
-Bạn có thể sử dụng hàm băm để biểu diễn các đối tượng cơ bản và để lưu trữ các nhóm bộ đếm, cùng nhiều thứ khác.
-
-
-- **hset** đặt giá trị của một hoặc nhiều trường trên hàm băm.
-- **hget** trả về giá trị tại một trường nhất định.
-- **hgetall** Trả về tất cả các trường và giá trị của hàm băm được lưu trữ tại khóa. Trong giá trị được trả về, mỗi tên trường được theo sau bởi giá trị của nó, do đó độ dài của câu trả lời gấp đôi kích thước của hàm băm.
-- **HKEYS** Trả về tất cả tên trường trong hàm băm được lưu trữ tại khóa.
-- **HVALS** Trả về tất cả các giá trị trong hàm băm được lưu trữ tại khóa.
-- **hmget** trả về các giá trị tại một hoặc nhiều trường nhất định.
-- **hincrby** tăng giá trị tại một trường nhất định theo số nguyên được cung cấp.
-- **hdel** Xóa các trường được chỉ định khỏi hàm băm được lưu trữ tại khóa. Các trường được chỉ định không tồn tại trong hàm băm này sẽ bị bỏ qua. Nếu khóa không tồn tại, nó được coi là hàm băm trống và lệnh này trả về 0.
-- **HEXPIRE** đặt TTL còn lại sau vài giây.
-- **HPEXPIRE** đặt TTL còn lại tính bằng mili giây.
-- **HEXPIREAT** đặt thời gian hết hạn thành dấu thời gian1 được chỉ định tính bằng giây.
-- **HPEXPIREAT** đặt thời gian hết hạn thành dấu thời gian được chỉ định bằng mili giây.
-- **HEXPIRETIME** lấy thời gian hết hạn dưới dạng dấu thời gian tính bằng giây.
-- **HPEXPIRETIME** lấy thời gian hết hạn dưới dạng dấu thời gian tính bằng mili giây.
-- **HTTL** nhận TTL còn lại sau vài giây.
-- **HPTTL** nhận được TTL còn lại tính bằng mili giây.
-- **HPERSIST** loại bỏ thời hạn sử dụng.
+- hset đặt giá trị của một hoặc nhiều trường trên hàm băm.
+- hget trả về giá trị tại một trường nhất định.
+- hgetall Trả về tất cả các trường và giá trị của hàm băm được lưu trữ tại khóa. Trong giá trị được trả về, mỗi tên trường được theo sau bởi giá trị của nó, do đó độ dài của câu trả lời gấp đôi kích thước của hàm băm.
+- HKEYS Trả về tất cả tên trường trong hàm băm được lưu trữ tại khóa.
+- HVALS Trả về tất cả các giá trị trong hàm băm được lưu trữ tại khóa.
+- hmget trả về các giá trị tại một hoặc nhiều trường nhất định.
+- hincrby tăng giá trị tại một trường nhất định theo số nguyên được cung cấp.
+- hdel Xóa các trường được chỉ định khỏi hàm băm được lưu trữ tại khóa. Các trường được chỉ định không tồn tại trong hàm băm này sẽ bị bỏ qua. Nếu khóa không tồn tại, nó được coi là hàm băm trống và lệnh này trả về 0.
+- HEXPIRE đặt TTL còn lại sau vài giây.
+- HPEXPIRE đặt TTL còn lại tính bằng mili giây.
+- HEXPIREAT đặt thời gian hết hạn thành dấu thời gian1 được chỉ định tính bằng giây.
+- HPEXPIREAT đặt thời gian hết hạn thành dấu thời gian được chỉ định bằng mili giây.
+- HEXPIRETIME lấy thời gian hết hạn dưới dạng dấu thời gian tính bằng giây.
+- HPEXPIRETIME lấy thời gian hết hạn dưới dạng dấu thời gian tính bằng mili giây.
+- HTTL nhận TTL còn lại sau vài giây.
+- HPTTL nhận được TTL còn lại tính bằng mili giây.
+- HPERSIST loại bỏ thời hạn sử dụng.
 
 ```
 const res1 = await client.hSet(
@@ -520,22 +477,20 @@ const res50 = await client.lRange('bikes:repairs', 0, -1);
 console.log(res50);  // ['bike:5', 'bike:4', 'bike:3']
 ```
 
-#### **Sets**
-
-Bộ Redis là một tập hợp các chuỗi (thành viên) duy nhất không có thứ tự. Bạn có thể sử dụng bộ Redis để:
-- Theo dõi các mục duy nhất (ví dụ: theo dõi tất cả các địa chỉ IP duy nhất truy cập vào một bài đăng blog nhất định).
+# Set
+SET là một tập hợp các chuỗi duy nhất không có thứ tự. Bạn có thể sử dụng bộ Redis để:
+- Theo dõi các mục duy nhất.
 - Biểu thị các mối quan hệ (ví dụ: tập hợp tất cả người dùng có vai trò nhất định).
 - Thực hiện các phép toán tập hợp phổ biến như giao điểm, hợp và hiệu.
 
-**Các lệnh cơ bản**
+## Các lệnh cơ bản
+- SADD: thêm một thành viên mới vào một tập hợp.
+- SREM: xóa thành viên được chỉ định khỏi tập hợp.
+- SISMEMBER: kiểm tra một chuỗi cho tư cách thành viên đã đặt.
+- SINTER trả về tập hợp các thành viên mà hai hoặc nhiều tập hợp có điểm chung (tức là giao điểm).
+- SCARD trả về kích thước (còn gọi là cardinality) của một tập hợp.
 
-- **SADD** thêm một thành viên mới vào một tập hợp.
-- **SREM** xóa thành viên được chỉ định khỏi tập hợp.
-- **SISMEMBER** kiểm tra một chuỗi cho tư cách thành viên đã đặt.
-- **SINTER** trả về tập hợp các thành viên mà hai hoặc nhiều tập hợp có điểm chung (tức là giao điểm).
-- **SCARD** trả về kích thước (còn gọi là cardinality) của một tập hợp.
-
-### **Publish/Subscribe (Pub/Sub)**
+# **Publish/Subscribe (Pub/Sub)**
 - Redis hỗ trợ mô hình Publish/Subscribe (Pub/Sub) để giao tiếp giữa các client qua các kênh (channel).
 - Đây là một cách hiệu quả để triển khai hệ thống thời gian thực như thông báo, chat hoặc truyền tải sự kiện.
   
@@ -588,7 +543,3 @@ subscriber.on('message', (channel, message) => {
 ## Transactions
   - Redis hỗ trợ các lệnh giao dịch theo nhóm để đảm bảo tính nhất quán.
   - Một giao dịch được bắt đầu bằng MULTI, các lệnh được thêm vào hàng đợi và thực thi bằng EXEC.
-
-### **Tổng Kết**
-
-Redis là một cơ sở dữ liệu lưu trữ trong bộ nhớ rất mạnh mẽ và linh hoạt, phù hợp cho nhiều trường hợp sử dụng yêu cầu tốc độ truy xuất dữ liệu cao và độ trễ thấp. Redis cũng cung cấp nhiều tính năng như persistence, replication, transactions, và scripting, giúp đáp ứng các nhu cầu phức tạp trong phát triển ứng dụng.

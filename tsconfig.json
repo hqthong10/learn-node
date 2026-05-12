@@ -5,7 +5,11 @@
     // "strict": true,
     "allowJs": true,
     "outDir": "./dist",
-    "rootDir": "./"
+    "rootDir": "./",
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false
   },
   "exclude": ["node_modules"],
 

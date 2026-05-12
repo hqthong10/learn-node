@@ -9,7 +9,7 @@ Ví dụ thực tế:
 
 Giả sử có một API tạo người dùng, chúng ta có thể viết integration test để kiểm tra việc gửi dữ liệu lên server và lưu vào cơ sở dữ liệu:
 
-```
+
 const request = require('supertest');
 const app = require('../app'); // express app
 
@@ -27,4 +27,29 @@ describe('POST /users', () => {
     expect(res.body).toHaveProperty('username', 'testuser');
   });
 });
-```
+
+
+describe("POST /api/login", () => {
+  it("Login success", async () => {
+    const res = await request(app)
+      .post("/api/login")
+      .send({
+        email: "user@test.com",
+        password: "123456",
+      });
+
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveProperty("accessToken");
+  });
+
+  it("Login fail - wrong password", async () => {
+    const res = await request(app)
+      .post("/api/login")
+      .send({
+        email: "user@test.com",
+        password: "wrong",
+      });
+
+    expect(res.status).toBe(401);
+  });
+});

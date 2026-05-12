@@ -1,7 +1,3 @@
-// require('dotenv').config();
-// const { initCronJobs } = require('./app');
-
-// import 'dotenv/config';
 import dotenv from 'dotenv';
 import { initCronJobs } from './app.js';
 

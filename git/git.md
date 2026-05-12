@@ -1,9 +1,3 @@
-- Khởi tạo 
-    git init
-
-- Clone (tải xuống)
-    git clone url.git
-
 - Config
     git config --global user.name "John Doe"
     git config --global user.email "john@example.com"
@@ -42,7 +36,7 @@
     git checkout feature-branch
 
 - Tạo và chuyển ngay lập tức sang nhánh mới.
-    git checkout -b new-feature
+    git checkout -b new-feature 
 
 - Gộp nhánh vào nhánh hiện tại.
     git merge <branch-name>

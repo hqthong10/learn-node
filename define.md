@@ -1,32 +1,16 @@
 # HLS - HTTP Live Streaming
-HLS là viết tắt của HTTP Live Streaming, là một giao thức để streaming video trên toàn internet.
-Được phát triển bởi Apple, ban đầu chỉ có iPhone là hỗ trợ giao thức này, nhưng ngày nay các thiết bị và phần mềm đều hỗ trợ nó và nó trở thành giao thức phổ biến nhất.
-HLS là http-based, nó sử dụng web server để truyền tải nội dung. Điều này có nghĩa là bạn không cần phải có hạ tầng đặc biệt chỉ cần có web server hoặc sử dụng CDN là được. Ngoài ra vì HLS là http-based nên nó cũng sẽ ít có khả năng bị chặn bởi Firewall
-Với HLS video sẽ được chia thành các segments nhỏ, là phương thức adaptive bitrate video tức là có thể chọn định dạng video phù hợp (480p, 720p…) để truyền tải qua Internet tùy vào tốc độ mạng của bạn.
-Nhược điểm của nó là độ trễ cao. Ví dụ cả xóm bạn đang xem đá bóng, bạn thấy hàng xóm hô “Vào !!!” rồi còn bạn thì vẫn chưa thấy đâu. Kiểu vậy.
+HLS là một giao thức để streaming video trên toàn internet.
 
 # MPEG-DASH
-MPEG-DASH là đối thủ cạnh tranh với HLS. Trong khi HLS đang cạnh tranh với các giao thức khác và chưa có kết quả rõ ràng thì cộng đồng nguồn mở đã phát triển MPEG-DASH trong khoảng từ năm 2009 – 2012.
-Đặc điểm đầu tiên kể đến đó là MPEG-DASH cũng là phương thức adaptive bitrate video giống với HLS. Có độ trễ thấp hơn HLS khoảng 15%.
-Cách đây vài năm thì MPEG-DASH cũng mấp mé tranh ngôi quán quân với HLS nhưng bây giờ tình hình đã thay đổi.
-Thời điểm năm 2017 MPEG-DASH không được hỗ trợ bởi Safari, trong khi các thiết bị của Apple ngày càng phổ biến trên toàn cầu. Đến giữa năm 2019 thì Apple cũng cho ra mắt Low-Latency HLS thế nên tính đến thời điểm hiện tại HLS vẫn đang là giao thức streaming phổ biến nhất.
-
-# CMAF (Common Media Application Format)
-CMAF là một định dạng tệp chuẩn hóa được phát triển bởi Apple và Microsoft để hợp nhất HLS và DASH. Nó giúp giảm chi phí lưu trữ và băng thông khi phát video trực tuyến bằng cách sử dụng một tệp video duy nhất cho cả hai giao thức.
+MPEG-DASH là phương thức adaptive bitrate video giống với HLS. Có độ trễ thấp hơn HLS khoảng 15%.
 
 # RTMP - Real-Time Messaging Protocol
-RTMP là giao thức được phát triển bởi Adobe, sử dụng để truyền tải âm thanh và video với Adobe Flash Player. Nó giống như là việc cách đây khoảng 10 năm bạn ra hàng net, muốn xem video bạn phải cài thêm Adobe Flash Player cho trình duyệt IE chẳng hạn. Vì thời buổi đó các flash web đang rất thông dụng
-
-RTMP là từ viết tắt của Real Time Messaging Protocol. RTMP ban đầu là một giao thức độc quyền được phát triển bởi Macromedia (Ngày nay là Adobe System) để truyền phát âm thanh, video và dữ liệu với hiệu suất cao qua Internet, giữa trình phát Flash và máy chủ. Macromedia hiện thuộc sở hữu của Adobe, đã phát hành một phiên bản chưa hoàn chỉnh về đặc điểm kỹ thuật của giao thức để phát hành chính thức.
 RTMP là một giao thức dựa trên TCP, duy trì các kết nối liên tục và cho phép giao tiếp với độ trễ thấp. Để phân phối luồng một cách trơn tru và truyền tải càng nhiều dữ liệu càng tốt, nó chia luồng thành các đoạn (fragments) và kích thước của chúng được thỏa thuận tùy vào máy khách (Người khởi tạo) và máy chủ.
 Kích thước đoạn mặc định cho dữ liệu âm thanh là 64 byte và cho dữ liệu video là 128 byte và hầu hết các loại dữ liệu khác. Các đoạn từ các luồng khác nhau sau đó có thể được xen kẽ và ghép thành một kết nối duy nhất.
 
 # VOD - Video On Demand
 VOD là một hệ thống cho phép người dùng có thể lựa chọn và xem nội dung video theo đúng ý thích của mỗi cá nhân trên rất nhiều thiết bị hiện có như TV, máy tính, máy tính bảng, điện thoại,... thông qua đường truyền internet.
 
-# WebRTC
-Là giao thức peer-to-peer livestream với độ trễ thậm chí
-Ngày nay để ứng dụng tối đa các lợi ích mà các giao thức livestream đem lại người ta sẽ sử dụng RTMP cho việc nhận video để thu về các video nguồn một cách nhanh nhất và sử dụng HLS để phục vụ đa dạng người dùng cuối nhanh nhất (kết hợp HLS với CDN).
 
 # SFU (Selective Forwarding Unit)
 - SFU là một kiến trúc máy chủ trung gian trong WebRTC giúp tối ưu việc truyền tải dữ liệu video & audio trong các cuộc họp trực tuyến, livestream, hoặc hội nghị nhiều người.
@@ -34,19 +18,6 @@ Ngày nay để ứng dụng tối đa các lợi ích mà các giao thức live
 # MCU (Multipoint Control Unit)
 - MCU là một thành phần quan trọng trong hệ thống hội nghị truyền hình (video conferencing), cho phép nhiều thiết bị (clients) kết nối và trao đổi video, âm thanh cùng lúc.
 - Nó hoạt động như một trung tâm điều phối, giúp giảm tải xử lý trên mỗi client bằng cách nhận luồng từ tất cả các thiết bị, xử lý (trộn hoặc định tuyến) rồi gửi lại cho từng client theo nhu cầu.
-
-
-# P2P (Peer To Peer)
-
-# SD-RTN™ (Software Defined Real-Time Network) Một mạng lưới máy chủ phân tán toàn cầu.
-
-# Adaptive Bitrate (ABR) – Tự động điều chỉnh chất lượng video/audio theo tốc độ mạng.
-
-# FEC (Forward Error Correction) – Giúp giảm mất gói tin khi mạng yếu.
-
-# UDP (User Datagram Protocol) – Tối ưu độ trễ so với TCP.
-
-# AI Noise Suppression – Lọc tiếng ồn bằng AI khi call hoặc livestream.
 
 # UMD
 UMD là viết tắt của "Universal Module Definition" (Định nghĩa Mô-đun Đa năng). Đây là một kỹ thuật trong lập trình JavaScript để viết các thư viện hoặc module có thể sử dụng trong nhiều môi trường khác nhau, bao gồm cả môi trường trình duyệt và môi trường máy chủ (như Node.js).
@@ -66,7 +37,7 @@ Babel là một công cụ biên dịch (transpiler) JavaScript mã nguồn mở
 - Durability: Đảm bảo rằng khi giao dịch được hoàn thành thành công, hiệu ứng của nó sẽ được lưu trữ liên tục trong cơ sở dữ liệu.
 
 # BASE Transactions
-(Basically Available, Soft state, Eventually consistent)
+(Basically, Available, Soft state, Eventually consistent)
 
 # SQL (Structured Query Language)
 
@@ -109,33 +80,6 @@ Babel là một công cụ biên dịch (transpiler) JavaScript mã nguồn mở
 # REPL
 - REPL là viết tắt của Read, Eval, Print và Loop là một đặc tính của NodeJS cho phép lập trình viên viết code và chạy trực tiếp trên màn hình shell/console/terminal để debug, kiểm tra code mà không cần tạo ra bất cứ file hay folder nào.
 
-# DDL (Data Definition Language)
-- Ngôn ngữ định nghĩa dữ liệu (DDL) là một tập hợp con của SQL. Chức năng chính của nó là tạo, sửa đổi và xóa cấu trúc cơ sở dữ liệu chứ không phải dữ liệu.
-
-# DML (Data Manipulation Language) : Ngôn ngữ thao tác dữ liệu
-- DML là một tiểu thể loại của SQL, viết tắt của Ngôn ngữ thao tác dữ liệu. Mục đích của DML là chèn, truy xuất, cập nhật và xóa dữ liệu khỏi cơ sở dữ liệu. Với điều này, chúng ta có thể thực hiện các thao tác trên các bản ghi hiện có.
-
-# concurrency: khả năng xử lý đồng thời
-# Load balancing: Cơ chế phân chia công việc
-# Round Robin
-# Sticky Sessions
-
-# InnoDB
-- InnoDB là một storage engine mạnh mẽ và linh hoạt trong MySQL, cung cấp nhiều tính năng quan trọng giúp quản lý dữ liệu một cách hiệu quả và an toàn. Với hỗ trợ transactions, foreign keys, và khả năng xử lý đồng thời cao, InnoDB thích hợp cho hầu hết các ứng dụng cơ sở dữ liệu hiện đại. Để tận dụng tối đa các ưu điểm của InnoDB, bạn cần hiểu rõ cách cấu hình và tối ưu hóa các tham số của nó, cũng như thiết kế cơ sở dữ liệu và chỉ mục một cách hợp lý.
-
-# MyISAM
-- MyISAM là một trong những storage engine phổ biến của MySQL
-- Hiệu suất cao cho đọc dữ liệu
-- Chiếm ít RAM hơn so với InnoDB.
-- Không hỗ trợ transaction
-- Chỉ hỗ trợ table-level locking
-- Không hỗ trợ khóa ngoại
-- Hỗ trợ nén bảng để tiết kiệm dung lượng
-- Hỗ trợ FULLTEXT index
-
-# Dependency Injection (DI)
-- Một kỹ thuật trong đó các phụ thuộc (dependencies) của một class hoặc module được cung cấp từ bên ngoài thay vì tự tạo bên trong.
-- Dùng để tăng khả năng kiểm tra và tái sử dụng mã.
 
 # Middleware Pipeline
 - Luồng xử lý của middleware khi một yêu cầu HTTP đi qua ứng dụng backend.
@@ -297,10 +241,6 @@ Ví dụ: Xác thực người dùng, log yêu cầu.
 - Gói ứng dụng và tất cả các thành phần phụ thuộc vào một môi trường độc lập (container).
 - Ví dụ: Docker.
 
-# Message Queue
-- Hệ thống hàng đợi để xử lý các nhiệm vụ không đồng bộ.
-- Ví dụ: RabbitMQ, Kafka.
-
 # Rate Limiting
 - Giới hạn số lượng yêu cầu (requests) mà một client có thể gửi trong một khoảng thời gian.
 
@@ -353,16 +293,6 @@ Một cơ chế cho phép ứng dụng nhận thông báo từ một dịch vụ
 - là một tính năng mạnh mẽ của Next.js cho phép bạn kết hợp những lợi ích của Static Site Generation (SSG) và Server-Side Rendering (SSR) để tối ưu hóa hiệu suất và trải nghiệm người dùng.
 - Cho phép bạn tái tạo một số trang tĩnh cụ thể (incrementally regenerate) sau khi chúng đã được deploy mà không cần phải rebuild toàn bộ ứng dụng.
 - ISR được kích hoạt bằng cách sử dụng hàm getStaticProps trong Next.js với tham số revalidate
-
-# Server-Side Rendering (SSR)
-
-# Static Site Generation (SSG)
-
-# batteries included
-
-# Edge Rendering
-
-# Edge Computing
 
 # stream collision (xung đột luồng)
 - Đây là tình huống khi nhiều nguồn (clients) cùng gửi dữ liệu đến một key hoặc link RTMP duy nhất.
@@ -459,3 +389,27 @@ Monolithic Hell: Xây dựng một ứng dụng quá lớn và cồng kềnh, kh
 
 # Microservices Envy
 Microservices Envy: Cố gắng chia nhỏ hệ thống thành các Microservices quá mức cần thiết, gây ra sự phức tạp không đáng có trong việc quản lý kết nối giữa các dịch vụ.
+
+# Eventual Consistency
+
+# saga + retry + compensation
+
+# Zero Trust
+
+# Token leakage handling
+
+# Audit log
+
+# Backpressure
+
+# Throttling
+
+# Queue overload
+
+# Graceful degradation
+
+# cache miss spike
+
+# observability
+
+# QPS

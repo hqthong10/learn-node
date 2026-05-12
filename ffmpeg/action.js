@@ -1,15 +1,5 @@
 const { spawn } = require("child_process");
 
-// 720x1280 to 1280x720
-let args_720x1280_1280x720 = [
-  "-y",
-  "-i",
-  "720-1280.mp4",
-  "-vf",
-  "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
-  "1280-720.mp4",
-].concat();
-
 // resize video
 let args_resize = [
   "-y",

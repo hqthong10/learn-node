@@ -48,3 +48,23 @@ Partition 2 → Consumer C
 ✔ Khác group → mỗi bên nhận đủ
 ✔ Sai groupId = sai kiến trúc
 
+# CLI
+- create topic
+kafka-topics \
+--create \
+--topic order_created \
+--partitions 6 \
+--replication-factor 3 \
+--bootstrap-server kafka:9092
+
+## Theo dõi consumer lag
+kafka-consumer-groups \
+--bootstrap-server localhost:9092 \
+--describe \
+--group order-group
+
+# zookeeper
+
+1️⃣ Kafka Rebalance (vì sao consumer đột nhiên stop)
+2️⃣ Kafka retention & storage (message giữ bao lâu)
+3️⃣ Kafka kiến trúc production (multi broker cluster)
