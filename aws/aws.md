@@ -1,7 +1,8 @@
 1. Để đảm bảo rằng tất cả các gói phần mềm của bạn đều được cập nhật, ta thực hiện lệnh sau:
+To ensure that all your software packages are up-to-date, execute the following command:
    sudo yum update -y
 
-2. Cài đặt node version manager (nvm) ) bằng cách nhập nội dung sau vào dòng lệnh sau:
+2. Cài đặt node version manager (nvm) bằng cách nhập nội dung sau vào dòng lệnh sau:
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
    - Kích hoạt nvm bằng cách nhập nội dung sau vào dòng lệnh: . ~/.nvm/nvm.sh

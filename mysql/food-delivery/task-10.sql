@@ -34,3 +34,24 @@
 
 -- Go
 
+SELECT user_id, o.id, o.restaurant_name, o.status, o.created_at, o.final_amount
+FROM orders o
+WHERE o.user_id = @user_id
+    AND (@status IS NULL OR o.status = @status)
+    AND (
+        @keyword IS NULL 
+        OR code = @keyword 
+        OR restaurant_name LIKE CONCAT('%', @keyword, '%')
+    )
+    AND (@from_date IS NULL OR created_at >= @from_date)
+    AND (@to_date IS NULL OR created_at < @to_date + INTERVAL 1 DAY)
+    AND (
+        (@last_created_at IS NULL AND @last_id IS NULL)
+        OR (created_at < @last_created_at)
+        OR (created_at = @last_created_at AND id < @last_id)
+    )
+ORDER BY created_at DESC, id DESC
+LIMIT @limit_size;
+
+CREATE INDEX idx_user_filters_pagination 
+ON orders(user_id, status, created_at, id);

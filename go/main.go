@@ -3,10 +3,11 @@ package main
 // import "fmt"
 // import "time"
 import (
+	"errors"
 	"fmt"
 	"time"
 )
- 
+
 const FLag = 3
 
 func add(a, b int) int {
@@ -106,7 +107,7 @@ func main() {
 	if user.IsAdult() {
 		fmt.Println("Adult")
 	}
-	
+
 	user.UpdateAge(15)
 	if user.IsAdult() {
 		fmt.Println("Adult")
@@ -117,4 +118,3 @@ func main() {
 	user2 := NewUser("Admin", "admin@example.com")
 	fmt.Println(user2)
 }
-

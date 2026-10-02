@@ -13,6 +13,7 @@ const users = await this.userRepository.find({
   },
 });
 
+
 - 
 SELECT u.id, u.name, COUNT(o.id) as order_count
 FROM users u

@@ -6,12 +6,12 @@ let args_m3u8_vertical_mp4 = [
   "-y",
   
   "-i",
-  "https://cdn.piepme.com/26207/videos/piep-PcCe4DwI17783139779601778313977960/hls/480p.m3u8",
+  "https://cdn.piepme.com/21118/videos/piep-cg2xYvCa17904373587561790437358756/hls/480p.m3u8",
   
   "-ss",
   "0",
   "-t",
-  `60`,
+  `30`,
 
   "-vf",
   "scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:-1:-1:color=black",
@@ -19,7 +19,7 @@ let args_m3u8_vertical_mp4 = [
   "-c:a",
   "copy",
 
-  "./out/tram-vy.mp4",
+  "./out/loan-loan.mp4",
 ].concat();
 
 

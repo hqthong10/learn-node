@@ -1,6 +1,9 @@
 package main
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type Product struct {
 	ID    int64
@@ -30,7 +33,7 @@ func (p *Product) Discount(percent int) error {
 	return nil
 }
 
-func main() {
+func main1() {
 	product := &Product{
 		ID:    1,
 		Name:  "Laptop",

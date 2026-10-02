@@ -1,0 +1,4 @@
+- AI trợ lý cho shop online
+- SaaS quản lý lịch/booking
+- API Monitoring cho startup
+- AI quản lý công việc cho team nhỏ
