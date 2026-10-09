@@ -65,6 +65,7 @@ const Post = model('Posts', postSchema);
         select: 'PN100 NV106 NV107 NV108',
         foreignField: 'user_id'
     })
+    
 # Discriminators
 
 # Execute
