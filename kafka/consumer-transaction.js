@@ -1,47 +1,62 @@
 import { Kafka } from 'kafkajs';
 
+// Đọc order_created → xử lý → ghi order_processed.
+// "Ghi order_processed" và "commit offset order_created" thành công hoặc thất bại cùng nhau.
+
+const GROUP_ID = 'order-processor';
+
 const kafka = new Kafka({
-    clientId: 'order-consumer',
+    clientId: 'order-processor',
     brokers: ['localhost:9092']
 });
 
-const consumer = kafka.consumer({ groupId: 'email-service' });
+const producer = kafka.producer({
+    transactionalId: 'order-processor-1', // duy nhất & cố định cho mỗi instance
+    idempotent: true,
+    maxInFlightRequests: 1
+});
+
+// readUncommitted: false (mặc định) → không thấy message của transaction bị abort
+const consumer = kafka.consumer({ groupId: GROUP_ID });
+
+function transform(order) {
+    return { ...order, processedAt: new Date().toISOString() };
+}
 
 async function run() {
+    await producer.connect();
     await consumer.connect();
     await consumer.subscribe({
-        topic: 'order_created',
-        fromBeginning: true,
-        autoCommit: true // bằng false thì chuyển sang chế độ commit tay
+        topics: ['order_created'],
+        fromBeginning: true
     });
 
     await consumer.run({
-        eachBatch: async ({ batch, resolveOffset, heartbeat, isRunning, isStale }) => {
+        autoCommit: false, // offset được commit trong transaction
+        eachBatch: async ({ batch, heartbeat }) => {
             const transaction = await producer.transaction();
 
             try {
                 for (const message of batch.messages) {
                     const input = JSON.parse(message.value.toString());
-
                     const output = transform(input);
 
                     await transaction.send({
                         topic: 'order_processed',
-                        messages: [{ value: JSON.stringify(output) }]
+                        messages: [{ key: message.key, value: JSON.stringify(output) }]
                     });
-
-                    resolveOffset(message.offset);
                 }
 
                 await transaction.sendOffsets({
-                    consumerGroupId: 'order-group',
+                    consumerGroupId: GROUP_ID, // phải trùng groupId của consumer
                     topics: [
                         {
                             topic: batch.topic,
                             partitions: [
                                 {
                                     partition: batch.partition,
-                                    offset: batch.lastOffset()
+                                    // offset commit = offset tiếp theo cần đọc
+                                    offset: (Number(batch.lastOffset()) + 1).toString()
                                 }
                             ]
                         }

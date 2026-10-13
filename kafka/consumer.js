@@ -10,60 +10,39 @@ const consumer = kafka.consumer({ groupId: 'email-service' });
 async function run() {
     await consumer.connect();
     await consumer.subscribe({
-        topic: 'order_created',
-        fromBeginning: true,
-        autoCommit: true // bằng false thì chuyển sang chế độ commit tay
+        topics: ['order_created'],
+        fromBeginning: true // chỉ có tác dụng với group chưa có offset
     });
 
     await consumer.run({
-        eachMessage: async ({ message }) => {
-            // xử lý xong
-            // KafkaJS mới báo OK cho Kafka
+        // autoCommit mặc định true: hàm chạy xong không throw → KafkaJS coi message đã xử lý
+        eachMessage: async ({ partition, message }) => {
+            const raw = message.value.toString();
+
+            let event;
             try {
-                const raw = message.value.toString();
-                const data = JSON.parse(raw);
-
-                // 1. Xử lý nghiệp vụ
-                // nên retry vài lần nếu gặp lỗi để đảm bảo
-                console.log('Received order:', data);
-
-                // 2. Nếu tới đây không lỗi
-                // KafkaJS sẽ tự báo: message OK
-            } catch (err) {
+                event = JSON.parse(raw);
+            } catch {
+                // lỗi vĩnh viễn: không throw, nếu không message này sẽ chặn cả partition
                 console.error('Invalid JSON', raw);
+                return;
             }
-        },
 
-        /**
-         * dùng khi khai báo autoCommit: false
-         * để tự xử lý message đã hoàn thành hay chưa
-         */
-        eachBatch: async ({ batch, resolveOffset, heartbeat, commitOffsetsIfNecessary }) => {
-            for (const message of batch.messages) {
-                const data = JSON.parse(message.value.toString());
-
-                try {
-                    // 1. Xử lý nghiệp vụ
-                    await processOrder(data);
-
-                    // 2. Đánh dấu message này đã xong
-                    resolveOffset(message.offset);
-
-                    // 3. Commit offset (có thể gom nhiều message)
-                    await commitOffsetsIfNecessary();
-
-                    // 4. Báo Kafka là consumer còn sống
-                    await heartbeat();
-                } catch (err) {
-                    console.error('Process failed', err);
-                    // ❌ KHÔNG resolveOffset
-                    // ❌ KHÔNG commit
-                    // → message sẽ được xử lý lại
-                    break;
-                }
-            }
+            // xử lý nghiệp vụ; throw ở đây → KafkaJS retry rồi restart consumer
+            console.log(`Received order (partition ${partition}, offset ${message.offset}):`, event);
         }
     });
 }
+
+const shutdown = async () => {
+    try {
+        await consumer.disconnect(); // commit offset, rời group ngay → rebalance nhanh
+    } finally {
+        process.exit(0);
+    }
+};
+
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);
 
 run().catch(console.error);
