@@ -1,4 +1,3 @@
-import { profile } from 'console';
 import mongoose from 'mongoose';
 
 const accountSchema = new mongoose.Schema(
