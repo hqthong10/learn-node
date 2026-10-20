@@ -73,10 +73,10 @@ const Post = model('Posts', postSchema);
     + case 1:
         const user = new User({
             user_id: 1,
-            first_name: 'huynh'
+            first_name: 'huynh',
             last_name: 'thong',
             user_email: 'abcd@abc.com',
-            user_phone: '0123456789'
+            user_phone: '0123456789',
         });
         user.save()
 
