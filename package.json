@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "socket": "node ./socketio/index.js",
-    "graphql": "nodemon node ./api/graphql/index.js",
+    "graphql": "nodemon node ./graphql/src/index.js",
     "mediasoup": "nodemon node ./mediasoup/server.js",
     "test": "jest"
   },
@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^5.5.1",
+    "@as-integrations/express5": "^1.1.2",
     "@google-cloud/storage": "^1.7.0",
     "@socket.io/cluster-adapter": "^0.2.2",
     "@types/amqplib": "^0.10.2",
@@ -24,12 +25,14 @@
     "bull": "^4.12.0",
     "bullmq": "^5.1.1",
     "commander": "^12.1.0",
+    "cors": "^2.8.6",
     "crypto-js": "^4.1.1",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
+    "dotenv": "^16.6.1",
+    "express": "^5.3.0",
     "fs-extra": "^7.0.0",
     "gm": "^1.25.0",
     "graphql": "^16.14.2",
+    "graphql-http": "^1.23.1",
     "graphql-subscriptions": "^3.0.0",
     "kafkajs": "^2.2.4",
     "md5": "^2.3.0",
